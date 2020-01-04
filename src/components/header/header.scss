@@ -1,0 +1,40 @@
+.header {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  background-color: #000000;
+  padding: 20px 5%;
+  padding-top: 12px;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  img {
+    height: 20px;
+  }
+
+  .menu {
+    width: 100px;
+    display: inline-block;
+
+    .menu-btn {
+      cursor: pointer;
+    }
+  }
+
+  .options {
+    height: 100%;
+    width: 100px;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+
+    .option {
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+  }
+}

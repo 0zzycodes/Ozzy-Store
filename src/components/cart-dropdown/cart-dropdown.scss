@@ -1,0 +1,64 @@
+$tablet: 850px;
+$primaryColor: #000000;
+$secondaryColor: #ffffff;
+
+// Mixin
+@mixin tablet {
+    @media (max-width: #{$tablet}) {
+        @content;
+    }
+}
+
+.cart-dropdown {
+    position: absolute;
+    width: 50%;
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    top: 70px;
+    right: -15px;
+    z-index: 5;
+
+    @include tablet() {
+        width: 90%;
+    }
+
+    .cart {
+        display: flex;
+        color: #000000;
+
+        .summary {
+            display: flex;
+
+            .details {
+                margin: auto;
+                padding-left: 50px;
+                height: 400px;
+            }
+        }
+    }
+
+    .empty-message {
+        font-size: 18px;
+        margin: 50px auto;
+    }
+
+    .cart-items {
+        height: 81.5vh;
+        display: flex;
+        flex-direction: column;
+        overflow: scroll;
+        box-sizing: content-box;
+        scrollbar-width: none;
+        border-right: 2px solid #000000;
+        padding-right: 1px;
+        // margin-bottom: 10px; 
+    }
+
+    button {
+        // margin-top: auto;
+        margin-right: 20px;
+    }
+}
