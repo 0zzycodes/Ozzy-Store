@@ -24,6 +24,7 @@ $secondaryColor: #ffffff;
   background-repeat: no-repeat;
   // background-position: center;
   background-size: center;
+  transition: all 1s linear;
 
   @include tablet() {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
@@ -82,7 +83,7 @@ $secondaryColor: #ffffff;
       }
 
       @include smartphone() {
-        height: 100%;
+        height: 70%;
       }
 
       .tagline {
