@@ -14,31 +14,44 @@ $secondaryColor: #ffffff;
   width: 100%;
   height: 500px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-evenly;
   color: $primaryColor;
-  padding: 0px 50px;
-  margin-top: 100px;
+  background-color: #1b1b1bab;
+  padding: 50px;
+  padding-bottom: 0px;
+  // margin-top: 100px;
 
   @include tablet() {
     flex-direction: column-reverse;
     align-items: center;
     justify-content: flex-start;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url('../../assets/img/pic5.png');
+    background-position-x: center;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
   }
 
 
   .image {
     width: 50%;
+    height: 100%;
+
+    @include tablet() {
+      display: none;
+    }
 
     img {
-      width: 100%;
+      height: 100%;
     }
   }
 
   .content {
     text-align: center;
     height: 100%;
-    width: 50%;
+    width: 40%;
     background-color: $secondaryColor;
     display: flex;
     flex-direction: column;
@@ -46,7 +59,10 @@ $secondaryColor: #ffffff;
     align-items: center;
 
     @include tablet() {
-      height: 60%;
+      width: 100%;
+      height: 20%;
+      background: transparent;
+      color: $secondaryColor;
     }
 
     .tagline {
