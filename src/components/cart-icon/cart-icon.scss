@@ -1,3 +1,21 @@
+$tablet: 850px;
+$smartphone: 500px;
+$primaryColor: #000000;
+$secondaryColor: #ffffff;
+
+// Mixin
+@mixin tablet {
+    @media (max-width: #{$tablet}) {
+        @content;
+    }
+}
+
+@mixin smartphone {
+    @media (max-width: #{$smartphone}) {
+        @content;
+    }
+}
+
 .cart-icon {
     width: 45px;
     height: 45px;
@@ -10,6 +28,11 @@
     .shopping-icon {
         width: 24px;
         height: 24px;
+
+        @include smartphone() {
+            width: 18px;
+            height: 18px;
+        }
     }
 
     .item-count {

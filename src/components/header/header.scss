@@ -1,3 +1,21 @@
+$tablet: 850px;
+$smartphone: 500px;
+$primaryColor: #000000;
+$secondaryColor: #ffffff;
+
+// Mixin
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+
 .header {
   height: 70px;
   display: flex;
@@ -14,11 +32,19 @@
 
   img {
     height: 20px;
+
+    @include smartphone() {
+      height: 15px;
+    }
   }
 
   .menu {
     width: 100px;
     display: inline-block;
+
+    @include smartphone() {
+      width: 40px;
+    }
 
     .menu-btn {
       cursor: pointer;
@@ -27,13 +53,13 @@
 
   .options {
     height: 100%;
-    width: 100px;
+    width: 80px;
     display: flex;
     align-items: baseline;
     justify-content: flex-end;
 
     .option {
-      padding: 10px 15px;
+      padding: 10px;
       cursor: pointer;
     }
   }

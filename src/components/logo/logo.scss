@@ -1,5 +1,20 @@
+$smartphone: 500px;
+$primaryColor: #000000;
+$secondaryColor: #ffffff;
+
+// Mixin
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+
 #logo {
   height: 25px;
+
+  @include smartphone() {
+    height: 20px;
+  }
 }
 
 #logo path {
