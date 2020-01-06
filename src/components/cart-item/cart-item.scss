@@ -1,6 +1,7 @@
 .cart-item {
     margin-bottom: 1px;
     display: inline-block;
+    position: relative;
     // overflow: hidden;
 
     .overlay {
@@ -23,6 +24,33 @@
 
         .name {
             font-size: 16px;
+        }
+
+        .clear {
+            width: 20px;
+            position: absolute;
+            top: 50px;
+            right: 20px;
+        }
+
+        .quantity {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            padding-left: 22px;
+
+            .arrow {
+                cursor: pointer;
+                border: .5px solid #ffffff;
+                padding: 0 8px 0 5px;
+                font-weight: 900;
+            }
+
+            .value {
+                margin: 0 15px;
+            }
         }
     }
 }

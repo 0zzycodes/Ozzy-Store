@@ -1,14 +1,33 @@
+$smartphone: 500px;
+
+// Mixin
+@mixin smartphone {
+    @media (max-width: #{$smartphone}) {
+        @content;
+    }
+}
+
 .sign-in {
-    width: 380px;
+    max-width: 380px;
     display: flex;
     flex-direction: column;
-
-    .title {
-        margin: 10px 0;
-    }
+    align-items: center;
+    justify-content: center;
 
     .buttons {
         display: flex;
-        justify-content: space-between
+        justify-content: space-between;
+
+        @include smartphone() {
+            flex-direction: column;
+        }
+    }
+
+    h4 {
+        span {
+            text-decoration: underline;
+            color: #1b1b1b;
+            cursor: pointer;
+        }
     }
 }

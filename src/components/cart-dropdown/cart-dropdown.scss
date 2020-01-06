@@ -19,11 +19,8 @@ $secondaryColor: #ffffff;
     background-color: #ffffff;
     top: 70px;
     right: -15px;
-    z-index: 5;
+    z-index: -1;
 
-    @include tablet() {
-        width: 90%;
-    }
 
     .cart {
         display: flex;
@@ -31,6 +28,10 @@ $secondaryColor: #ffffff;
 
         .summary {
             display: flex;
+
+            @include tablet() {
+                display: none;
+            }
 
             .details {
                 margin: auto;
@@ -47,6 +48,7 @@ $secondaryColor: #ffffff;
 
     .cart-items {
         height: 81.5vh;
+        width: 215px;
         display: flex;
         flex-direction: column;
         overflow: scroll;

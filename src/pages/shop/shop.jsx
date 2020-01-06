@@ -8,7 +8,8 @@ import {
 } from '../../firebase/firebase.utils';
 import { connect } from 'react-redux';
 import { updateCollections } from '../../redux/shop/shop.actions';
-import loader from '../../components/loader/loader';
+// import loader from '../../components/loader/loader';
+// import ProductPage from '../product-page/product-page';
 
 class ShopPage extends React.Component {
   state = {
@@ -19,6 +20,8 @@ class ShopPage extends React.Component {
     const { updateCollections } = this.props;
     const collectionRef = firestore.collection('collections');
     collectionRef.onSnapshot(async snapshot => {
+      console.log(snapshot);
+
       const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
       updateCollections(collectionsMap);
       this.setState({ isLoading: false });
@@ -32,11 +35,11 @@ class ShopPage extends React.Component {
         <Route
           exact
           path={`${match.path}`}
-          component={isLoading ? loader : CollectionsOverview}
+          component={isLoading ? null : CollectionsOverview}
         />
         <Route
           path={`${match.path}/:collectionId`}
-          component={isLoading ? loader : CollectionPage}
+          component={isLoading ? null : CollectionPage}
         />
       </div>
     );

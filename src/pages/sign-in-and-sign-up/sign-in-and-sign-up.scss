@@ -1,6 +1,4 @@
 $tablet: 850px;
-$primaryColor: #000000;
-$secondaryColor: #ffffff;
 
 // Mixin
 @mixin tablet {
@@ -12,7 +10,7 @@ $secondaryColor: #ffffff;
 .sign-in-and-sign-up {
     max-width: 850px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin: 30px auto;
     margin-top: 70px;
     background-color: #ffffff;

@@ -46,9 +46,10 @@ export default class SignUp extends Component {
   };
   render() {
     const { displayName, email, password, confirmPassword } = this.state;
+    const { handleToggleSidebar } = this.props;
     return (
       <div className="sign-up">
-        <h2 className="title">I do not have an account</h2>
+        <h2 className="title">REGISTER</h2>
         <span>Sign up with your email</span>
         <form onSubmit={this.handleSubmit}>
           <FormInput
@@ -81,6 +82,11 @@ export default class SignUp extends Component {
           />
           <CustomButton type="submit">SIGN UP</CustomButton>
         </form>
+        <h4>
+          {' '}
+          Already own an account?{' '}
+          <span onClick={handleToggleSidebar}>Login</span>
+        </h4>
       </div>
     );
   }

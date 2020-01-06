@@ -21,7 +21,7 @@ const Header = ({ currentUser, hidden }) => {
   };
   return (
     <>
-      {isShow ? <SideNav /> : null}
+      {isShow ? <SideNav  handleToggleSidebar={handleToggleSidebar}/> : null}
       <div className="container">
         <div className="header">
           <div className="menu">
