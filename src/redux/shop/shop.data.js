@@ -1,8 +1,6 @@
 const SHOP_DATA = {
   mens: {
-    id: 5,
     title: 'Mens',
-    routeName: 'mens',
     items: [{
         id: 30,
         name: 'Camo Down Vest',
@@ -42,9 +40,7 @@ const SHOP_DATA = {
     ]
   },
   womens: {
-    id: 4,
     title: 'Womens',
-    routeName: 'womens',
     items: [{
         id: 23,
         name: 'Blue Tanktop',
