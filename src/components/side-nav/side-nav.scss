@@ -4,7 +4,8 @@
   right: 0;
   bottom: 0;
   background: #000000a2;
-  height: calc(100vh - 70px);
+  height: 100vh;
+  padding-top: 70px;
   z-index: 5;
 
   .links {
