@@ -6,7 +6,15 @@
   background: #000000a2;
   height: 100vh;
   padding-top: 70px;
-  z-index: 5;
+  z-index: 9;
+
+  .close-btn {
+    position: absolute;
+    top: 28px;
+    left: 5%;
+    height: 20px;
+    cursor: pointer;
+  }
 
   .links {
     height: 100%;

@@ -20,7 +20,7 @@ const CollectionItem = ({ item, addItem, history, match }) => {
         <img src={imageUrl} alt="Product Preview" />
       </div> */}
       <div className="collection-footer">
-        <h3 className="name">{name}</h3>
+        <h3 className="name">{name.toUpperCase()}</h3>
         <span className="price">#{price * 300}</span>
       </div>
       <CustomButton onClick={() => addItem(item)} inverted>

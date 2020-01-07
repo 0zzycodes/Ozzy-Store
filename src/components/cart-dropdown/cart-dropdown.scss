@@ -1,10 +1,17 @@
 $tablet: 850px;
 $primaryColor: #000000;
+$smartphone: 500px;
 $secondaryColor: #ffffff;
 
 // Mixin
 @mixin tablet {
     @media (max-width: #{$tablet}) {
+        @content;
+    }
+}
+
+@mixin smartphone {
+    @media (max-width: #{$smartphone}) {
         @content;
     }
 }
@@ -21,6 +28,9 @@ $secondaryColor: #ffffff;
     right: -15px;
     z-index: -1;
 
+    @include smartphone() {
+        width: 70%;
+    }
 
     .cart {
         display: flex;
@@ -56,7 +66,11 @@ $secondaryColor: #ffffff;
         scrollbar-width: none;
         border-right: 2px solid #000000;
         padding-right: 1px;
+
         // margin-bottom: 10px; 
+        @include tablet() {
+            border: none;
+        }
     }
 
     button {

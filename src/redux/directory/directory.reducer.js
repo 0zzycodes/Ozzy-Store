@@ -1,13 +1,13 @@
 const INITIAL_STATE = {
   sections: [{
-      title: 'mens',
+      title: 'men',
       imageUrl: 'https://media2.fdncms.com/sacurrent/imager/u/original/4971502/blake.jpg',
       size: 'large',
       id: 5,
       linkUrl: 'shop/mens'
     },
     {
-      title: 'womens',
+      title: 'women',
       imageUrl: 'https://ak4.picdn.net/shutterstock/videos/1024014014/thumb/7.jpg',
       size: 'large',
       id: 4,

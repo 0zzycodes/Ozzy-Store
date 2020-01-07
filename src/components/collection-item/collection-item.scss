@@ -10,6 +10,14 @@
   margin: 0 5px 20px 5px;
   margin-bottom: 20px;
 
+  &:hover {
+    cursor: pointer;
+
+    & .image {
+      transform: scale(1.1);
+      transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+    }
+  }
 
   .image {
     width: 260px;
@@ -17,6 +25,7 @@
     background-size: cover;
     // background-position: center;
     margin-bottom: 5px;
+
   }
 
   .custom-button {

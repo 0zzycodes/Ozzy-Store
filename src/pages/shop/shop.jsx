@@ -20,7 +20,49 @@ class ShopPage extends React.Component {
     const { updateCollections } = this.props;
     const collectionRef = firestore.collection('collections');
     collectionRef.onSnapshot(async snapshot => {
-      console.log(snapshot);
+      // let menColl = {
+      //     id: 1,
+      //     title: 'men',
+      //     items: []
+      //   },
+      //   womenColl = {
+      //     id: 2,
+      //     title: 'women',
+      //     items: []
+      //   },
+      //   unisexColl = {
+      //     id: 3,
+      //     title: 'unisex',
+      //     items: []
+      //   };
+      // const collectionsArr = [],
+      //   mens = [],
+      //   womens = [],
+      //   unisex = [];
+      // // console.log(snapshot.docs);
+      // snapshot.docs.forEach(doc => {
+      //   console.log(doc.data());
+      //   doc.data().id = doc.id;
+      //   switch (doc.data().category) {
+      //     case 'men':
+      //       mens.push(doc.data());
+      //       menColl.items = mens;
+      //       break;
+      //     case 'women':
+      //       womens.push(doc.data());
+      //       womenColl.items = womens;
+      //       break;
+
+      //     default:
+      //       unisex.push(doc.data());
+      //       unisexColl.items = unisex;
+      //       break;
+      //   }
+      // });
+      // collectionsArr.push(menColl);
+      // collectionsArr.push(womenColl);
+      // collectionsArr.push(unisexColl);
+      // console.log(collectionsArr);
 
       const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
       updateCollections(collectionsMap);

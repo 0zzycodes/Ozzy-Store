@@ -4,13 +4,24 @@
   margin-bottom: 30px;
   color: #ffffff;
 
-  a {
-    color: #ffffff;
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    .title {
+    .see-more {
+      text-decoration: underline;
+      color: lightskyblue;
       cursor: pointer;
-      font-size: 28px;
-      margin-bottom: 25px;
+    }
+
+    a {
+      color: #ffffff;
+
+      .title {
+        font-size: 28px;
+        margin-bottom: 25px;
+      }
     }
   }
 
