@@ -10,7 +10,7 @@ const Homepage = () => {
       <div className="directory-menu">
         <Directory />
       </div>
-      <NewArrival />
+      {/* <NewArrival /> */}
     </div>
   );
 };
