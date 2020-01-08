@@ -25,7 +25,7 @@ const CollectionItem = ({ item, addItem, history, match }) => {
         >
           {name.toUpperCase()}
         </h5>
-        <span className="price">#{price * 300}</span>
+        <span className="price">#{price}</span>
       </div>
       <CustomButton onClick={() => addItem(item)} inverted>
         Cart &#43;
