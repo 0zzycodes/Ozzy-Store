@@ -1,24 +1,24 @@
 const INITIAL_STATE = {
   sections: [{
-      title: 'men',
-      imageUrl: 'https://media2.fdncms.com/sacurrent/imager/u/original/4971502/blake.jpg',
+      title: 'hoodies',
+      imageUrl: 'https://www.nairaland.com/attachments/2985044_image_jpeg9f360c5ab7736510df54c882e9dbf188',
       size: 'large',
       id: 5,
-      linkUrl: 'shop/mens'
+      linkUrl: 'shop/hoodies'
     },
     {
-      title: 'women',
-      imageUrl: 'https://ak4.picdn.net/shutterstock/videos/1024014014/thumb/7.jpg',
+      title: 'tees',
+      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Nxl4HIg_WBmOdHdK2-2ESTqseKaryDCxOHzlbrUEkIfbpiXdsA&s',
       size: 'large',
       id: 4,
-      linkUrl: 'shop/womens'
+      linkUrl: 'shop/tees'
     },
     {
-      title: 'unisex',
-      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT27RMTuY4MT9thjcS-0p81hRmkBDxplpvVrvymYXvQZS1LM0c5&s',
+      title: 'accessories',
+      imageUrl: 'https://cdn.hiconsumption.com/wp-content/uploads/2018/04/Best-Mens-Accessories-For-The-Wrist.jpg',
       size: 'large',
       id: 6,
-      linkUrl: 'shop/unisex'
+      linkUrl: 'shop/accessories'
     }
   ]
 };
