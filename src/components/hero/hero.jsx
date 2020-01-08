@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import landing1 from '../../assets/img/landing1.jpg';
+// import landing1 from '../../assets/img/landing1.jpg';
 
 import './hero.scss';
 import CustomButton from '../custom-button/custom-button';
