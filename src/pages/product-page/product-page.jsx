@@ -2,8 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { selectProduct } from '../../redux/shop/shop.selector';
 import './product-page.scss';
-const ProductPage = () => {
-  return <div>Product Page</div>;
+const ProductPage = ({ match }) => {
+  console.log('Pro', match);
+
+  return (
+    <div className="product-page">
+      <h3>Product Page</h3>
+    </div>
+  );
 };
 
 const mapStateToProps = (state, ownProps) => ({

@@ -79,14 +79,16 @@ class ShopPage extends React.Component {
           path={`${match.path}`}
           component={isLoading ? null : CollectionsOverview}
         />
+
         <Route
           exact
-          path={`${match.path}/:collectionId/:productId`}
-          component={isLoading ? null : ProductPage}
-        />
-        <Route
           path={`${match.path}/:collectionId`}
           component={isLoading ? null : CollectionPage}
+        />
+        <Route
+          exact
+          path={`/shop/hoodies/:productId`}
+          component={isLoading ? null : ProductPage}
         />
       </div>
     );

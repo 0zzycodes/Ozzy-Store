@@ -11,12 +11,15 @@ const CollectionItem = ({ item, addItem, history, match }) => {
   console.log(match);
 
   const { name, price, imageUrl } = item;
+  const edName = name
+    .split(' ')
+    .join('-')
+    .toLowerCase();
+  console.log(edName);
+
   return (
     <div className="collection-item">
-      {/* <div
-      className="collection-item"
-      onClick={() => history.push(`${match.url}/${name}`)}
-    > */}
+      {/* <div className="collection-item"> */}
       <div className="img-container">
         <div
           className="image"
@@ -27,7 +30,12 @@ const CollectionItem = ({ item, addItem, history, match }) => {
         <img src={imageUrl} alt="Product Preview" />
       </div> */}
       <div className="collection-footer">
-        <h5 className="name">{name.toUpperCase()}</h5>
+        <h5
+          className="name"
+          onClick={() => history.push(`/shop/hoodies/${edName}`)}
+        >
+          {name.toUpperCase()}
+        </h5>
         <span className="price">#{price * 300}</span>
       </div>
       <CustomButton onClick={() => addItem(item)} inverted>
