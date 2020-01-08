@@ -8,31 +8,20 @@ import CustomButton from '../custom-button/custom-button';
 import './collection-item.scss';
 
 const CollectionItem = ({ item, addItem, history, match }) => {
-  console.log(match);
-
-  const { name, price, imageUrl } = item;
-  const edName = name
-    .split(' ')
-    .join('-')
-    .toLowerCase();
-  console.log(edName);
+  const { category, name, price, imageUrl } = item;
 
   return (
     <div className="collection-item">
-      {/* <div className="collection-item"> */}
       <div className="img-container">
         <div
           className="image"
           style={{ backgroundImage: `url(${imageUrl})` }}
         />
       </div>
-      {/* <div className="image">
-        <img src={imageUrl} alt="Product Preview" />
-      </div> */}
       <div className="collection-footer">
         <h5
           className="name"
-          onClick={() => history.push(`/shop/hoodies/${edName}`)}
+          onClick={() => history.push(`/shop/${category}/${name}`)}
         >
           {name.toUpperCase()}
         </h5>

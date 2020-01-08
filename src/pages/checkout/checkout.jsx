@@ -32,7 +32,7 @@ const Checkout = ({ cartItems, total }) => {
       {cartItems.map(cartItem => (
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
-      <div className="total">TOTAL: ${total * 300}</div>
+      <div className="total">TOTAL: #{total}</div>
       <PaystackCheckoutkButton price={total} />
     </div>
   );

@@ -25,7 +25,7 @@ const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
           &#43;
         </div>
       </span>
-      <span className="price">#{price * 300}</span>
+      <span className="price">#{price}</span>
       <div className="remove-button" onClick={() => clearItem(cartItem)}>
         <div className="icon-trash" style={{ float: 'left' }}>
           <div className="trash-lid" style={{ backgroundColor: 'red' }}></div>

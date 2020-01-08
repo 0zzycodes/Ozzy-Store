@@ -90,6 +90,16 @@ class ShopPage extends React.Component {
           path={`/shop/hoodies/:productId`}
           component={isLoading ? null : ProductPage}
         />
+        <Route
+          exact
+          path={`/shop/tees/:productId`}
+          component={isLoading ? null : ProductPage}
+        />
+        <Route
+          exact
+          path={`/shop/accessories/:productId`}
+          component={isLoading ? null : ProductPage}
+        />
       </div>
     );
   }

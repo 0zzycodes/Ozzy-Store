@@ -19,8 +19,21 @@ export const selectCollection = collectionUrlParam =>
     [selectCollections],
     collections => collections ? collections[collectionUrlParam] : null
   );
-export const selectProduct = (productUrlParam) =>
+export const selectProduct = (productUrlParam, url) =>
   createSelector(
     [selectCollections],
-    collections => collections ? collections[productUrlParam] : null
+    collections => {
+      let rou;
+      if (url.includes('hoodies')) {
+        rou = 'hoodies'
+      } else if (url.includes('tees')) {
+        rou = 'tees'
+      } else {
+        rou = 'accessories'
+      }
+      const getRouteArr = collections[rou].items
+      const getRouteArrF = getRouteArr.filter((item, index) => item.name === productUrlParam)
+      return getRouteArrF
+      // return collections ? collections[productUrlParam] : null
+    }
   );
