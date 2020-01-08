@@ -8,13 +8,15 @@ import CustomButton from '../custom-button/custom-button';
 import './collection-item.scss';
 
 const CollectionItem = ({ item, addItem, history, match }) => {
+  console.log(match);
+
   const { name, price, imageUrl } = item;
   return (
-    <div
+    <div className="collection-item">
+      {/* <div
       className="collection-item"
-      onClick={() => history.push(`${match.path}/${name}`)}
-    >
-      {/* <div className="collection-item"> */}
+      onClick={() => history.push(`${match.url}/${name}`)}
+    > */}
       <div className="img-container">
         <div
           className="image"

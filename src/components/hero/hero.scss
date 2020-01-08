@@ -32,9 +32,9 @@ $secondaryColor: #ffffff;
   //   background-position-x: center;
   // }
 
-  // @include smartphone() {
-  //   background-position: center;
-  // }
+  @include smartphone() {
+    background-position-x: center;
+  }
 
   .hero-layout {
     width: 100%;
