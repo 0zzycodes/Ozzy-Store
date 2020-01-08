@@ -10,17 +10,22 @@ import './collection-item.scss';
 const CollectionItem = ({ item, addItem, history, match }) => {
   const { name, price, imageUrl } = item;
   return (
-    <div className="collection-item">
-      {/* <div
+    <div
       className="collection-item"
       onClick={() => history.push(`${match.path}/${name}`)}
-    > */}
-      <div className="image" style={{ backgroundImage: `url(${imageUrl})` }} />
+    >
+      {/* <div className="collection-item"> */}
+      <div className="img-container">
+        <div
+          className="image"
+          style={{ backgroundImage: `url(${imageUrl})` }}
+        />
+      </div>
       {/* <div className="image">
         <img src={imageUrl} alt="Product Preview" />
       </div> */}
       <div className="collection-footer">
-        <h3 className="name">{name.toUpperCase()}</h3>
+        <h5 className="name">{name.toUpperCase()}</h5>
         <span className="price">#{price * 300}</span>
       </div>
       <CustomButton onClick={() => addItem(item)} inverted>

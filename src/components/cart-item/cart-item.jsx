@@ -32,6 +32,7 @@ const CartItem = ({ item, clearItem, addItem, removeItem }) => {
         <img
           src={remove}
           alt="Delete Item"
+          style={{ width: '15px', top: '10px', right: '10px' }}
           className="clear"
           onClick={() => clearItem(item)}
         />

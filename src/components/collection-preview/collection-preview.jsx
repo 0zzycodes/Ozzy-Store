@@ -11,7 +11,7 @@ const CollectionPreview = ({ title, items, history, match, routeName }) => {
     <div className="collection-preview">
       {items.length === 0 ? null : (
         <div className="head">
-          <h1 className="title">{title.toUpperCase()}</h1>
+          <h3 className="title">{title.toUpperCase()}</h3>
           <span
             className="see-more"
             onClick={() => history.push(`${match.path}/${routeName}`)}

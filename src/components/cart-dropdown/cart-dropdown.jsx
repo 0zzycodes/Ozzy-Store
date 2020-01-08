@@ -22,7 +22,7 @@ const CartDropdown = ({ cartItems, history, dispatch }) => {
         </div>
         <div className="summary">
           <div className="details">
-            <h2>Summary</h2>
+            <h4>Summary</h4>
           </div>
         </div>
       </div>

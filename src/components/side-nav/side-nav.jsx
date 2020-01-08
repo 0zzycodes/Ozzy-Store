@@ -21,7 +21,7 @@ const SideNav = ({ handleToggleSidebar, history, linkUrl, match }) => {
       <div className="links">
         <div className="drop">
           <div className="controller" onClick={handleToggleShow}>
-            <h3 className="opton">Shop</h3>
+            <h5 className="opton">SHOP</h5>
             <span className="tog">
               {isShow ? <span> &#8722; </span> : <span> &#43; </span>}
             </span>

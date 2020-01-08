@@ -1,13 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Monoton|Lora|Montserrat:500&display=swap');
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-body {
-  font-family: 'Open Sans Condensed';
-  background-color: #000000;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+ul,
+span,
+li,
+img {
+  font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.5;
+}
+p {
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  color: #adadad;
+}
+
+h1 {
+  font-size: 3.5em;
+  letter-spacing: 5px;
+}
+h2 {
+  font-size: 2.8em;
+  line-height: 1.1;
+}
+h3 {
+  font-size: 1.7em;
+}
+h4 {
+  font-size: 1.2em;
+  letter-spacing: 0.6px;
+}
+h5 {
+  font-size: 1.1em;
+}
+h6 {
+  font-size: 0.9em;
+  letter-spacing: 1px;
+}
+
+a,
+button {
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s;
 }
 a {
-  text-decoration: none;
-  color: black;
+  font-size: 15px;
+}
+body {
+  background-color: #000000;
 }
 .container {
   width: 90%;

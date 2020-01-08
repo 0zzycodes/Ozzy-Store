@@ -9,7 +9,7 @@ import {
 import { connect } from 'react-redux';
 import { updateCollections } from '../../redux/shop/shop.actions';
 // import loader from '../../components/loader/loader';
-// import ProductPage from '../product-page/product-page';
+import ProductPage from '../product-page/product-page';
 
 class ShopPage extends React.Component {
   state = {
@@ -78,6 +78,11 @@ class ShopPage extends React.Component {
           exact
           path={`${match.path}`}
           component={isLoading ? null : CollectionsOverview}
+        />
+        <Route
+          exact
+          path={`${match.path}/:productId`}
+          component={isLoading ? null : ProductPage}
         />
         <Route
           path={`${match.path}/:collectionId`}

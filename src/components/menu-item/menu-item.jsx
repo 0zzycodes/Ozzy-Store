@@ -2,9 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import './menu-item.scss';
 const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => {
-  console.log(withRouter);
-
-  // console.log(linkUrl);
+  console.log(linkUrl);
 
   return (
     <div
@@ -16,7 +14,7 @@ const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => {
         style={{ backgroundImage: `url(${imageUrl})` }}
       />
       <div className="content">
-        <h1 className="title">{title.toUpperCase()}</h1>
+        <h2 className="title">{title.toUpperCase()}</h2>
         <span className="subtitle">SHOP NOW</span>
       </div>
     </div>
