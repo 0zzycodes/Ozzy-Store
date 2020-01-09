@@ -28,6 +28,8 @@ $secondaryColor: #ffffff;
 
         @include tablet() {
             width: 100%;
+            padding: 0px 40px;
+            margin: 0px;
         }
 
         .subtotal,
