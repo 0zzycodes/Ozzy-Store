@@ -1,0 +1,136 @@
+$sub-color: gray;
+$main-color: #ffffff;
+$smallScreen : 800px;
+$primaryColor: #ffffff;
+$secondaryColor: #000000;
+
+@mixin shrinkLabel {
+  top: -18px;
+  font-size: 13px;
+  color: $main-color;
+}
+
+.contain {
+  // width: 80%;
+  display: flex;
+  padding: 0 40px;
+  margin: auto;
+  padding-top: 100px;
+  background: $primaryColor;
+}
+
+.contact-section {
+  color: $secondaryColor;
+  margin: auto;
+
+  .contact {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+
+    margin-bottom: 100px;
+
+    .form {
+      display: flex;
+      padding: 20px 35px 20px 20px;
+
+
+      form {
+        margin: auto;
+        width: 100%;
+
+        img {
+          margin-left: 10px;
+          height: 20px;
+        }
+
+        .text-area {
+          position: relative;
+
+          .expand {
+            height: 100px;
+          }
+
+          textarea {
+            background: none;
+            background-color: transparent;
+            font-size: 18px;
+            padding: 10px 10px 10px 5px;
+            display: block;
+            width: 100%;
+            border: none;
+            border-radius: 0;
+            border-bottom: 1px solid $sub-color;
+            margin: 25px 0;
+            color: $sub-color;
+            transition: all .5s;
+
+            &:focus {
+              outline: none;
+              height: 100px;
+            }
+
+            &:focus~.form-input-label {
+              @include shrinkLabel();
+            }
+          }
+
+          .form-input-label {
+            color: $sub-color;
+            font-size: 17px;
+            font-weight: normal;
+            position: absolute;
+            pointer-events: none;
+            left: 5px;
+            top: 10px;
+            transition: 300ms ease all;
+
+            &.shrink {
+              @include shrinkLabel();
+            }
+          }
+        }
+
+      }
+    }
+
+
+    .contact-info {
+      padding: 20px;
+      flex: 4;
+
+      .info {
+        li {
+          list-style: none;
+          padding: 10px 0;
+        }
+
+        .key-title {
+          font-size: large;
+        }
+
+        .val {
+          color: lighten($color: $secondaryColor, $amount: 30);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .contain {
+    display: block;
+    padding: 0;
+
+    .contact-section {
+      padding-left: 0px;
+
+      .contact {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+
+      .contact-info {
+        padding: 20px;
+      }
+    }
+  }
+}

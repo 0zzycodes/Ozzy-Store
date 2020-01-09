@@ -17,6 +17,7 @@ import {
 
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
+import Footer from './components/footer/footer';
 // import { selectCollectionsForPreview } from './redux/shop/shop.selector';
 
 class App extends React.Component {
@@ -65,6 +66,7 @@ class App extends React.Component {
             }
           />
         </Switch>
+        <Footer />
       </div>
     );
   }
