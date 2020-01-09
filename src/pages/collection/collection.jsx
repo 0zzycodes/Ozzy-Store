@@ -7,7 +7,7 @@ import { selectCollection } from '../../redux/shop/shop.selector';
 import './collection.scss';
 const CollectionPage = ({ collection: { title, items } }) => {
   return (
-    <div className="collection-page">
+    <div className="collection-page container">
       <h3 className="title">{title.toUpperCase()}</h3>
       <div className="items">
         {items.map(item => (
