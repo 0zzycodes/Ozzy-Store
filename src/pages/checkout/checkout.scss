@@ -13,7 +13,7 @@ $secondaryColor: #ffffff;
 .checkout-page {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    // justify-content: space-evenly;
     background-color: $secondaryColor;
 
     @include tablet() {
@@ -22,8 +22,9 @@ $secondaryColor: #ffffff;
 
     .product-summary {
         // color: $secondaryColor;
+        width: 50vw;
         padding: 40px;
-        padding-top: 60px;
+        margin-top: 60px;
 
         .subtotal,
         .shipping,

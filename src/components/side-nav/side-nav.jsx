@@ -12,12 +12,6 @@ const SideNav = ({ handleToggleSidebar, history, linkUrl, match }) => {
   };
   return (
     <div className="side-nav">
-      <img
-        src={close}
-        alt="Close Button"
-        className="close-btn"
-        onClick={handleToggleSidebar}
-      />
       <div className="links">
         <div className="drop">
           <div className="controller" onClick={handleToggleShow}>

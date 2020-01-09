@@ -18,15 +18,17 @@ $secondaryColor: #ffffff;
 
 .cart-dropdown {
     position: absolute;
-    width: 50%;
-    height: calc(100vh - 70px);
+    width: 220px;
+    height: calc(100vh - 150px);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     border: 1px solid #ffffff;
     background-color: #ffffff;
     top: 70px;
-    right: -15px;
+    right: 0px;
     z-index: -1;
+    animation: animateCartslide .3s linear forwards;
 
     @include smartphone() {
         width: 70%;
@@ -46,7 +48,7 @@ $secondaryColor: #ffffff;
             .details {
                 margin: auto;
                 padding-left: 50px;
-                height: 400px;
+                // height: 400px;
             }
         }
     }
@@ -57,7 +59,7 @@ $secondaryColor: #ffffff;
     }
 
     .cart-items {
-        height: 81.5vh;
+        height: 70vh;
         width: 215px;
         display: flex;
         flex-direction: column;
@@ -76,5 +78,7 @@ $secondaryColor: #ffffff;
     button {
         // margin-top: auto;
         margin-right: 20px;
+        width: 100%;
+        text-align: center;
     }
 }

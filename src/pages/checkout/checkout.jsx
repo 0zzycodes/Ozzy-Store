@@ -7,11 +7,11 @@ import {
 } from '../../redux/cart/cart.selectors';
 import './checkout.scss';
 import CheckoutItem from '../../components/checkout-item/checkout-item';
-import PaystackCheckoutkButton from '../../components/paystack-button/paystack-button';
+// import PaystackCheckoutkButton from '../../components/paystack-button/paystack-button';
 import ShippingForm from '../../components/shipping-form/shipping-form';
 const Checkout = ({ cartItems, total }) => {
   return (
-    <div className="checkout-page">
+    <div className="checkout-page container">
       <div className="checkout-header">
         <ShippingForm />
       </div>
