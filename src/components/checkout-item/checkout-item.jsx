@@ -17,7 +17,7 @@ const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
         <p className="name">{name}</p>
         <span className="quantity">{quantity}</span>
       </div>
-      <p className="price">#{price}</p>
+      <p className="price">#{price * quantity}</p>
     </div>
   );
 };

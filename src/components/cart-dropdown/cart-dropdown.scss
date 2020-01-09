@@ -18,7 +18,7 @@ $secondaryColor: #ffffff;
 
 .cart-dropdown {
     position: absolute;
-    width: 215px;
+    width: 200px;
     height: calc(100vh - 150px);
     display: flex;
     flex-direction: column;
@@ -34,24 +34,6 @@ $secondaryColor: #ffffff;
         width: 70%;
     }
 
-    .cart {
-        display: flex;
-        color: #000000;
-
-        .summary {
-            display: flex;
-
-            @include tablet() {
-                display: none;
-            }
-
-            .details {
-                margin: auto;
-                padding-left: 50px;
-                // height: 400px;
-            }
-        }
-    }
 
     .empty-message {
         font-size: 18px;
@@ -60,7 +42,7 @@ $secondaryColor: #ffffff;
 
     .cart-items {
         height: 70vh;
-        width: 215px;
+        width: 100%;
         display: flex;
         flex-direction: column;
         overflow: scroll;
@@ -76,9 +58,7 @@ $secondaryColor: #ffffff;
     }
 
     button {
-        // margin-top: auto;
-        margin-right: 20px;
-        width: 100%;
+        // width: 100%;
         text-align: center;
     }
 }
