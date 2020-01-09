@@ -16,7 +16,6 @@ $secondaryColor: #ffffff;
 
   .product-details {
     display: flex;
-    // justify-content: space-evenly;
     max-width: 80%;
     margin: auto;
 
@@ -29,7 +28,7 @@ $secondaryColor: #ffffff;
       width: 40%;
 
       @include tablet() {
-        width: 90%;
+        width: 100%;
       }
     }
 

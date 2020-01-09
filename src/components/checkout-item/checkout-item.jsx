@@ -10,34 +10,16 @@ const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
   const { name, imageUrl, quantity, price } = cartItem;
   return (
     <div className="checkout-item">
-      <div className="image-container">
-        <img src={imageUrl} alt="item" />
-      </div>
-      <span className="name">{name}</span>
-      <span className="quantity">
-        {quantity === 1 ? null : (
-          <div className="arrow" onClick={() => removeItem(cartItem)}>
-            &#8722;
-          </div>
-        )}
-        <span className="value">{quantity}</span>
-        <div className="arrow" onClick={() => addItem(cartItem)}>
-          &#43;
+      <div className="img-name">
+        <div className="image-container">
+          <img src={imageUrl} alt="item" />
         </div>
-      </span>
-      <span className="price">#{price}</span>
-      <div className="remove-button" onClick={() => clearItem(cartItem)}>
-        <div className="icon-trash" style={{ float: 'left' }}>
-          <div className="trash-lid" style={{ backgroundColor: 'red' }}></div>
-          <div
-            className="trash-container"
-            style={{ backgroundColor: 'red' }}
-          ></div>
-          <div className="trash-line-1"></div>
-          <div className="trash-line-2"></div>
-          <div className="trash-line-3"></div>
-        </div>
+        <p className="name">{name}</p>
       </div>
+
+      <p className="price">
+        <span className="quantity">{quantity}</span> x #{price}
+      </p>
     </div>
   );
 };

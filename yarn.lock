@@ -10232,6 +10232,11 @@ react-bootstrap@^1.0.0-beta.16:
     uncontrollable "^7.0.0"
     warning "^4.0.3"
 
+react-country-region-selector@^1.4.7:
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/react-country-region-selector/-/react-country-region-selector-1.4.7.tgz#44248bf9ee98dd54d3eb98dc74fab268eadb8f27"
+  integrity sha512-8fWkEqDY8bIzJ2UdqSAF/hH8za/nvGUAY7fINOz1YAKhdLJTyF3Dg2fkhJDEn+3Lm6IY1l4px81KszCNBNO1WQ==
+
 react-dev-utils@^10.0.0:
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-10.0.0.tgz#bd2d16426c7e4cbfed1b46fb9e2ac98ec06fcdfa"

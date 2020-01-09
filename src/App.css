@@ -28,24 +28,26 @@ h6 {
   font-family: 'Montserrat', sans-serif;
   line-height: 1.5;
 }
-p {
+p,
+span {
   line-height: 1.6;
   font-weight: 400;
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
-  color: #adadad;
 }
-
+span {
+  font-size: 16px;
+}
 h1 {
-  font-size: 3.5em;
+  font-size: 3.1em;
   letter-spacing: 5px;
 }
 h2 {
-  font-size: 2.8em;
+  font-size: 2.4em;
   line-height: 1.1;
 }
 h3 {
-  font-size: 1.7em;
+  font-size: 1.3em;
 }
 h4 {
   font-size: 1.2em;
