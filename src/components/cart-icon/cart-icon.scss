@@ -39,11 +39,17 @@ $secondaryColor: #ffffff;
         position: absolute;
         font-size: 10px;
         font-weight: bold;
-        top: 0px;
-        right: 8px;
+        top: 6px;
+        right: 1px;
         padding: .1px 4px;
         background: #ffffff;
         border-radius: 50%;
         color: #000000;
+        height: 15px;
+        width: 15px;
+        padding: 9px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
