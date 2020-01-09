@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import close from '../../assets/close.svg';
 import './side-nav.scss';
 const SideNav = ({ handleToggleSidebar, history, linkUrl, match }) => {
   console.log(match.url);

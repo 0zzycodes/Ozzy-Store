@@ -26,6 +26,10 @@ $secondaryColor: #ffffff;
         padding: 40px;
         margin-top: 60px;
 
+        @include tablet() {
+            width: 100%;
+        }
+
         .subtotal,
         .shipping,
         .total {

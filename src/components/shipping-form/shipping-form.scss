@@ -26,6 +26,17 @@ $secondaryColor: #ffffff;
     width: 100%;
   }
 
+  .head {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    border: 1px solid $primaryColor;
+    padding: 10px;
+    margin-top: 15px;
+  }
+
   .country-drop,
   .region-drop {
     border: none;
@@ -35,7 +46,7 @@ $secondaryColor: #ffffff;
     background: transparent;
     outline: none;
     font-size: 16px;
-
+    color: grey;
   }
 
   .region-drop {
@@ -47,6 +58,11 @@ $secondaryColor: #ffffff;
     align-self: center;
     justify-content: space-between;
     height: 100px;
+
+    @include tablet() {
+      display: block;
+      height: auto;
+    }
   }
 
   h4 {

@@ -15,11 +15,9 @@ const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
           <img src={imageUrl} alt="item" />
         </div>
         <p className="name">{name}</p>
+        <span className="quantity">{quantity}</span>
       </div>
-
-      <p className="price">
-        <span className="quantity">{quantity}</span> x #{price}
-      </p>
+      <p className="price">#{price}</p>
     </div>
   );
 };
