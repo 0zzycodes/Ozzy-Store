@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-// import {Link} from 'react-router-dom';
+import addCart from '../../assets/addCart.svg';
 import { addItem } from '../../redux/cart/cart.actions';
-import CustomButton from '../custom-button/custom-button';
 
 import './collection-item.scss';
 
 const CollectionItem = ({ item, addItem, history, match }) => {
+  console.log(item);
+
   const { category, name, price, imageUrl } = item;
 
   return (
@@ -16,6 +17,7 @@ const CollectionItem = ({ item, addItem, history, match }) => {
         <div
           className="image"
           style={{ backgroundImage: `url(${imageUrl})` }}
+          onClick={() => history.push(`/shop/${category}/${name}`)}
         />
       </div>
       <div className="collection-footer">
@@ -27,9 +29,9 @@ const CollectionItem = ({ item, addItem, history, match }) => {
         </h5>
         <span className="price">#{price}</span>
       </div>
-      <CustomButton onClick={() => addItem(item)} inverted>
-        Cart &#43;
-      </CustomButton>
+      <button onClick={() => addItem(item)} className="add-btn">
+        <img src={addCart} alt="Cart Icon" /> &#43;
+      </button>
     </div>
   );
 };

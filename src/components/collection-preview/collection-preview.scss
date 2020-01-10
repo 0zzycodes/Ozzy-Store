@@ -1,8 +1,26 @@
+$tablet: 850px;
+$smartphone: 600px;
+$primaryColor: #000000;
+$secondaryColor: #ffffff;
+
+// Mixin
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+
 .collection-preview {
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
-  color: #ffffff;
+  color: $secondaryColor;
 
   .head {
     display: flex;
@@ -22,14 +40,18 @@
     }
 
     a {
-      color: #ffffff;
+      color: $secondaryColor;
     }
   }
 
   .preview {
     display: grid;
     grid-gap: auto;
-    grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
     justify-items: center;
+
+    // @include smartphone() {
+    //   grid-template-columns: repeat(2, 1fr);
+    // }
   }
 }
