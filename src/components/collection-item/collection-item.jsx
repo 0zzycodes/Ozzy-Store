@@ -7,8 +7,6 @@ import { addItem } from '../../redux/cart/cart.actions';
 import './collection-item.scss';
 
 const CollectionItem = ({ item, addItem, history, match }) => {
-  console.log(item);
-
   const { category, name, price, imageUrl } = item;
 
   return (

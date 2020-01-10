@@ -10,47 +10,4 @@ $secondaryColor: #ffffff;
   }
 }
 
-.product-page {
-  padding-top: 80px;
-  color: #ffffff;
-
-  .product-details {
-    display: flex;
-    max-width: 80%;
-    margin: auto;
-
-    @include tablet() {
-      flex-direction: column;
-      width: 100%;
-    }
-
-    .left {
-      width: 40%;
-
-      @include tablet() {
-        width: 100%;
-      }
-    }
-
-    .right {
-      padding: 30px;
-
-      @include tablet() {
-        padding: 30px 0px;
-      }
-
-      .name {
-        font-size: 38px;
-
-        @include tablet() {
-          font-size: 30px;
-
-        }
-      }
-
-      .price {
-        margin: 10px 0px;
-      }
-    }
-  }
-}
+.product-page {}
