@@ -46,6 +46,7 @@ $secondaryColor: #ffffff;
                     display: block;
                     padding: 4px 0;
                     color: darken($color: $secondaryColor, $amount: 20);
+                    cursor: pointer;
                 }
             }
         }
@@ -127,6 +128,7 @@ $secondaryColor: #ffffff;
 
     .copyright {
         text-align: center;
+        padding: 0 5%;
 
         a {
             color: #006eff;

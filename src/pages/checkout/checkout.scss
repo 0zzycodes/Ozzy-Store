@@ -13,7 +13,7 @@ $secondaryColor: #ffffff;
 .checkout-page {
     width: 100%;
     display: flex;
-    // justify-content: space-evenly;
+    height: 100vh;
     background-color: $secondaryColor;
 
     @include tablet() {

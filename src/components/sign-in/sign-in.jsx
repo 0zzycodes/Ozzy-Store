@@ -36,7 +36,7 @@ export default class SignIn extends Component {
     const { handleToggleSidebar } = this.props;
     return (
       <div className="sign-in">
-        <h2 className="title">LOGIN</h2>
+        <h3 className="title">LOGIN</h3>
         <span className="title">Sign in with your email and password</span>
         <form onSubmit={this.handleSubmit}>
           <FormInput
@@ -64,11 +64,11 @@ export default class SignIn extends Component {
             </CustomButton>
           </div>
         </form>
-        <h4>
+        <p>
           {' '}
           Don't have an account?{' '}
           <span onClick={handleToggleSidebar}>Create an account </span>
-        </h4>
+        </p>
       </div>
     );
   }

@@ -18,12 +18,16 @@ $smartphone: 500px;
         display: flex;
         justify-content: space-between;
 
+        button {
+            margin-bottom: 10px;
+        }
+
         @include smartphone() {
             flex-direction: column;
         }
     }
 
-    h4 {
+    p {
         span {
             text-decoration: underline;
             color: #1b1b1b;
