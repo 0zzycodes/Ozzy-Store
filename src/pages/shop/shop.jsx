@@ -39,9 +39,7 @@ class ShopPage extends React.Component {
         hoodies = [],
         tees = [],
         accessories = [];
-      // console.log(snapshot.docs);
       snapshot.docs.forEach(doc => {
-        console.log(doc.data());
         doc.data().id = doc.id;
         switch (doc.data().category) {
           case 'hoodies':
@@ -62,8 +60,6 @@ class ShopPage extends React.Component {
       collectionsArr.push(hoodiesColl);
       collectionsArr.push(teesColl);
       collectionsArr.push(accessoriesColl);
-      console.log(collectionsArr);
-
       const collectionsMap = convertCollectionsSnapshotToMap(collectionsArr);
       updateCollections(collectionsMap);
       this.setState({ isLoading: false });

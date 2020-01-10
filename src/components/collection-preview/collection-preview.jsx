@@ -5,8 +5,6 @@ import './collection-preview.scss';
 import CollectionItem from '../collection-item/collection-item';
 
 const CollectionPreview = ({ title, items, history, match, routeName }) => {
-  console.log('Match', match);
-
   return (
     <div className="collection-preview">
       {items.length === 0 ? null : (
@@ -20,8 +18,6 @@ const CollectionPreview = ({ title, items, history, match, routeName }) => {
           </span>
         </div>
       )}
-
-      {/* <h1 className="title">{title.toUpperCase()}</h1> */}
       <div className="preview">
         {items
           .filter((item, index) => index < 4)

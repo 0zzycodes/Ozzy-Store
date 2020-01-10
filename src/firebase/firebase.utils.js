@@ -71,8 +71,6 @@ export const convertCollectionsSnapshotToMap = collections => {
       title,
       items
     };
-    console.log(objToReturn);
-
 
     return objToReturn
   });
