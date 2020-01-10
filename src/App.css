@@ -79,6 +79,9 @@ body {
   width: 90%;
   margin: auto;
 }
+.wrapper {
+  min-height: 100vh;
+}
 @keyframes animateSideNav {
   0% {
     opacity: 0;

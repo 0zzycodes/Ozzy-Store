@@ -15,12 +15,12 @@ $secondaryColor: #ffffff;
     // text-align: center;
     color: $secondaryColor;
     border-top: 1px solid darken($color: $secondaryColor, $amount: 60);
+    padding: 20px 0px;
 
     .footer-content {
         display: grid;
         grid-gap: auto;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        justify-items: stretch;
+        grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
         padding: 20px 5%;
         // align-items: baseline;
         border-bottom: 1px solid darken($color: $secondaryColor, $amount: 95);
@@ -51,8 +51,6 @@ $secondaryColor: #ffffff;
         }
 
         .newsletter {
-            // width: 400px;
-            text-align: left;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -118,9 +116,8 @@ $secondaryColor: #ffffff;
     }
 
     .logo-border {
-        padding: 10px;
         border-radius: 50%;
-        margin: 10px;
+        margin-right: 20px;
         display: flex;
 
         img {
