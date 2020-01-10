@@ -18,6 +18,7 @@ import {
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import Footer from './components/footer/footer';
+import CarePage from './pages/care/care-page';
 // import { selectCollectionsForPreview } from './redux/shop/shop.selector';
 
 class App extends React.Component {
@@ -48,12 +49,12 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-
         <Switch>
           <Route exact path="/" component={Homepage} />
           <Route path="/shop" component={ShopPage} />
           <Route path="/contact" component={Contact} />
           <Route exact path="/checkout" component={Checkout} />
+          <Route exact path="/care" component={CarePage} />
           <Route
             exact
             path="/signin"

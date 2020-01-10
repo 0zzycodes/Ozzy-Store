@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './side-nav.scss';
-const SideNav = ({ handleToggleSidebar, history, linkUrl, match }) => {
-  console.log(match.url);
-
+const SideNav = ({ handleToggleSidebar, history, match }) => {
   const [isShow, setisShow] = useState(false);
   const handleToggleShow = () => {
     setisShow(!isShow);

@@ -12,9 +12,100 @@ $secondaryColor: #ffffff;
 
 .footer {
     background: $primaryColor;
-    padding: 20px 0 30px 0;
-    text-align: center;
+    // text-align: center;
     color: $secondaryColor;
+    border-top: 1px solid darken($color: $secondaryColor, $amount: 60);
+
+    .footer-content {
+        display: grid;
+        grid-gap: auto;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        justify-items: stretch;
+        padding: 20px 5%;
+        // align-items: baseline;
+        border-bottom: 1px solid darken($color: $secondaryColor, $amount: 95);
+
+        p {
+            color: darken($color: $secondaryColor, $amount: 20);
+        }
+
+        .heading {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 10px;
+
+            @include smartphone() {
+                margin-top: 20px;
+            }
+        }
+
+        .menu {
+            .menu-links {
+                .menu-link {
+                    font-size: 15px;
+                    display: block;
+                    padding: 4px 0;
+                    color: darken($color: $secondaryColor, $amount: 20);
+                }
+            }
+        }
+
+        .newsletter {
+            // width: 400px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+            form {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                @include smartphone() {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                .form-input {
+                    background: none;
+                    background-color: transparent;
+                    color: $secondaryColor;
+                    font-size: 18px;
+                    padding: 10px;
+                    display: block;
+                    width: 100%;
+                    border: 1px solid $secondaryColor;
+                    margin: 25px 0;
+                }
+
+                .btn {
+                    min-width: 165px;
+                    width: auto;
+                    height: 45px;
+                    letter-spacing: 0.5px;
+                    line-height: 45px;
+                    padding: 0 35px;
+                    font-size: 15px;
+                    background-color: $secondaryColor;
+                    color: $primaryColor;
+                    text-transform: uppercase;
+                    font-weight: bolder;
+                    border: $primaryColor;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+
+                    &:hover {
+                        background-color: transparent;
+                        color: $secondaryColor;
+                        border: 1px solid $secondaryColor;
+                    }
+                }
+            }
+        }
+    }
 
     h4 {
         display: inline-block;
@@ -22,31 +113,23 @@ $secondaryColor: #ffffff;
     }
 
     img {
-        width: 60px;
-    }
-
-    a {
-        background: $primaryColor;
+        width: 70px;
+        // margin-bottom: 10px;
     }
 
     .logo-border {
         padding: 10px;
-        border: 1px solid $secondaryColor;
         border-radius: 50%;
         margin: 10px;
-        width: 40px;
-        height: 40px;
         display: flex;
 
         img {
-            width: 40px;
+            width: 20px;
         }
     }
 
-    p {
-        color: $secondaryColor;
-        background: $primaryColor;
-        display: inline-block;
+    .copyright {
+        text-align: center;
 
         a {
             color: #006eff;
