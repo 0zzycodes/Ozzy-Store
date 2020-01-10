@@ -34,7 +34,6 @@ $secondaryColor: #ffffff;
         width: 70%;
     }
 
-
     .empty-message {
         font-size: 18px;
         margin: 50px auto;
@@ -51,14 +50,13 @@ $secondaryColor: #ffffff;
         border-right: 2px solid #000000;
         padding-right: 1px;
 
-        // margin-bottom: 10px; 
         @include tablet() {
             border: none;
+            height: 75vh;
         }
     }
 
     button {
-        // width: 100%;
         text-align: center;
     }
 }
