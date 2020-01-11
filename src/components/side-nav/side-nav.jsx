@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import CustomButton from '../custom-button/custom-button';
 import './side-nav.scss';
 const SideNav = ({ handleToggleSidebar, history, match }) => {
   const [isShow, setisShow] = useState(false);
@@ -41,8 +42,19 @@ const SideNav = ({ handleToggleSidebar, history, match }) => {
           ) : null}
         </div>
         <Link to="/contact" className="option" onClick={handleToggleSidebar}>
-          CONTACT
+          Contact
         </Link>
+        <Link to="/signin" className="option" onClick={handleToggleSidebar}>
+          Account
+        </Link>
+        <div className="but">
+          <Link to="/reseller" className="option" onClick={handleToggleSidebar}>
+            <CustomButton inverted>BULK ORDER</CustomButton>
+          </Link>
+          <Link to="/checkout" className="option" onClick={handleToggleSidebar}>
+            <CustomButton inverted>Go To Checkout</CustomButton>
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -27,7 +27,7 @@ const CartDropdown = ({ cartItems, history, dispatch }) => {
           dispatch(toggleCartHidden());
         }}
       >
-        CHECK OUT
+        CHECKOUT
       </CustomButton>
     </div>
   );

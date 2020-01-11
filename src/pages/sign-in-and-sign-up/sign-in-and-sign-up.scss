@@ -13,7 +13,8 @@ $tablet: 850px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    // margin-top: 70px;
+    margin: auto;
+    margin-top: 70px;
     background-color: #ffffff;
     padding: 20px;
 
@@ -22,5 +23,6 @@ $tablet: 850px;
         text-align: center;
         flex-direction: column;
         align-items: center;
+        margin: auto;
     }
 }
