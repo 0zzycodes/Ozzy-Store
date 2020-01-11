@@ -7,6 +7,7 @@ import ScrollMemory from 'react-router-scroll-memory';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store';
+require('./ably');
 
 ReactDOM.render(
   <Provider store={store}>

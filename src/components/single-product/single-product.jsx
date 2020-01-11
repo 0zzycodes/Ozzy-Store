@@ -15,7 +15,7 @@ const SingleProduct = ({ item }) => {
     document.querySelector('[type=number]').stepUp();
   };
   return (
-    <div className="single-product">
+    <div className="single-product container">
       <div className="product-details container">
         <div className="left">
           <Carousel>
@@ -44,12 +44,18 @@ const SingleProduct = ({ item }) => {
           <button className="btn" onClick={handleDecre}>
             -
           </button>
-          <input type="number" name="number" min="0" max="100" value="0" />
+          <input
+            type="number"
+            name="number"
+            min="0"
+            max="100"
+            placeholder="0"
+          />
           <button className="btn" onClick={handleIncre}>
             +
           </button>
           <br />
-          <div class="box">
+          <div className="box">
             <select>
               <option>M</option>
               <option>L</option>
