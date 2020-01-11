@@ -10,6 +10,12 @@ $secondaryColor: #ffffff;
   }
 }
 
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+
 .single-product {
   padding-top: 80px;
   color: #ffffff;
@@ -39,17 +45,120 @@ $secondaryColor: #ffffff;
         padding: 30px 0px;
       }
 
+      .btn {
+        height: 40px;
+        width: 40px;
+        border: none;
+        background: $secondaryColor;
+        color: $primaryColor;
+        margin: 20px 0px;
+
+        @include smartphone() {
+          width: 30px;
+          // height: 30px;
+        }
+      }
+
+      input {
+        text-align: center;
+        height: 40px;
+        width: 40px;
+        -moz-appearance: textfield;
+        background: $secondaryColor;
+        color: $primaryColor;
+        border: none;
+        border-right: 1px solid $primaryColor;
+        border-left: 1px solid $primaryColor;
+
+        @include smartphone() {
+          width: 30px;
+        }
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          margin: 0;
+        }
+      }
+
       .name {
         font-size: 38px;
+        font-weight: 500;
 
         @include tablet() {
           font-size: 30px;
+        }
 
+        @include smartphone() {
+          font-size: 28px;
         }
       }
 
       .price {
         margin: 10px 0px;
+        font-weight: 700;
+      }
+
+      button {
+        display: inline;
+        margin-left: 10px;
+
+        // @include smartphone() {
+        //   margin: 0;
+        // }
+      }
+
+      .box {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 20px;
+
+        // @include smartphone() {
+        //   display: block;
+        // }
+
+        select {
+          position: relative;
+          background-color: $secondaryColor;
+          color: $primaryColor;
+          padding: 11px;
+          width: 120px;
+          border: none;
+          font-size: 20px;
+          outline: none;
+          -webkit-appearance: button;
+          appearance: button;
+          outline: none;
+
+          @include smartphone() {
+            width: 90px;
+          }
+
+          option {
+            padding: 30px;
+          }
+        }
+
+        .indc {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 40px;
+          height: 100%;
+          text-align: center;
+          font-size: 25px;
+          line-height: 45px;
+          color: $primaryColor;
+          // background-color: #1b1b1b;
+          pointer-events: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          // transform: rotate(180deg);
+        }
+
       }
     }
   }

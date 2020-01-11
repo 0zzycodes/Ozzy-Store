@@ -1,12 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
-import { addItem, removeItem } from '../../redux/cart/cart.actions';
+import { addItem } from '../../redux/cart/cart.actions';
 import CustomButton from '../../components/custom-button/custom-button';
 import './single-product.scss';
 const SingleProduct = ({ item }) => {
-  const { name, price, stock, imageUrl, quantity, measurementImage } = item;
+  const { name, price, stock, imageUrl, measurementImage } = item;
+  const handleDecre = () => {
+    document.querySelector('[type=number]').stepDown();
+  };
+  const handleIncre = () => {
+    document.querySelector('[type=number]').stepUp();
+  };
   return (
     <div className="single-product">
       <div className="product-details container">
@@ -32,18 +39,25 @@ const SingleProduct = ({ item }) => {
         <div className="right">
           <h3 className="name">{name}</h3>
           <h4 className="price">#{price}</h4>
-          <span>{stock} items in stock</span>
-          <span className="quantity">
-            {quantity === 1 ? null : (
-              <div className="arrow" onClick={() => removeItem(item)}>
-                &#8722;
-              </div>
-            )}
-            <span className="value">{quantity}</span>
-            <div className="arrow" onClick={() => addItem(item)}>
-              &#43;
-            </div>
-          </span>
+          <span>{stock ? 'In Stock' : 'Sold Out'} </span>
+          <br />
+          <button className="btn" onClick={handleDecre}>
+            -
+          </button>
+          <input type="number" name="number" min="0" max="100" value="0" />
+          <button className="btn" onClick={handleIncre}>
+            +
+          </button>
+          <br />
+          <div class="box">
+            <select>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+              <option>XXL</option>
+            </select>
+            <span className="indc">&#9662;</span>
+          </div>
           <CustomButton onClick={() => addItem(item)} inverted>
             Cart &#43;
           </CustomButton>
@@ -56,4 +70,4 @@ const mapDispatchToProps = dispatch => ({
   addItem: item => dispatch(addItem(item))
 });
 
-export default connect(null, mapDispatchToProps)(SingleProduct);
+export default withRouter(connect(null, mapDispatchToProps)(SingleProduct));
