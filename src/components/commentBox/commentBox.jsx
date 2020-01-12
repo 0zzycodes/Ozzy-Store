@@ -46,7 +46,7 @@ class CommentBox extends Component {
     return (
       <div className="comment-box">
         <div className="head" onClick={this.handleToggleShow}>
-          <h3 className="title">Kindly leave your thought(s) below</h3>
+          <h5 className="title">Kindly leave your thought(s) below</h5>
           <span className="tog">
             {this.state.isShow ? <span> &#8722; </span> : <span> &#43; </span>}
           </span>

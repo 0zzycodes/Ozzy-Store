@@ -85,7 +85,7 @@ $secondaryColor: #ffffff;
       }
 
       .name {
-        font-size: 38px;
+        font-size: 2.5vw;
         font-weight: 500;
 
         @include tablet() {
@@ -97,6 +97,21 @@ $secondaryColor: #ffffff;
         }
       }
 
+      .in-stock,
+      .sold-out {
+        background-color: #affdaf;
+        color: green;
+        padding: 3px 10px;
+        border-radius: 3px;
+        font-weight: 600;
+      }
+
+      .sold-out {
+        background-color: #ff00008a;
+        color: #ff0000;
+      }
+
+
       .price {
         margin: 10px 0px;
         font-weight: 700;
@@ -106,9 +121,9 @@ $secondaryColor: #ffffff;
         display: inline;
         margin-left: 10px;
 
-        // @include smartphone() {
-        //   margin: 0;
-        // }
+        @include smartphone() {
+          margin: 0;
+        }
       }
 
       .box {

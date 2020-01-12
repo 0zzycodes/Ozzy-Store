@@ -15,7 +15,7 @@ class Comments extends Component {
     return (
       <div className="comments">
         <div className="head" onClick={this.handleToggleShow}>
-          <h4>({comments.length}) REVIEWS</h4>
+          <h5>{comments.length} REVIEW(S)</h5>
           <span className="tog">
             {this.state.isShow ? <span> &#8722; </span> : <span> &#43; </span>}
           </span>

@@ -1,0 +1,82 @@
+$tablet: 750px;
+$smartphone: 500px;
+$primaryColor: #000000;
+$secondaryColor: #ffffff;
+
+// Mixin
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+
+.select-size {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background: #000000be;
+
+  .overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+
+  .box {
+    margin: auto;
+    position: relative;
+    display: inline-block;
+
+    h3 {
+      font-weight: 600;
+      text-align: center;
+    }
+
+    select {
+      background-color: $secondaryColor;
+      color: $primaryColor;
+      padding: 11px;
+      width: 120px;
+      border: none;
+      font-size: 20px;
+      outline: none;
+      -webkit-appearance: button;
+      appearance: button;
+      outline: none;
+
+      @include smartphone() {
+        width: 90px;
+      }
+
+      option {
+        padding: 30px;
+      }
+    }
+
+    .indc {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40px;
+      height: 100%;
+      text-align: center;
+      font-size: 25px;
+      line-height: 45px;
+      color: $primaryColor;
+      // background-color: #1b1b1b;
+      pointer-events: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // transform: rotate(180deg);
+    }
+
+  }
+}

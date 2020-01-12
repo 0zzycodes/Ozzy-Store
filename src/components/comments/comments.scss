@@ -23,5 +23,11 @@ $secondaryColor: #ffffff;
     border: 1px solid $secondaryColor;
     padding: 10px;
     margin-top: 15px;
+
+    h5 {
+      @include smartphone() {
+        font-size: 14px;
+      }
+    }
   }
 }

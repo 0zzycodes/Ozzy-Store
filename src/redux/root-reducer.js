@@ -10,17 +10,9 @@ import userReducer from './user/user.reducer';
 import cartReducer from './cart/cart.reducer';
 import directoryReducer from './directory/directory.reducer';
 import shopReducer from './shop/shop.reducer';
+import shippingDetailsReducer from './shipping/shipping.reducer'
 
-const INITIAL_STATE = {
-  show: false
-};
 
-const showSideNav = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
 
 const persistConfig = {
   key: 'root',
@@ -33,7 +25,7 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   directory: directoryReducer,
   shop: shopReducer,
-  showSideNav
+  shipping: shippingDetailsReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

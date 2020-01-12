@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   CountryDropdown,
   RegionDropdown
   // CountryRegionData
 } from 'react-country-region-selector';
+import { addShippingDetails } from '../../redux/shipping/shipping.actions';
 import FormInput from '../form-input/form-input';
 import CustomButton from '../custom-button/custom-button';
 
 import './shipping-form.scss';
 
-export default class ShippingForm extends Component {
+class ShippingForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -19,9 +21,10 @@ export default class ShippingForm extends Component {
       address: '',
       city: '',
       country: '',
-      region: 'select region',
+      region: '',
       zipCode: '',
       phone: '',
+      email: '',
       isShow: false
     };
   }
@@ -38,35 +41,50 @@ export default class ShippingForm extends Component {
   }
   handleSubmit = async e => {
     e.preventDefault();
-    // const {
-    //   firstName,
-    //   lastName,
-    //   companyName,
-    //   address,
-    //   city,
-    //   zipCode,
-    //   phone
-    // } = this.state;
-  };
-  render() {
     const {
       firstName,
       lastName,
-      companyName,
       address,
       city,
       country,
       region,
       zipCode,
-      phone
+      phone,
+      email
     } = this.state;
+    const billing = {
+      firstName,
+      lastName,
+      address,
+      city,
+      country,
+      region,
+      zipCode,
+      phone,
+      email
+    };
+    this.props.addShippingDetails(billing);
+  };
+  render() {
+    const {
+      firstName,
+      lastName,
+      address,
+      city,
+      country,
+      region,
+      zipCode,
+      phone,
+      email
+    } = this.state;
+    // const {addShippingDetails} = this.props
     const handleToggleShow = () => {
       this.setState({ isShow: !this.state.isShow });
     };
     return (
       <div className="shipping-form">
         <div className="head" onClick={handleToggleShow}>
-          <h3 className="title">SHIPPING ADDRESS</h3>
+          <h3 className="title">BILLING DETAILS</h3>
           <span className="tog">
             {this.state.isShow ? <span> &#8722; </span> : <span> &#43; </span>}
           </span>
@@ -89,13 +107,6 @@ export default class ShippingForm extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <FormInput
-              type="text"
-              name="companyName"
-              value={companyName}
-              label="Company name"
-              onChange={this.handleChange}
-            />
             <FormInput
               type="text"
               name="address"
@@ -135,6 +146,13 @@ export default class ShippingForm extends Component {
               label="Phone"
               onChange={this.handleChange}
             />
+            <FormInput
+              type="email"
+              name="email"
+              value={email}
+              label="Email"
+              onChange={this.handleChange}
+            />
             <CustomButton type="submit">CONTINUE TO SHIPPING</CustomButton>
           </form>
         ) : null}
@@ -142,3 +160,9 @@ export default class ShippingForm extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  addShippingDetails: details => dispatch(addShippingDetails(details))
+});
+
+export default connect(null, mapDispatchToProps)(ShippingForm);

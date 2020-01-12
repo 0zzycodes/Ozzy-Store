@@ -6,74 +6,80 @@ import { Carousel } from 'react-responsive-carousel';
 import { addItem } from '../../redux/cart/cart.actions';
 import CustomButton from '../../components/custom-button/custom-button';
 import './single-product.scss';
-const SingleProduct = ({ item }) => {
-  const { name, price, stock, imageUrl, measurementImage } = item;
-  const handleDecre = () => {
-    document.querySelector('[type=number]').stepDown();
+class SingleProduct extends React.Component {
+  state = {
+    selectSize: ''
   };
-  const handleIncre = () => {
-    document.querySelector('[type=number]').stepUp();
+  handleChange = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value }, () => console.log(this.state));
   };
-  return (
-    <div className="single-product container">
-      <div className="product-details container">
-        <div className="left">
-          <Carousel>
-            <div>
-              <img src={imageUrl} alt="product imgs" />
-            </div>
-            <div>
-              <img src={imageUrl} alt="product imgs" />
-            </div>
-            <div>
-              <img src={imageUrl} alt="product imgs" />
-            </div>
-            <div>
-              <img
-                src={measurementImage ? measurementImage : imageUrl}
-                alt="product imgs"
-              />
-            </div>
-          </Carousel>
-        </div>
-        <div className="right">
-          <h3 className="name">{name}</h3>
-          <h4 className="price">#{price}</h4>
-          <span>{stock ? 'In Stock' : 'Sold Out'} </span>
-          <br />
-          <button className="btn" onClick={handleDecre}>
-            -
-          </button>
-          <input
-            type="number"
-            name="number"
-            min="0"
-            max="100"
-            placeholder="0"
-          />
-          <button className="btn" onClick={handleIncre}>
-            +
-          </button>
-          <br />
-          <div className="box">
-            <select>
-              <option>M</option>
-              <option>L</option>
-              <option>XL</option>
-              <option>XXL</option>
-            </select>
-            <span className="indc">&#9662;</span>
+  render() {
+    const { item, addItem } = this.props;
+    const { name, price, stock, imageUrl, sizes, measurementImage } = item;
+    item.size = this.state.selectSize;
+    return (
+      <div className="single-product container">
+        <div className="product-details container">
+          <div className="left">
+            <Carousel>
+              <div>
+                <img src={imageUrl} alt="product imgs" />
+              </div>
+              <div>
+                <img src={imageUrl} alt="product imgs" />
+              </div>
+              <div>
+                <img src={imageUrl} alt="product imgs" />
+              </div>
+              <div>
+                <img
+                  src={measurementImage ? measurementImage : imageUrl}
+                  alt="product imgs"
+                />
+              </div>
+            </Carousel>
           </div>
-          <CustomButton onClick={() => addItem(item)} inverted>
-            Cart &#43;
-          </CustomButton>
+          <div className="right">
+            <h3 className="name">{name}</h3>
+            <span className={stock === 0 ? 'sold-out' : 'in-stock'}>
+              {stock === 0 ? 'Sold Out' : 'In Stock'}{' '}
+            </span>
+            <h4 className="price">#{price}</h4>
+            <br />
+            <div className="box">
+              <select
+                name="selectSize"
+                value={this.state.selectSize}
+                onChange={this.handleChange}
+              >
+                <option value="Size">Size</option>
+                {sizes.map(eachSize => (
+                  <option key={eachSize}>{eachSize}</option>
+                ))}
+              </select>
+              <span className="indc">&#9662;</span>
+            </div>
+            {stock === 0 ? (
+              <CustomButton disabled inverted>
+                Sold Out
+              </CustomButton>
+            ) : this.state.selectSize !== '' ? (
+              <CustomButton onClick={() => addItem(item)} inverted>
+                Cart &#43;
+              </CustomButton>
+            ) : null}
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 const mapDispatchToProps = dispatch => ({
-  addItem: item => dispatch(addItem(item))
+  addItem: item => {
+    console.log(item);
+    return dispatch(addItem(item));
+  }
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(SingleProduct));

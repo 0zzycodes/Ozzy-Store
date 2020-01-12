@@ -8,7 +8,8 @@ import {
 } from '../../redux/cart/cart.actions';
 import './cart-item.scss';
 const CartItem = ({ item, clearItem, addItem, removeItem }) => {
-  const { imageUrl, price, name, quantity } = item;
+  const { imageUrl, price, name, size, quantity } = item;
+
   return (
     <div className="cart-item" style={{ backgroundImage: `url(${imageUrl})` }}>
       <div className="overlay">
@@ -17,6 +18,7 @@ const CartItem = ({ item, clearItem, addItem, removeItem }) => {
           <span className="price">
             {quantity} x #{price}
           </span>
+          <span className="price">{size}</span>
           <span className="quantity">
             {quantity === 1 ? null : (
               <div className="arrow" onClick={() => removeItem(item)}>
