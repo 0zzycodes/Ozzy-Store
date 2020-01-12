@@ -108,11 +108,14 @@ $secondaryColor: #ffffff;
     font-size: 15px;
     padding: 0 5px;
 
+    .smaller {
+      font-size: 12px;
+    }
+
     .name {
       cursor: pointer;
-
       text-transform: capitalize;
-      padding-bottom: 20px;
+      // padding-bottom: 20px;
       margin: 10px auto;
       font-size: 15px;
       font-weight: 500;

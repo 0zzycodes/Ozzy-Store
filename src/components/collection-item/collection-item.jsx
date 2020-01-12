@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import addCart from '../../assets/addCart.svg';
 import { addItem } from '../../redux/cart/cart.actions';
+import StarRating from '../rating/rating';
 
 import './collection-item.scss';
 import SelectSize from '../select-size/select-size';
 
 const CollectionItem = ({ item, addItem, history, match }) => {
-  const { category, name, price, imageUrl } = item;
+  const { category, name, rating, price, imageUrl } = item;
   const [isShow, setisShow] = useState(false);
   const handleSelectSize = () => {
     setisShow(!isShow);
@@ -29,11 +30,16 @@ const CollectionItem = ({ item, addItem, history, match }) => {
         >
           {name.toUpperCase()}
         </h5>
+        <StarRating smaller numberOfStars="5" currentRating={rating} />
         <span className="price">#{price}</span>
       </div>
 
       {isShow ? (
-        <SelectSize handleSelectSize={handleSelectSize} item={item} />
+        <SelectSize
+          className="small"
+          handleSelectSize={handleSelectSize}
+          item={item}
+        />
       ) : (
         <button onClick={handleSelectSize} className="add-btn">
           <img src={addCart} alt="Cart Icon" /> &#43;

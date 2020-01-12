@@ -21,7 +21,15 @@ class SingleProduct extends React.Component {
   };
   render() {
     const { item, addItem } = this.props;
-    const { name, price, stock, imageUrl, sizes, measurementImage } = item;
+    const {
+      name,
+      price,
+      stock,
+      rating,
+      imageUrl,
+      sizes,
+      measurementImage
+    } = item;
     item.size = this.state.selectSize;
     return (
       <div className="single-product container">
@@ -76,7 +84,7 @@ class SingleProduct extends React.Component {
             ) : null}
             <StarRating
               numberOfStars="5"
-              currentRating="0"
+              currentRating={rating}
               onClick={this.setRating}
             />
           </div>

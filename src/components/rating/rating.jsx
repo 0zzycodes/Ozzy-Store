@@ -33,7 +33,7 @@ class StarRating extends Component {
   starClickHandler = ev => {
     let rating = ev.target.dataset.value;
     this.setState({ currentRating: rating }); // set state so the rating stays highlighted
-    if(this.props.onClick){
+    if (this.props.onClick) {
       this.props.onClick(rating); // emit the event up to the parent
     }
   };
@@ -50,10 +50,10 @@ class StarRating extends Component {
           return (
             <span
               className="star"
-              key={n+1}
-              data-value={n+1}
-              onMouseOver={this.hoverHandler}
-              onClick={this.starClickHandler}
+              key={n + 1}
+              data-value={n + 1}
+              onMouseOver={this.props.smaller ? null : this.hoverHandler}
+              onClick={this.props.smaller ? null : this.starClickHandler}
             >
               &#9733;
             </span>
