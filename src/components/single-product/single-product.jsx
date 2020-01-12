@@ -4,15 +4,20 @@ import { withRouter } from 'react-router-dom';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import { addItem } from '../../redux/cart/cart.actions';
-import CustomButton from '../../components/custom-button/custom-button';
+import StarRating from '../rating/rating';
+import CustomButton from '../custom-button/custom-button';
 import './single-product.scss';
 class SingleProduct extends React.Component {
   state = {
-    selectSize: ''
+    selectSize: '',
+    rating: 0
   };
   handleChange = e => {
     const { name, value } = e.target;
-    this.setState({ [name]: value }, () => console.log(this.state));
+    this.setState({ [name]: value });
+  };
+  setRating = rating => {
+    this.setState({ rating: rating });
   };
   render() {
     const { item, addItem } = this.props;
@@ -69,6 +74,11 @@ class SingleProduct extends React.Component {
                 Cart &#43;
               </CustomButton>
             ) : null}
+            <StarRating
+              numberOfStars="5"
+              currentRating="0"
+              onClick={this.setRating}
+            />
           </div>
         </div>
       </div>
@@ -76,10 +86,7 @@ class SingleProduct extends React.Component {
   }
 }
 const mapDispatchToProps = dispatch => ({
-  addItem: item => {
-    console.log(item);
-    return dispatch(addItem(item));
-  }
+  addItem: item => dispatch(addItem(item))
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(SingleProduct));
