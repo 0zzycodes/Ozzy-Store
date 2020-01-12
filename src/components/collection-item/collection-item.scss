@@ -41,8 +41,19 @@ $secondaryColor: #ffffff;
   .img-container {
     height: 300px;
     overflow: hidden;
+    position: relative;
     cursor: pointer;
 
+    .sold-out {
+      position: absolute;
+      background: $primaryColor;
+      color: $secondaryColor;
+      padding: 5px 10px;
+      top: 10px;
+      left: 4px;
+      border-radius: 3px;
+      font-weight: 500;
+    }
 
     .image {
       width: 250px;

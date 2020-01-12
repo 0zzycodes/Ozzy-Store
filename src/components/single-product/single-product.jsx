@@ -28,6 +28,8 @@ class SingleProduct extends React.Component {
       rating,
       imageUrl,
       sizes,
+      sideImage,
+      backImage,
       measurementImage
     } = item;
     item.size = this.state.selectSize;
@@ -40,10 +42,16 @@ class SingleProduct extends React.Component {
                 <img src={imageUrl} alt="product imgs" />
               </div>
               <div>
-                <img src={imageUrl} alt="product imgs" />
+                <img
+                  src={sideImage ? sideImage : imageUrl}
+                  alt="product imgs"
+                />
               </div>
               <div>
-                <img src={imageUrl} alt="product imgs" />
+                <img
+                  src={backImage ? backImage : imageUrl}
+                  alt="product imgs"
+                />
               </div>
               <div>
                 <img

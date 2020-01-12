@@ -9,7 +9,7 @@ import './collection-item.scss';
 import SelectSize from '../select-size/select-size';
 
 const CollectionItem = ({ item, addItem, history, match }) => {
-  const { category, name, rating, price, imageUrl } = item;
+  const { category, name, stock, rating, price, imageUrl } = item;
   const [isShow, setisShow] = useState(false);
   const handleSelectSize = () => {
     setisShow(!isShow);
@@ -17,6 +17,8 @@ const CollectionItem = ({ item, addItem, history, match }) => {
   return (
     <div className="collection-item">
       <div className="img-container">
+        {stock === 0 ? <span className="sold-out">Sold Out</span> : null}
+
         <div
           className="image"
           style={{ backgroundImage: `url(${imageUrl})` }}
@@ -40,7 +42,7 @@ const CollectionItem = ({ item, addItem, history, match }) => {
           handleSelectSize={handleSelectSize}
           item={item}
         />
-      ) : (
+      ) : stock === 0 ? null : (
         <button onClick={handleSelectSize} className="add-btn">
           <img src={addCart} alt="Cart Icon" /> &#43;
         </button>
