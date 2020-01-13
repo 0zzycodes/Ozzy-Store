@@ -1,6 +1,6 @@
 $sub-color: gray;
 $main-color: #ffffff;
-$smallScreen : 800px;
+$smallScreen: 800px;
 $primaryColor: #ffffff;
 $secondaryColor: #000000;
 
@@ -15,7 +15,8 @@ $secondaryColor: #000000;
   display: flex;
   padding: 0 40px;
   margin: auto;
-  padding-top: 100px;
+  margin-top: 70px;
+  padding-top: 30px;
   background: $primaryColor;
 }
 
@@ -26,13 +27,29 @@ $secondaryColor: #000000;
   .contact {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-
     margin-bottom: 100px;
 
     .form {
       display: flex;
-      padding: 20px 35px 20px 20px;
+      padding: 50px 35px 20px 20px;
+      position: relative;
 
+      .success {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        background-color: #affdaf;
+        color: green;
+        padding: 3px 10px;
+        border-radius: 3px;
+        font-weight: 600;
+        animation: toggleShow 4s linear forwards;
+
+        span {
+          float: right;
+        }
+      }
 
       form {
         margin: auto;
@@ -62,7 +79,7 @@ $secondaryColor: #000000;
             border-bottom: 1px solid $sub-color;
             margin: 25px 0;
             color: $sub-color;
-            transition: all .5s;
+            transition: all 0.5s;
 
             &:focus {
               outline: none;
@@ -89,10 +106,8 @@ $secondaryColor: #000000;
             }
           }
         }
-
       }
     }
-
 
     .contact-info {
       padding: 20px;
@@ -132,5 +147,27 @@ $secondaryColor: #000000;
         padding: 20px;
       }
     }
+  }
+}
+
+@keyframes toggleShow {
+  0% {
+    display: block;
+    opacity: 1;
+  }
+
+  25% {
+    display: block;
+    opacity: 1;
+  }
+
+  50% {
+    display: block;
+    opacity: .5;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
   }
 }

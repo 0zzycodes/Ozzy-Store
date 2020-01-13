@@ -12,7 +12,7 @@ export default class Contact extends React.Component {
       lastName: '',
       email: '',
       comment: '',
-      address: ''
+      isSuccess: false
     };
   }
   handleChange = e => {
@@ -21,16 +21,48 @@ export default class Contact extends React.Component {
   };
   handleSubmit = async e => {
     e.preventDefault();
-    // const { firstName, lastName, email, comment, address } = this.state;
-    console.log(e);
+    const { firstName, lastName, email, comment } = this.state;
+    const message = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      subject: 'Contact From Ozzy Store',
+      text: comment
+    };
+    fetch('https://ozzystore-backend.herokuapp.com/sendmail', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(message)
+    })
+      .then(response => response.json())
+      .then(response => {
+        this.setState({ isSuccess: true });
+      });
+    console.log(email, comment);
+    this.setState({
+      firstName: '',
+      lastName: '',
+      email: '',
+      comment: ''
+    });
   };
   render() {
-    const { firstName, lastName, email, comment } = this.state;
+    const { firstName, lastName, email, comment, isSuccess } = this.state;
     return (
       <div className="contain" id="contact">
         <div className="contact-section">
           <div className="contact">
             <div className="form">
+              {isSuccess ? (
+                <span className="success">
+                  Message Sent{' '}
+                  <span role="img" aria-label="check">
+                    ✅
+                  </span>
+                </span>
+              ) : null}
               <form onSubmit={this.handleSubmit}>
                 <h3>SEND A MESSAGE</h3>
                 <FormInput
@@ -92,13 +124,13 @@ export default class Contact extends React.Component {
                     <span className="key-title">Phone:</span>
                     <br />
                     <br />
-                    <span className="val">+234 902604074</span>
+                    <span className="val">+234 8073656772</span>
                   </li>
                   <li className="">
                     <span className="key-title">Email:</span>
                     <br />
                     <br />
-                    <span className="val">ozzycdes@gmail.com</span>
+                    <span className="val">ozzystore@gmail.com</span>
                   </li>
                 </ul>
               </div>
