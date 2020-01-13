@@ -20,6 +20,7 @@ class Payment extends React.Component {
   };
   render() {
     const { isShow } = this.state;
+    const { currentUser, shippingDetails } = this.props;
     return (
       <div className="payment">
         <h3 className="title">Payment Methods</h3>

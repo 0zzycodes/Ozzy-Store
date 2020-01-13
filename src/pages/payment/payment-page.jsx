@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { selectShippingDetails } from '../../redux/shipping/shipping.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
 import { GenerateId } from '../../utils/id-generator';
 import {
@@ -14,14 +16,19 @@ class PaymentPage extends React.Component {
     orderId: `${GenerateId()}`
   };
   render() {
-    const { cartItems, total } = this.props;
+    const { cartItems, total, currentUser, shippingDetails } = this.props;
     return (
       <div className="payment-page container">
         <div className="payment-page-header">
           <span className="order-id">
             ORDER ID: <span className="id">{this.state.orderId}</span>
           </span>
-          <Payment total={total} getReference={this.state.orderId} />
+          <Payment
+            total={total}
+            getReference={this.state.orderId}
+            shippingDetails={shippingDetails}
+            currentUser={currentUser}
+          />
         </div>
         <div className="product-summary">
           {cartItems.map(cartItem => (
@@ -43,8 +50,10 @@ class PaymentPage extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
   cartItems: selectCartItems,
-  total: selectCartTotal
+  total: selectCartTotal,
+  shippingDetails: selectShippingDetails
 });
 
 export default connect(mapStateToProps)(PaymentPage);

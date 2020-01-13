@@ -17,7 +17,7 @@ export default class Contact extends React.Component {
   }
   handleChange = e => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value, isSuccess: false });
   };
   handleSubmit = async e => {
     e.preventDefault();
@@ -65,6 +65,7 @@ export default class Contact extends React.Component {
               <form onSubmit={this.handleSubmit}>
                 <h3>SEND A MESSAGE</h3>
                 <FormInput
+                  required
                   type="text"
                   name="firstName"
                   value={firstName}
@@ -72,6 +73,7 @@ export default class Contact extends React.Component {
                   onChange={this.handleChange}
                 />
                 <FormInput
+                  required
                   type="text"
                   name="lastName"
                   value={lastName}
@@ -79,6 +81,7 @@ export default class Contact extends React.Component {
                   onChange={this.handleChange}
                 />
                 <FormInput
+                  required
                   type="email"
                   name="email"
                   value={email}
@@ -87,6 +90,7 @@ export default class Contact extends React.Component {
                 />
                 <div className="text-area">
                   <textarea
+                    required
                     name="comment"
                     value={comment}
                     id=""

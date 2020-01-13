@@ -58,6 +58,7 @@ class App extends React.Component {
             <Route path="/shop" component={ShopPage} />
             <Route path="/contact" component={Contact} />
             <Route exact path="/checkout" component={Checkout} />
+            {/* <Route exact path="/payment" component={PaymentPage} /> */}
             <Route
               exact
               path="/payment"

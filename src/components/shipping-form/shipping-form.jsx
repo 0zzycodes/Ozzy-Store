@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 import {
   CountryDropdown,
   RegionDropdown
   // CountryRegionData
 } from 'react-country-region-selector';
+import { createStructuredSelector } from 'reselect';
+import {
+  selectCartItems,
+  selectCartTotal
+} from '../../redux/cart/cart.selectors';
 import { addShippingDetails } from '../../redux/shipping/shipping.actions';
 import FormInput from '../form-input/form-input';
 import CustomButton from '../custom-button/custom-button';
@@ -53,6 +58,20 @@ class ShippingForm extends Component {
       phone,
       email
     } = this.state;
+    // const { cartItems, total } = this.props;
+    // cartItems.forEach(item => {
+    //   const { category, imageUrl, quantity, size, name, price } = item;
+    //   const info = {
+    //     category,
+    //     imageUrl,
+    //     size,
+    //     name,
+    //     quantity,
+    //     price,
+    //     cost: quantity * price
+    //   };
+    //   console.log(info);
+    // });
     const billing = {
       firstName,
       lastName,
@@ -65,7 +84,7 @@ class ShippingForm extends Component {
       email
     };
     this.props.addShippingDetails(billing);
-    this.props.history.push(`/payment`)
+    this.props.history.push(`/payment`);
   };
   render() {
     const {
@@ -170,8 +189,15 @@ class ShippingForm extends Component {
   }
 }
 
+const mapStateToProps = createStructuredSelector({
+  cartItems: selectCartItems,
+  total: selectCartTotal
+});
+
 const mapDispatchToProps = dispatch => ({
   addShippingDetails: details => dispatch(addShippingDetails(details))
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(ShippingForm));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(ShippingForm)
+);
