@@ -1,0 +1,49 @@
+$tablet: 850px;
+$smartphone: 500px;
+$primaryColor: #000000;
+$secondaryColor: #ffffff;
+
+// Mixin
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+.payment-page {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  background-color: $secondaryColor;
+
+  @include tablet() {
+    flex-direction: column;
+  }
+
+  .product-summary {
+    // color: $secondaryColor;
+    width: 50vw;
+    padding: 40px;
+    margin-top: 60px;
+
+    @include tablet() {
+      width: 100%;
+      padding: 0px 40px;
+      margin: 0px;
+    }
+
+    .subtotal,
+    .shipping,
+    .total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px 0px;
+    }
+
+    .shipping {
+      border-bottom: 1px solid darkgrey;
+      margin-bottom: 20px;
+    }
+  }
+}

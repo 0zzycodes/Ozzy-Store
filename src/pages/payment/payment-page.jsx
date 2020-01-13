@@ -5,14 +5,26 @@ import {
   selectCartItems,
   selectCartTotal
 } from '../../redux/cart/cart.selectors';
-import './checkout.scss';
+import './payment-page.scss';
 import CheckoutItem from '../../components/checkout-item/checkout-item';
-import ShippingForm from '../../components/shipping-form/shipping-form';
-const Checkout = ({ cartItems, total }) => {
+import Payment from '../../components/payment/payment';
+const PaymentPage = ({ cartItems, total }) => {
+  const getReference = () => {
+    //you can put any unique reference implementation code here
+    let text = '';
+    let possible =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.=';
+
+    for (let i = 0; i < 15; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+  };
   return (
-    <div className="checkout-page container">
-      <div className="checkout-header">
-        <ShippingForm />
+    <div className="payment-page container">
+      <div className="payment-page-header">
+        <span>{}</span>
+        <Payment total={total} getReference={getReference()} />
       </div>
       <div className="product-summary">
         {cartItems.map(cartItem => (
@@ -37,4 +49,4 @@ const mapStateToProps = createStructuredSelector({
   total: selectCartTotal
 });
 
-export default connect(mapStateToProps)(Checkout);
+export default connect(mapStateToProps)(PaymentPage);

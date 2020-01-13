@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom'
 import {
   CountryDropdown,
   RegionDropdown
@@ -64,6 +65,7 @@ class ShippingForm extends Component {
       email
     };
     this.props.addShippingDetails(billing);
+    this.props.history.push(`/payment`)
   };
   render() {
     const {
@@ -165,4 +167,4 @@ const mapDispatchToProps = dispatch => ({
   addShippingDetails: details => dispatch(addShippingDetails(details))
 });
 
-export default connect(null, mapDispatchToProps)(ShippingForm);
+export default withRouter(connect(null, mapDispatchToProps)(ShippingForm));

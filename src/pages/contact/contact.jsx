@@ -40,7 +40,6 @@ export default class Contact extends React.Component {
       .then(response => {
         this.setState({ isSuccess: true });
       });
-    console.log(email, comment);
     this.setState({
       firstName: '',
       lastName: '',
