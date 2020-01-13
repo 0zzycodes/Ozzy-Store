@@ -98,7 +98,7 @@ class ShippingForm extends Component {
       phone,
       email
     } = this.state;
-    // const {addShippingDetails} = this.props
+    // const { addShippingDetails } = this.props;
     const handleToggleShow = () => {
       this.setState({ isShow: !this.state.isShow });
     };

@@ -15,7 +15,9 @@ class PaymentPage extends React.Component {
   state = {
     orderId: `${GenerateId()}`
   };
+
   render() {
+    console.log(this.props.shippingDetails);
     const { cartItems, total, currentUser, shippingDetails } = this.props;
     return (
       <div className="payment-page container">
