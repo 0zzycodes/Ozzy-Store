@@ -1,5 +1,4 @@
 import React from 'react';
-import paystack from '../../assets/img/paystack.png';
 import mastercard from '../../assets/img/mastercard.png';
 import visa from '../../assets/img/visa.png';
 import discover from '../../assets/img/discover.png';
@@ -32,8 +31,16 @@ class Payment extends React.Component {
           <span className="radio">
             <span></span>
           </span>
-
           <span className="text">Direct Bank Transfer</span>
+          {this.state.paymentMethod === 'Direct Bank Transfer' ? (
+            <div className="info">
+              <p>
+                Make your payment directly into our bank account. Please use
+                your Order ID as the payment reference. Your order will not be
+                processed until the funds have cleared in our account.
+              </p>
+            </div>
+          ) : null}
         </div>
         <div
           id="pay-with-card"
@@ -45,13 +52,17 @@ class Payment extends React.Component {
           </span>
           <div className="card">
             <span>Credit Card</span>
-            <img src={paystack} className="paystack" alt="Payment Option" />
-            <img src={mastercard} alt="Payment Option" />
-            <img src={visa} alt="Payment Option" />
-            <img src={express} alt="Payment Option" />
-            <img src={discover} alt="Payment Option" />
+            {this.state.paymentMethod === 'Pay With Card' ? (
+              <div className="cards">
+                <img src={mastercard} alt="Payment Option" />
+                <img src={visa} alt="Payment Option" />
+                <img src={express} alt="Payment Option" />
+                <img src={discover} alt="Payment Option" />
+              </div>
+            ) : null}
           </div>
         </div>
+
         {this.state.paymentMethod === 'Pay With Card' ? (
           <PaystackCheckoutkButton
             price={this.props.total}

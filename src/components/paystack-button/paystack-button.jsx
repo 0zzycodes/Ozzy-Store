@@ -20,18 +20,6 @@ const PaystackCheckoutkButton = ({ price, user, getReference }) => {
   const close = () => {
     console.log('Payment closed');
   };
-  // const getReference = () => {
-  //   //you can put any unique reference implementation code here
-  //   let text = '';
-  //   let possible =
-  //     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.=';
-
-  //   for (let i = 0; i < 15; i++)
-  //     text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-  //   return text;
-  // };
-  user ? console.log('User', user.email) : console.log('User', user);
   return (
     <div>
       {user ? (

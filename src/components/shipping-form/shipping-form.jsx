@@ -95,6 +95,7 @@ class ShippingForm extends Component {
           <form onSubmit={this.handleSubmit}>
             <div className="name-group">
               <FormInput
+                required
                 type="text"
                 name="firstName"
                 value={firstName}
@@ -102,6 +103,7 @@ class ShippingForm extends Component {
                 onChange={this.handleChange}
               />
               <FormInput
+                required
                 type="text"
                 name="lastName"
                 value={lastName}
@@ -110,6 +112,7 @@ class ShippingForm extends Component {
               />
             </div>
             <FormInput
+              required
               type="text"
               name="address"
               value={address}
@@ -128,6 +131,7 @@ class ShippingForm extends Component {
               onChange={val => this.selectRegion(val)}
             />
             <FormInput
+              required
               type="text"
               name="city"
               value={city}
@@ -135,6 +139,7 @@ class ShippingForm extends Component {
               onChange={this.handleChange}
             />
             <FormInput
+              required
               type="text"
               name="zipCode"
               value={zipCode}
@@ -142,6 +147,7 @@ class ShippingForm extends Component {
               onChange={this.handleChange}
             />
             <FormInput
+              required
               type="phone"
               name="phone"
               value={phone}
@@ -149,6 +155,7 @@ class ShippingForm extends Component {
               onChange={this.handleChange}
             />
             <FormInput
+              required
               type="email"
               name="email"
               value={email}

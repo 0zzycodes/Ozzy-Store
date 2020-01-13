@@ -15,16 +15,31 @@ $secondaryColor: #ffffff;
   display: flex;
   min-height: 100vh;
   background-color: $secondaryColor;
+  color: $primaryColor;
+  margin-top: 70px;
+  padding-top: 40px;
 
   @include tablet() {
     flex-direction: column;
   }
 
+  .payment-page-header {
+    margin-top: 30px;
+
+    .order-id {
+      padding: 40px;
+      display: block;
+
+      .id {
+        float: right;
+      }
+    }
+  }
+
   .product-summary {
-    // color: $secondaryColor;
     width: 50vw;
     padding: 40px;
-    margin-top: 60px;
+    padding-top: 0;
 
     @include tablet() {
       width: 100%;
