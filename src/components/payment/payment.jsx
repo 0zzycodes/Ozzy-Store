@@ -51,7 +51,7 @@ class Payment extends React.Component {
     const DirectPaymessage = {
       intro: `Dear ${name}`,
       thank: `Thank you for your purchase at Ozzy Store (Order ${getReference})`,
-      durInfo: `To complete your order, please make payment before 24 hours and will be out for delivery within the next 48 hours`,
+      durInfo: `To complete your order, please make payment before 24 hours then, your order will be out for delivery within the next 48 hours`,
       name,
       address,
       city,
@@ -125,7 +125,7 @@ class Payment extends React.Component {
       );
       const messageToSend = {
         email,
-        subject: '',
+        subject: `Your Order ${getReference} is being shipped`,
         html: messageHtml
       };
       fetch('https://ozzystore-backend.herokuapp.com/order', {
