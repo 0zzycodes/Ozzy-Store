@@ -63,7 +63,7 @@ class App extends React.Component {
               exact
               path="/payment"
               render={() =>
-                this.props.shippingDetails ? (
+                this.props.shippingDetails.firstName ? (
                   <PaymentPage />
                 ) : (
                   <Redirect to="/checkout" />
