@@ -21,6 +21,7 @@ $secondaryColor: #ffffff;
 
   @include tablet() {
     flex-direction: column;
+    padding-top: 0px;
   }
 
   .payment-page-header {
@@ -29,6 +30,10 @@ $secondaryColor: #ffffff;
     .order-id {
       padding: 40px;
       display: block;
+
+      @include tablet() {
+        padding: 0 40px;
+      }
 
       .id {
         float: right;
