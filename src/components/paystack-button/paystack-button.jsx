@@ -7,7 +7,7 @@ import PaystackButton from 'react-paystack';
 
 import './paystack-button.scss';
 
-const PaystackCheckoutkButton = ({ price, user, getReference }) => {
+const PaystackCheckoutkButton = ({ price, user, getReference, sendMail }) => {
   const obj = {
     key: 'pk_test_3211d1f3f7d23a949f1971a99ca99a083d4fc0c5',
     email: user ? user.email : user, // customer email
@@ -15,6 +15,7 @@ const PaystackCheckoutkButton = ({ price, user, getReference }) => {
   };
   const callback = response => {
     console.log(response); // card charged successfully, get reference here
+    sendMail();
   };
 
   const close = () => {

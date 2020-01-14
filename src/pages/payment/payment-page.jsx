@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { selectShippingDetails } from '../../redux/shipping/shipping.selectors';
+import { selectShippingDetail } from '../../redux/shipping/shipping.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
 import { GenerateId } from '../../utils/id-generator';
@@ -17,8 +17,16 @@ class PaymentPage extends React.Component {
   };
 
   render() {
-    console.log(this.props.shippingDetails);
     const { cartItems, total, currentUser, shippingDetails } = this.props;
+    const { firstName, address, city, country, phone, email } = shippingDetails;
+    const detail = {
+      name: firstName,
+      address,
+      city,
+      country,
+      email,
+      phone
+    };
     return (
       <div className="payment-page container">
         <div className="payment-page-header">
@@ -28,7 +36,7 @@ class PaymentPage extends React.Component {
           <Payment
             total={total}
             getReference={this.state.orderId}
-            shippingDetails={shippingDetails}
+            shippingDetails={detail}
             currentUser={currentUser}
           />
         </div>
@@ -55,7 +63,7 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
   cartItems: selectCartItems,
   total: selectCartTotal,
-  shippingDetails: selectShippingDetails
+  shippingDetails: selectShippingDetail
 });
 
 export default connect(mapStateToProps)(PaymentPage);

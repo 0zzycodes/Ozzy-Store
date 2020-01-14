@@ -17,7 +17,7 @@ import {
 
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
-import { selectShippingDetails } from './redux/shipping/shipping.selectors';
+import { selectShippingDetail } from './redux/shipping/shipping.selectors';
 import Footer from './components/footer/footer';
 import CarePage from './pages/care/care-page';
 import ResellerPage from './pages/reseller-page/reseller-page';
@@ -58,8 +58,8 @@ class App extends React.Component {
             <Route path="/shop" component={ShopPage} />
             <Route path="/contact" component={Contact} />
             <Route exact path="/checkout" component={Checkout} />
-            <Route exact path="/payment" component={PaymentPage} />
-            {/* <Route
+            {/* <Route exact path="/payment" component={PaymentPage} /> */}
+            <Route
               exact
               path="/payment"
               render={() =>
@@ -69,7 +69,7 @@ class App extends React.Component {
                   <Redirect to="/checkout" />
                 )
               }
-            /> */}
+            />
             <Route exact path="/care" component={CarePage} />
             <Route exact path="/reseller" component={ResellerPage} />
             <Route
@@ -92,7 +92,7 @@ class App extends React.Component {
 }
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
-  shippingDetails: selectShippingDetails
+  shippingDetails: selectShippingDetail
   // collectionsArray: selectCollectionsForPreview
 });
 const mapDispatchToProps = dispatch => ({

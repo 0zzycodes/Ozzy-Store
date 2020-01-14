@@ -58,20 +58,7 @@ class ShippingForm extends Component {
       phone,
       email
     } = this.state;
-    // const { cartItems, total } = this.props;
-    // cartItems.forEach(item => {
-    //   const { category, imageUrl, quantity, size, name, price } = item;
-    //   const info = {
-    //     category,
-    //     imageUrl,
-    //     size,
-    //     name,
-    //     quantity,
-    //     price,
-    //     cost: quantity * price
-    //   };
-    //   console.log(info);
-    // });
+
     const billing = {
       firstName,
       lastName,
