@@ -4,20 +4,15 @@ import { withRouter } from 'react-router-dom';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import { addItem } from '../../redux/cart/cart.actions';
-import StarRating from '../rating/rating';
 import CustomButton from '../custom-button/custom-button';
 import './single-product.scss';
 class SingleProduct extends React.Component {
   state = {
-    selectSize: '',
-    rating: 0
+    selectSize: ''
   };
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
-  };
-  setRating = rating => {
-    this.setState({ rating: rating });
   };
   render() {
     const { item, addItem } = this.props;
@@ -25,7 +20,7 @@ class SingleProduct extends React.Component {
       name,
       price,
       stock,
-      rating,
+      sale,
       imageUrl,
       sizes,
       sideImage,
@@ -66,7 +61,11 @@ class SingleProduct extends React.Component {
             <span className={stock === 0 ? 'sold-out' : 'in-stock'}>
               {stock === 0 ? 'Sold Out' : 'In Stock'}{' '}
             </span>
-            <h4 className="price">#{price}</h4>
+            <div className="prices">
+              <span className="sales-price price">#{price - sale}</span>
+              {sale === 0 ? null : <span>SALE</span>}
+              <span className="normal-price price">#{price}</span>
+            </div>
             <br />
             <div className="box">
               <select
@@ -90,11 +89,6 @@ class SingleProduct extends React.Component {
                 Cart &#43;
               </CustomButton>
             ) : null}
-            <StarRating
-              numberOfStars="5"
-              currentRating={rating}
-              onClick={this.setRating}
-            />
           </div>
         </div>
       </div>

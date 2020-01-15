@@ -3,13 +3,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import addCart from '../../assets/addCart.svg';
 import { addItem } from '../../redux/cart/cart.actions';
-import StarRating from '../rating/rating';
 
 import './collection-item.scss';
 import SelectSize from '../select-size/select-size';
 
 const CollectionItem = ({ item, addItem, history, match }) => {
-  const { category, name, stock, rating, price, imageUrl } = item;
+  const { category, name, stock, sale, price, imageUrl } = item;
   const [isShow, setisShow] = useState(false);
   const handleSelectSize = () => {
     setisShow(!isShow);
@@ -18,7 +17,7 @@ const CollectionItem = ({ item, addItem, history, match }) => {
     <div className="collection-item">
       <div className="img-container">
         {stock === 0 ? <span className="sold-out">Sold Out</span> : null}
-
+        {sale === 0 ? null : <span className="sale">Sale</span>}
         <div
           className="image"
           style={{ backgroundImage: `url(${imageUrl})` }}
@@ -32,8 +31,12 @@ const CollectionItem = ({ item, addItem, history, match }) => {
         >
           {name.toUpperCase()}
         </h5>
-        <StarRating smaller numberOfStars="5" currentRating={rating} />
-        <span className="price">#{price}</span>
+        {/* <StarRating smaller numberOfStars="5" currentRating={rating} /> */}
+
+        <div className="prices">
+          {sale === 0? null: <span className="sales-price price">#{price - sale}</span>}
+          <span className="normal-price price">#{price}</span>
+        </div>
       </div>
 
       {isShow ? (
@@ -47,10 +50,6 @@ const CollectionItem = ({ item, addItem, history, match }) => {
           <img src={addCart} alt="Cart Icon" /> &#43;
         </button>
       )}
-
-      {/* <button onClick={() => addItem(item)} className="add-btn">
-        <img src={addCart} alt="Cart Icon" /> &#43;
-      </button> */}
     </div>
   );
 };

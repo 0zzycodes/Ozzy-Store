@@ -55,6 +55,18 @@ $secondaryColor: #ffffff;
       font-weight: 500;
     }
 
+    .sale {
+      position: absolute;
+      background: red;
+      color: $secondaryColor;
+      padding: 5px 10px;
+      top: 10px;
+      right: 0px;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+      font-weight: 500;
+    }
+
     .image {
       width: 250px;
       height: 300px;
@@ -118,6 +130,7 @@ $secondaryColor: #ffffff;
     height: 20%;
     font-size: 15px;
     padding: 0 5px;
+    text-align: center;
 
     .smaller {
       font-size: 12px;
@@ -132,9 +145,23 @@ $secondaryColor: #ffffff;
       font-weight: 500;
     }
 
-    .price {
-      line-height: 0;
-      font-weight: 600;
+
+    .prices {
+      display: flex;
+      justify-content: space-evenly;
+      padding: 0 6%;
+
+      .sales-price {
+        color: red;
+        margin-right: 15px;
+      }
+
+      .normal-price {
+        margin-left: 15px;
+        text-decoration: line-through;
+        color: darken($color: $secondaryColor, $amount: 30);
+      }
     }
+
   }
 }

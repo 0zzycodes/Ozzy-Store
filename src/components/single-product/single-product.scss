@@ -46,6 +46,17 @@ $secondaryColor: #ffffff;
         padding: 30px 0px;
       }
 
+      @include smartphone() {
+        text-align: center;
+        padding: 0px;
+      }
+
+      h3 {
+        @include smartphone() {
+          font-size: 20px !important;
+        }
+      }
+
       .btn {
         height: 40px;
         width: 40px;
@@ -55,36 +66,13 @@ $secondaryColor: #ffffff;
         margin: 20px 0px;
 
         @include smartphone() {
-          width: 30px;
+          width: 200px;
           // height: 30px;
         }
       }
 
-      input {
-        text-align: center;
-        height: 40px;
-        width: 40px;
-        -moz-appearance: textfield;
-        background: $secondaryColor;
-        color: $primaryColor;
-        border: none;
-        border-right: 1px solid $primaryColor;
-        border-left: 1px solid $primaryColor;
-
-        @include smartphone() {
-          width: 30px;
-        }
-
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          margin: 0;
-        }
-      }
-
       .name {
+        text-transform: uppercase;
         font-size: 2.5vw;
         font-weight: 500;
 
@@ -102,8 +90,14 @@ $secondaryColor: #ffffff;
         background-color: #affdaf;
         color: green;
         padding: 3px 10px;
+        margin: 10px 0px !important;
         border-radius: 3px;
         font-weight: 600;
+
+        @include smartphone() {
+          text-transform: uppercase;
+          font-size: 15px !important;
+        }
       }
 
       .sold-out {
@@ -117,12 +111,37 @@ $secondaryColor: #ffffff;
         font-weight: 700;
       }
 
+      .prices {
+        width: 180px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include smartphone() {
+          justify-content: space-evenly;
+          width: 100%;
+          padding: 0 6%;
+        }
+
+        .sales-price {
+          color: red;
+          margin-right: 15px;
+        }
+
+        .normal-price {
+          margin-left: 15px;
+          text-decoration: line-through;
+          color: darken($color: $secondaryColor, $amount: 30);
+        }
+      }
+
       button {
         display: inline;
         margin-left: 10px;
 
         @include smartphone() {
           margin: 0;
+          width: 100%;
         }
       }
 
@@ -131,9 +150,9 @@ $secondaryColor: #ffffff;
         display: inline-block;
         margin-bottom: 20px;
 
-        // @include smartphone() {
-        //   display: block;
-        // }
+        @include smartphone() {
+          margin-bottom: 10px;
+        }
 
         select {
           position: relative;
@@ -149,7 +168,7 @@ $secondaryColor: #ffffff;
           outline: none;
 
           @include smartphone() {
-            width: 90px;
+            width: 238px;
           }
 
           option {
