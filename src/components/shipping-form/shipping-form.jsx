@@ -7,6 +7,7 @@ import {
   // CountryRegionData
 } from 'react-country-region-selector';
 import { createStructuredSelector } from 'reselect';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 import {
   selectCartItems,
   selectCartTotal
@@ -177,6 +178,7 @@ class ShippingForm extends Component {
 }
 
 const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
   cartItems: selectCartItems,
   total: selectCartTotal
 });

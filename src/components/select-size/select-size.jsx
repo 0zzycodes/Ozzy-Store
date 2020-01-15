@@ -17,7 +17,8 @@ class SelectSize extends React.Component {
     const { item, handleSelectSize, addItem } = this.props;
     const { sizes } = item;
     item.size = this.state.selectSize;
-    item.id = `${item.id}${item.size}`;
+    item.id =
+      item.id === `${item.id}${item.size}` ? item : `${item.id}${item.size}`;
     return (
       <div className="select-size">
         <div className="overlay" onClick={handleSelectSize}></div>

@@ -28,7 +28,10 @@ class SingleProduct extends React.Component {
       measurementImage
     } = item;
     item.size = this.state.selectSize;
-    item.id = `${item.id}${item.size}`;
+    item.id =
+      item.id === `${item.id}${item.size}`
+        ? item
+        : `${item.id.toString().split('')[0]}${item.size}`;
     return (
       <div className="single-product container">
         <div className="product-details container">
