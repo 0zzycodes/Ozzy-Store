@@ -2,9 +2,9 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import ozzy from '../../assets/ozzy.svg';
-import instagram from '../../assets/socials/instagram.svg';
-import facebook from '../../assets/socials/facebook.png';
-import twitter from '../../assets/socials/twitter.png';
+import instagram from '../../assets/instagram.svg';
+import facebook from '../../assets/facebook.svg';
+import twitter from '../../assets/twitter.svg';
 import CustomForm from '../newsletter/custom-form';
 import './footer.scss';
 const Footer = ({ history, match }) => {

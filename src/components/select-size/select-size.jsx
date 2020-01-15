@@ -19,7 +19,7 @@ class SelectSize extends React.Component {
     item.size = this.state.selectSize;
     item.id =
       item.id === `${item.id}${item.size}`
-        ? item
+        ? `${item.id}${item.size}`
         : `${item.id.toString().split('')[0]}${item.size}`;
     return (
       <div className="select-size">
