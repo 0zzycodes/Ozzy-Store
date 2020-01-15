@@ -20,7 +20,7 @@ $secondaryColor: #ffffff;
   padding-top: 40px;
 
   @include tablet() {
-    flex-direction: column;
+    flex-direction: column-reverse;
     padding-top: 0px;
   }
 
@@ -28,12 +28,8 @@ $secondaryColor: #ffffff;
     margin-top: 30px;
 
     .order-id {
-      padding: 40px;
       display: block;
-
-      @include tablet() {
-        padding: 0 40px;
-      }
+      padding: 0 40px;
 
       .id {
         float: right;

@@ -1,19 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import ozzy from '../../assets/ozzy.svg';
 import instagram from '../../assets/socials/instagram.svg';
 import facebook from '../../assets/socials/facebook.png';
 import twitter from '../../assets/socials/twitter.png';
+import CustomForm from '../newsletter/custom-form';
 import './footer.scss';
 const Footer = ({ history, match }) => {
-  const [input, setInput] = useState({});
-
-  const handleChange = e =>
-    setInput({
-      ...input,
-      [e.currentTarget.name]: e.currentTarget.value
-    });
   return (
     <footer className="footer">
       <div className="footer-content">
@@ -67,22 +61,7 @@ const Footer = ({ history, match }) => {
             </Link>
           </div>
         </div>
-        <div className="newsletter">
-          <h2 className="heading">NEWSLETTER</h2>
-          <p>
-            Subscribe to receive updates, access to exclusive deals, and more.
-          </p>
-          <form>
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter email"
-              className="form-input"
-              onChange={handleChange}
-            />
-            <button className="btn">SUBSCRIBE</button>
-          </form>
-        </div>
+        <CustomForm />
       </div>
       <br />
       <p className="copyright">

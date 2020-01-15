@@ -58,7 +58,7 @@ export default class Contact extends React.Component {
                 <span className="success">
                   Message Sent{' '}
                   <span role="img" aria-label="check">
-                    ✅
+                    ✔
                   </span>
                 </span>
               ) : null}
