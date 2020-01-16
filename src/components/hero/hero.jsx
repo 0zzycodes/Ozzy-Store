@@ -8,7 +8,11 @@ const Hero = () => {
     <div className="hero">
       <div className="hero-layout">
         <div className="content">
-          <h1 className="tagline">Feel trendy. Feel authentic.</h1>
+          <h1 className="tagline">
+            Feel trendy!
+            <br />
+            Feel authentic!
+          </h1>
           <Link to="/shop" className="option">
             <CustomButton inverted="inverted">SHOP NOW!</CustomButton>
           </Link>

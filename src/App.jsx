@@ -62,14 +62,18 @@ class App extends React.Component {
             <Route
               exact
               path="/checkout"
-              render={() => (total === 0 ? <Redirect to="/shop" /> : <Checkout />)}
+              render={() =>
+                total === 0 ? <Redirect to="/shop" /> : <Checkout />
+              }
             />
             {/* <Route exact path="/payment" component={PaymentPage} /> */}
             <Route
               exact
               path="/payment"
               render={() =>
-                shippingDetails.firstName ? (
+                total === 0 ? (
+                  <Redirect to="/shop" />
+                ) : shippingDetails.firstName ? (
                   <PaymentPage />
                 ) : (
                   <Redirect to="/checkout" />
