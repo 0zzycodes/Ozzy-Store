@@ -21,16 +21,12 @@ $secondaryColor: #ffffff;
   width: 100%;
   margin-bottom: 50px;
   background-color: #080808;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.383), rgba(0, 0, 0, 0.383)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.493), rgba(0, 0, 0, 0.493)),
     url('../../assets/img/landing2.jpg');
   background-repeat: no-repeat;
-  // background-position: center;
   background-size: cover;
   transition: all 1s linear;
 
-  // @include tablet() {
-  //   background-position-x: center;
-  // }
 
   @include smartphone() {
     background-position-x: center;
@@ -90,15 +86,6 @@ $secondaryColor: #ffffff;
         position: relative;
         font-weight: 600;
 
-        &::before {
-          content: 'Site Under Construction';
-          position: absolute;
-          top: -20px;
-          font-weight: 700;
-          font-size: 12px;
-          color: darken($color: $secondaryColor, $amount: 20);
-        }
-
         @include tablet() {
           font-size: 6vw;
         }
@@ -110,10 +97,4 @@ $secondaryColor: #ffffff;
       }
     }
   }
-
-  // @include tablet() {
-  //   .hero-layout {
-  //     flex-direction: column-reverse;
-  //   }
-  // }
 }
