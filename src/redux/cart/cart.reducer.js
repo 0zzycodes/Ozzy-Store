@@ -30,7 +30,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
     case CartActionTypes.RESET_CART:
       return {
         ...state,
-        cartItem: null
+        cartItem: state.cartItems = action.payload
       };
     case CartActionTypes.REMOVE_ITEM:
       return {

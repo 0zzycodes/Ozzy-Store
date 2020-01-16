@@ -16,7 +16,7 @@ const CartItem = ({ item, clearItem, addItem, removeItem }) => {
         <div className="item-details">
           <span className="name">{name}</span>
           <span className="price">
-            {quantity} x #{price}
+            {quantity} x ₦{price}
           </span>
           <span className="price">{size}</span>
           <span className="quantity">

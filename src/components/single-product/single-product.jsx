@@ -66,9 +66,9 @@ class SingleProduct extends React.Component {
               {stock === 0 ? 'Sold Out' : 'In Stock'}{' '}
             </span>
             <div className="prices">
-              <span className="sales-price price">#{price - sale}</span>
+              <span className="sales-price price">₦{price - sale}</span>
               {sale === 0 ? null : <span>SALE</span>}
-              <span className="normal-price price">#{price}</span>
+              <span className="normal-price price">₦{price}</span>
             </div>
             <br />
             <div className="box">

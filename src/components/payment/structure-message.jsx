@@ -49,13 +49,13 @@ export const structureMessage = (common, info) => {
                 </span>
               </Item>
               <p style={{ marginRight: '5px' }}>
-                Size: {size} <br /> Qty: {quantity} <br /> Price: #{price}
+                Size: {size} <br /> Qty: {quantity} <br /> Price: ₦{price}
               </p>
             </div>
           );
         })}
         <br />
-        <h2>Total: #{total}</h2>
+        <h2>Total: ₦{total}</h2>
       </div>
     </Email>
   );

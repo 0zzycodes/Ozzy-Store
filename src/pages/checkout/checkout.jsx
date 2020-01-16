@@ -19,13 +19,13 @@ const Checkout = ({ cartItems, total }) => {
           <CheckoutItem key={cartItem.id} cartItem={cartItem} />
         ))}
         <div className="subtotal">
-          <h6>Subtotal</h6> <p>#{total}</p>
+          <h6>Subtotal</h6> <p>₦{total}</p>
         </div>
         <div className="shipping">
           <h6>Shipping</h6> <p>Free</p>
         </div>
         <div className="total">
-          <h3>Total</h3> <span>#{total}</span>
+          <h3>Total</h3> <span>₦{total}</span>
         </div>
       </div>
     </div>

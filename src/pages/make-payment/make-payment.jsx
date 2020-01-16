@@ -2,8 +2,7 @@ import React from 'react';
 import './make-payment.scss';
 import remove from '../../assets/remove.svg';
 const MakePayment = ({ orderId, total, handleShowPaid }) => {
-  console.log(orderId);
-  // const date = new Date
+  const date = new Date();
   return (
     <div className="make-payment">
       <div className="container">
@@ -17,7 +16,7 @@ const MakePayment = ({ orderId, total, handleShowPaid }) => {
           </li>
           <li>
             <h6>DATE:</h6>
-            <strong>Jan 16 2020</strong>
+            <strong>{date.toLocaleDateString()}</strong>
           </li>
           <li>
             <h6>TOTAL:</h6>

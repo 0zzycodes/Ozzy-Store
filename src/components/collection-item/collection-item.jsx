@@ -35,9 +35,9 @@ const CollectionItem = ({ item, addItem, history, match }) => {
 
         <div className="prices">
           {sale === 0 ? null : (
-            <span className="sales-price price">#{price - sale}</span>
+            <span className="sales-price price">₦{price - sale}</span>
           )}
-          <span className="normal-price price">#{price}</span>
+          <span className="normal-price price">₦{price}</span>
         </div>
       </div>
 
@@ -49,7 +49,7 @@ const CollectionItem = ({ item, addItem, history, match }) => {
         />
       ) : stock === 0 ? null : (
         <button onClick={handleSelectSize} className="add-btn">
-          <img src={addCart} alt="Cart Icon" /> &#43;
+          <img src={addCart} alt="Cart Icon" /> &₦43;
         </button>
       )}
     </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import remove from '../../assets/remove.svg';
 import {
   clearItemFromCart,
   addItem,
@@ -15,10 +16,24 @@ const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
           <img src={imageUrl} alt="item" />
         </div>
         <p className="name">{name}</p>
-        <span className="quantity">{quantity}</span>
+        <p className="quantity">
+          <span className="ctrl add" onClick={() => addItem(cartItem)}>
+            +
+          </span>{' '}
+          {quantity}{' '}
+          <span className="ctrl reduce" onClick={() => removeItem(cartItem)}>
+            -
+          </span>
+        </p>
       </div>
       <p>{size}</p>
-      <p className="price">#{price * quantity}</p>
+      <p className="price">₦{price * quantity}</p>
+      <img
+        src={remove}
+        alt="Remove Button"
+        onClick={() => clearItem(cartItem)}
+        className="remove-btn"
+      />
     </div>
   );
 };

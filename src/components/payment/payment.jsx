@@ -1,6 +1,7 @@
 import React from 'react';
 import { PostFetch, structureMessage } from './structure-message';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import {
   selectCartItems,
@@ -72,22 +73,22 @@ class Payment extends React.Component {
         html: messageHtml
       };
       PostFetch(messageToSend);
+      resetC([]);
     } else if (this.state.paymentMethod === 'Direct Bank Transfer') {
+      const messageHtml = structureMessage(commonMessage, DirectPaymessage);
+      const messageToSend = {
+        email,
+        subject: `Make payment within 24 hours for your ozzy order #${getReference}`,
+        html: messageHtml
+      };
+      PostFetch(messageToSend);
       this.props.handleShowPaid();
-      resetC = [];
-
-      // const messageHtml = structureMessage(commonMessage, DirectPaymessage);
-      // const messageToSend = {
-      //   email,
-      //   subject: `Make payment within 24 hours for your ozzy order #${getReference}`,
-      //   html: messageHtml
-      // };
-      // PostFetch(messageToSend);
+      resetC([]);
     }
   };
   render() {
     const { paymentMethod } = this.state;
-    const { getReference } = this.props;
+    const { getReference, resetCart } = this.props;
     return (
       <div className="payment">
         <h3 className="title">Payment Methods</h3>
@@ -161,7 +162,7 @@ class Payment extends React.Component {
           <PaystackCheckoutkButton
             price={this.props.total}
             getReference={getReference}
-            sendMail={this.handleSendMail.bind(this, this.props.cartItems)}
+            sendMail={this.handleSendMail.bind(this, resetCart)}
           />
         ) : paymentMethod === 'Pay With Stripe' ? (
           <StripeCheckoutButton price={this.props.total} />
@@ -169,7 +170,7 @@ class Payment extends React.Component {
           <div className="direct">
             <button
               className="pay-now"
-              onClick={this.handleSendMail.bind(this, this.props.cartItems)}
+              onClick={this.handleSendMail.bind(this, resetCart)}
             >
               Pay Now
             </button>
@@ -186,4 +187,6 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = dispatch => ({
   resetCart: item => dispatch(resetCart(item))
 });
-export default connect(mapStateToProps, mapDispatchToProps)(Payment);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Payment)
+);
