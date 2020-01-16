@@ -6,6 +6,7 @@ import {
   selectCartItems,
   selectCartTotal
 } from '../../redux/cart/cart.selectors';
+import { resetCart } from '../../redux/cart/cart.actions';
 import mastercard from '../../assets/img/mastercard.png';
 import visa from '../../assets/img/visa.png';
 import discover from '../../assets/img/discover.png';
@@ -28,7 +29,7 @@ class Payment extends React.Component {
   handlePayWithStripe = () => {
     this.setState({ paymentMethod: 'Pay With Stripe' });
   };
-  handleSendMail = () => {
+  handleSendMail = resetC => {
     const order = [];
     const { cartItems, getReference, total, shippingDetails } = this.props;
     const { name, address, city, country, email, phone } = shippingDetails;
@@ -72,13 +73,16 @@ class Payment extends React.Component {
       };
       PostFetch(messageToSend);
     } else if (this.state.paymentMethod === 'Direct Bank Transfer') {
-      const messageHtml = structureMessage(commonMessage, DirectPaymessage);
-      const messageToSend = {
-        email,
-        subject: `Make payment within 24 hours for your ozzy order #${getReference}`,
-        html: messageHtml
-      };
-      PostFetch(messageToSend);
+      this.props.handleShowPaid();
+      resetC = [];
+
+      // const messageHtml = structureMessage(commonMessage, DirectPaymessage);
+      // const messageToSend = {
+      //   email,
+      //   subject: `Make payment within 24 hours for your ozzy order #${getReference}`,
+      //   html: messageHtml
+      // };
+      // PostFetch(messageToSend);
     }
   };
   render() {
@@ -136,8 +140,7 @@ class Payment extends React.Component {
           id="pay-with-card"
           className={`${
             paymentMethod === 'Pay With Stripe' ? 'selected' : 'not-selected'
-          } box`}
-          onClick={this.handlePayWithStripe}
+          } box disable`}
         >
           <span className="radio">
             <span></span>
@@ -158,13 +161,16 @@ class Payment extends React.Component {
           <PaystackCheckoutkButton
             price={this.props.total}
             getReference={getReference}
-            sendMail={this.handleSendMail}
+            sendMail={this.handleSendMail.bind(this, this.props.cartItems)}
           />
         ) : paymentMethod === 'Pay With Stripe' ? (
           <StripeCheckoutButton price={this.props.total} />
         ) : (
           <div className="direct">
-            <button className="pay-now" onClick={this.handleSendMail}>
+            <button
+              className="pay-now"
+              onClick={this.handleSendMail.bind(this, this.props.cartItems)}
+            >
               Pay Now
             </button>
           </div>
@@ -177,5 +183,7 @@ const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
   total: selectCartTotal
 });
-
-export default connect(mapStateToProps)(Payment);
+const mapDispatchToProps = dispatch => ({
+  resetCart: item => dispatch(resetCart(item))
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Payment);

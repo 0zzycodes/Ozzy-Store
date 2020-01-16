@@ -63,6 +63,11 @@ $secondaryColor: #ffffff;
     }
   }
 
+  .disable {
+    cursor: not-allowed;
+    opacity: .5;
+  }
+
   .selected {
     border: 2px solid $primaryColor;
 

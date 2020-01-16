@@ -58,8 +58,8 @@ class App extends React.Component {
             <Route path="/shop" component={ShopPage} />
             <Route path="/contact" component={Contact} />
             <Route exact path="/checkout" component={Checkout} />
-            {/* <Route exact path="/payment" component={PaymentPage} /> */}
-            <Route
+            <Route exact path="/payment" component={PaymentPage} />
+            {/* <Route
               exact
               path="/payment"
               render={() =>
@@ -69,7 +69,7 @@ class App extends React.Component {
                   <Redirect to="/checkout" />
                 )
               }
-            />
+            /> */}
             <Route exact path="/care" component={CarePage} />
             <Route exact path="/reseller" component={ResellerPage} />
             <Route

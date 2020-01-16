@@ -11,9 +11,14 @@ import {
 import './payment-page.scss';
 import CheckoutItem from '../../components/checkout-item/checkout-item';
 import Payment from '../../components/payment/payment';
+import MakePayment from '../make-payment/make-payment';
 class PaymentPage extends React.Component {
   state = {
-    orderId: `${GenerateId()}`
+    orderId: `${GenerateId()}`,
+    isShowPaid: false
+  };
+  handleShowPaid = () => {
+    this.setState({ isShowPaid: !this.state.isShowPaid });
   };
 
   render() {
@@ -29,6 +34,13 @@ class PaymentPage extends React.Component {
     };
     return (
       <div className="payment-page container">
+        {this.state.isShowPaid ? (
+          <MakePayment
+            orderId={this.state.orderId}
+            total={total}
+            handleShowPaid={this.handleShowPaid}
+          />
+        ) : null}
         <div className="payment-page-header">
           <span className="order-id">
             ORDER ID: <span className="id">{this.state.orderId}</span>
@@ -38,6 +50,7 @@ class PaymentPage extends React.Component {
             getReference={this.state.orderId}
             shippingDetails={detail}
             currentUser={currentUser}
+            handleShowPaid={this.handleShowPaid}
           />
         </div>
         <div className="product-summary">

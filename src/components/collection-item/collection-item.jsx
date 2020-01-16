@@ -34,7 +34,9 @@ const CollectionItem = ({ item, addItem, history, match }) => {
         {/* <StarRating smaller numberOfStars="5" currentRating={rating} /> */}
 
         <div className="prices">
-          {sale === 0? null: <span className="sales-price price">#{price - sale}</span>}
+          {sale === 0 ? null : (
+            <span className="sales-price price">#{price - sale}</span>
+          )}
           <span className="normal-price price">#{price}</span>
         </div>
       </div>

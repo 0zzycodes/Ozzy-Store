@@ -18,6 +18,7 @@ $secondaryColor: #ffffff;
   color: $primaryColor;
   margin-top: 70px;
   padding-top: 40px;
+  position: relative;
 
   @include tablet() {
     flex-direction: column-reverse;

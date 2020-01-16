@@ -24,12 +24,13 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         cartItems: state.cartItems.filter(
-          cartItem => {
-            console.log(cartItem, action.payload.size);
-            return (cartItem.id !== action.payload.id)
-
-          }
+          cartItem => (cartItem.id !== action.payload.id)
         )
+      };
+    case CartActionTypes.RESET_CART:
+      return {
+        ...state,
+        cartItem: null
       };
     case CartActionTypes.REMOVE_ITEM:
       return {
