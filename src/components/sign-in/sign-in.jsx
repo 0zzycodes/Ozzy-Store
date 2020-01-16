@@ -9,7 +9,8 @@ export default class SignIn extends Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      errorMessage: ''
     };
   }
   handleSubmit = async event => {
@@ -20,7 +21,17 @@ export default class SignIn extends Component {
       await auth.signInWithEmailAndPassword(email, password);
       this.setState({ email: '', password: '' });
     } catch (error) {
-      console.log(error);
+      error.code === 'auth/wrong-password'
+        ? this.setState({
+            errorMessage:
+              'The password is invalid or the user does not have a password.'
+          })
+        : error.code === 'auth/user-not-found'
+        ? this.setState({
+            errorMessage:
+              'There is no user record corresponding to this identifier.'
+          })
+        : this.setState({ errorMessage: 'Wierd' });
     }
 
     this.setState({ email: '', password: '' });
@@ -28,16 +39,20 @@ export default class SignIn extends Component {
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
+      errorMessage: ''
     });
   };
   render() {
-    const { email, password } = this.state;
+    const { email, password, errorMessage } = this.state;
     const { handleToggleSidebar } = this.props;
     return (
       <div className="sign-in">
         <h3 className="title">LOGIN</h3>
         <span className="title">Sign in with your email and password</span>
+        {errorMessage !== '' ? (
+          <span className="error">{errorMessage}</span>
+        ) : null}
         <form onSubmit={this.handleSubmit}>
           <FormInput
             type="email"

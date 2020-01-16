@@ -17,6 +17,7 @@ import {
 
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
+import { selectCartTotal } from './redux/cart/cart.selectors';
 import { selectShippingDetail } from './redux/shipping/shipping.selectors';
 import Footer from './components/footer/footer';
 import CarePage from './pages/care/care-page';
@@ -49,6 +50,7 @@ class App extends React.Component {
     this.unSubscribeFromAuth();
   }
   render() {
+    const { currentUser, shippingDetails, total } = this.props;
     return (
       <div>
         <Header />
@@ -57,13 +59,17 @@ class App extends React.Component {
             <Route exact path="/" component={Homepage} />
             <Route path="/shop" component={ShopPage} />
             <Route path="/contact" component={Contact} />
-            <Route exact path="/checkout" component={Checkout} />
+            <Route
+              exact
+              path="/checkout"
+              render={() => (total === 0 ? <Redirect to="/shop" /> : <Checkout />)}
+            />
             {/* <Route exact path="/payment" component={PaymentPage} /> */}
             <Route
               exact
               path="/payment"
               render={() =>
-                this.props.shippingDetails.firstName ? (
+                shippingDetails.firstName ? (
                   <PaymentPage />
                 ) : (
                   <Redirect to="/checkout" />
@@ -76,11 +82,7 @@ class App extends React.Component {
               exact
               path="/signin"
               render={() =>
-                this.props.currentUser ? (
-                  <Redirect to="/" />
-                ) : (
-                  <SignInAndSignUpPage />
-                )
+                currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
               }
             />
           </Switch>
@@ -92,6 +94,7 @@ class App extends React.Component {
 }
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
+  total: selectCartTotal,
   shippingDetails: selectShippingDetail
   // collectionsArray: selectCollectionsForPreview
 });

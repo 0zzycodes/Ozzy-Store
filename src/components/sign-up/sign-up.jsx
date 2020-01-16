@@ -35,7 +35,6 @@ export default class SignUp extends Component {
       await createUserProfileDocument(user, { displayName });
       this.setState({ isSuccess: true });
     } catch (error) {
-      console.log(error);
       error.code === 'auth/email-already-in-use'
         ? this.setState({
             errorMessage:

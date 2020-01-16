@@ -49,7 +49,7 @@ const CollectionItem = ({ item, addItem, history, match }) => {
         />
       ) : stock === 0 ? null : (
         <button onClick={handleSelectSize} className="add-btn">
-          <img src={addCart} alt="Cart Icon" /> &₦43;
+          <img src={addCart} alt="Cart Icon" /> +
         </button>
       )}
     </div>
