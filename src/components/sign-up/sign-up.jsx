@@ -12,12 +12,13 @@ export default class SignUp extends Component {
       displayName: '',
       email: '',
       password: '',
-      confirmPassword: ''
+      confirmPassword: '',
+      errorMessage: ''
     };
   }
   handleChange = e => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value, errorMessage: '' });
   };
   handleSubmit = async e => {
     e.preventDefault();
@@ -31,26 +32,44 @@ export default class SignUp extends Component {
         email,
         password
       );
-
       await createUserProfileDocument(user, { displayName });
-      this.setState({
-        displayName: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
-      });
+      this.setState({ isSuccess: true });
     } catch (error) {
       console.log(error);
+      error.code === 'auth/email-already-in-use'
+        ? this.setState({
+            errorMessage:
+              'The email address is already in use by another account'
+          })
+        : error.code === 'auth/weak-password'
+        ? this.setState({
+            errorMessage: 'Password should be at least 6 characters'
+          })
+        : this.setState({ errorMessage: 'Wierd' });
     }
-    console.log(e);
+    this.setState({
+      displayName: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    });
   };
   render() {
-    const { displayName, email, password, confirmPassword } = this.state;
+    const {
+      displayName,
+      email,
+      password,
+      confirmPassword,
+      errorMessage
+    } = this.state;
     const { handleToggleSidebar } = this.props;
     return (
       <div className="sign-up">
         <h3 className="title">REGISTER</h3>
         <span>Sign up with your email</span>
+        {errorMessage !== '' ? (
+          <span className="error">{errorMessage}</span>
+        ) : null}
         <form onSubmit={this.handleSubmit}>
           <FormInput
             type="text"
