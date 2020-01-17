@@ -65,8 +65,7 @@ const Footer = ({ history, match }) => {
       </div>
       <br />
       <p className="copyright">
-        Copyright &copy; {new Date().getFullYear()} Ozzy Store All rights
-        reserved | Designed by{' '}
+        &copy; Remedi {new Date().getFullYear()} | Designed by{' '}
         <a href="https://ozzy-dev.netlify.com"> Ozzy-dev</a>
       </p>
     </footer>

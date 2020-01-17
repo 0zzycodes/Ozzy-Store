@@ -74,6 +74,11 @@ class ShippingForm extends Component {
     this.props.addShippingDetails(billing);
     this.props.history.push(`/payment`);
   };
+  componentDidMount() {
+    window.innerWidth <= 500
+      ? this.setState({ isShow: !this.state.isShow })
+      : this.setState({ isShow: !this.state.isShow });
+  }
   render() {
     const {
       firstName,
@@ -90,6 +95,7 @@ class ShippingForm extends Component {
     const handleToggleShow = () => {
       this.setState({ isShow: !this.state.isShow });
     };
+
     return (
       <div className="shipping-form">
         <div className="head" onClick={handleToggleShow}>

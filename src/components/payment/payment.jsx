@@ -8,6 +8,7 @@ import {
   selectCartTotal
 } from '../../redux/cart/cart.selectors';
 import { resetCart } from '../../redux/cart/cart.actions';
+import { addMakePayment } from '../../redux/payment-details/payment-detail.action';
 import mastercard from '../../assets/img/mastercard.png';
 import visa from '../../assets/img/visa.png';
 import discover from '../../assets/img/discover.png';
@@ -75,6 +76,11 @@ class Payment extends React.Component {
       PostFetch(messageToSend);
       resetC([]);
     } else if (this.state.paymentMethod === 'Direct Bank Transfer') {
+      const pay = {
+        orderId: getReference,
+        total: total
+      };
+      this.props.addMakePayment(pay);
       const messageHtml = structureMessage(commonMessage, DirectPaymessage);
       const messageToSend = {
         email,
@@ -82,7 +88,6 @@ class Payment extends React.Component {
         html: messageHtml
       };
       PostFetch(messageToSend);
-      this.props.handleShowPaid();
       resetC([]);
     }
   };
@@ -185,7 +190,8 @@ const mapStateToProps = createStructuredSelector({
   total: selectCartTotal
 });
 const mapDispatchToProps = dispatch => ({
-  resetCart: item => dispatch(resetCart(item))
+  resetCart: item => dispatch(resetCart(item)),
+  addMakePayment: details => dispatch(addMakePayment(details))
 });
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(Payment)

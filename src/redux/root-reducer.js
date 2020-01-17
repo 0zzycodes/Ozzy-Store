@@ -11,6 +11,7 @@ import cartReducer from './cart/cart.reducer';
 import directoryReducer from './directory/directory.reducer';
 import shopReducer from './shop/shop.reducer';
 import shippingDetailsReducer from './shipping/shipping.reducer'
+import makePaymentDetailsReducer from './payment-details/payment-detail.reducer'
 
 
 
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   directory: directoryReducer,
   shop: shopReducer,
-  shipping: shippingDetailsReducer
+  shipping: shippingDetailsReducer,
+  makePaymentDetails: makePaymentDetailsReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

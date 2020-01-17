@@ -1,12 +1,25 @@
 import React from 'react';
-import './make-payment.scss';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectmakePaymentDetail } from '../../redux/payment-details/payment-detail.selector';
+import { addMakePayment } from '../../redux/payment-details/payment-detail.action';
+
 import remove from '../../assets/remove.svg';
-const MakePayment = ({ orderId, total, handleShowPaid }) => {
+import './make-payment.scss';
+const MakePayment = ({ makePaymentDetail, addMakePayment }) => {
+  const { orderId, total } = makePaymentDetail;
+  const handleAddMakePayment = () => {
+    const pay = {
+      orderId: '',
+      total: ''
+    };
+    addMakePayment(pay);
+  };
   const date = new Date();
   return (
     <div className="make-payment">
       <div className="container">
-        <img src={remove} alt="Close Button" onClick={handleShowPaid} />
+        <img src={remove} alt="Close Button" onClick={handleAddMakePayment} />
         <h6>Thank you. Your order has been received.</h6>
         <br />
         <ul>
@@ -46,4 +59,10 @@ const MakePayment = ({ orderId, total, handleShowPaid }) => {
   );
 };
 
-export default MakePayment;
+const mapStateToProps = createStructuredSelector({
+  makePaymentDetail: selectmakePaymentDetail
+});
+const mapDispatchToProps = dispatch => ({
+  addMakePayment: details => dispatch(addMakePayment(details))
+});
+export default connect(mapStateToProps, mapDispatchToProps)(MakePayment);
