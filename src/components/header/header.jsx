@@ -37,11 +37,11 @@ const Header = ({ currentUser, hidden }) => {
           </Link>
           <div className="options">
             {currentUser ? (
-              <div className="option" onClick={() => auth.signOut()}>
+              <div className="option user" onClick={() => auth.signOut()}>
                 <img src={logout} alt="Logout-Button" />
               </div>
             ) : (
-              <Link className="option" to="/signin">
+              <Link className="option user" to="/signin">
                 {' '}
                 <img src={user} alt="User-Button" />
               </Link>

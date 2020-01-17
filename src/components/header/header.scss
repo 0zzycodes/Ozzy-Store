@@ -58,9 +58,19 @@ $secondaryColor: #ffffff;
     align-items: baseline;
     justify-content: flex-end;
 
+    @include smartphone() {
+      width: auto;
+    }
+
     .option {
       padding: 10px;
       cursor: pointer;
+    }
+
+    .user {
+      @include smartphone() {
+        display: none;
+      }
     }
   }
 }
