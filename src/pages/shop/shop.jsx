@@ -15,7 +15,7 @@ import {
 } from '../../firebase/firebase.utils';
 import { updateCollections } from '../../redux/shop/shop.actions';
 import { toggleAddMakePayment } from '../../redux/payment-details/payment-detail.action';
-// import loader from '../../components/loader/loader';
+import Loader from '../../components/loader/loader';
 import ProductPage from '../product-page/product-page';
 import MakePayment from '../make-payment/make-payment';
 
@@ -90,28 +90,28 @@ class ShopPage extends React.Component {
         <Route
           exact
           path={`${match.path}`}
-          component={isLoading ? null : CollectionsOverview}
+          component={isLoading ? Loader : CollectionsOverview}
         />
 
         <Route
           exact
           path={`${match.path}/:collectionId`}
-          component={isLoading ? null : CollectionPage}
+          component={isLoading ? Loader : CollectionPage}
         />
         <Route
           exact
           path={`/shop/hoodies/:productId`}
-          component={isLoading ? null : ProductPage}
+          component={isLoading ? Loader : ProductPage}
         />
         <Route
           exact
           path={`/shop/tees/:productId`}
-          component={isLoading ? null : ProductPage}
+          component={isLoading ? Loader : ProductPage}
         />
         <Route
           exact
           path={`/shop/accessories/:productId`}
-          component={isLoading ? null : ProductPage}
+          component={isLoading ? Loader : ProductPage}
         />
       </div>
     );

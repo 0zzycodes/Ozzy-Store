@@ -23,6 +23,7 @@ import Footer from './components/footer/footer';
 import CarePage from './pages/care/care-page';
 import ResellerPage from './pages/reseller-page/reseller-page';
 import PaymentPage from './pages/payment/payment-page';
+import UserPage from './pages/user/user-page';
 // import { selectCollectionsForPreview } from './redux/shop/shop.selector';
 
 class App extends React.Component {
@@ -80,6 +81,8 @@ class App extends React.Component {
                 )
               }
             />
+
+            <Route exact path="/current-user" component={UserPage} />
             <Route exact path="/care" component={CarePage} />
             <Route exact path="/reseller" component={ResellerPage} />
             <Route

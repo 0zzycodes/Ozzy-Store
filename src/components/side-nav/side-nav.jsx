@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { auth } from '../../firebase/firebase.utils';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 import CustomButton from '../custom-button/custom-button';
 import './side-nav.scss';
-const SideNav = ({ handleToggleSidebar, history, match }) => {
+const SideNav = ({ currentUser, handleToggleSidebar, history, match }) => {
   const [isShow, setisShow] = useState(false);
+  const [isAccountShow, setisAccountShow] = useState(false);
   const handleToggleShow = () => {
     setisShow(!isShow);
+  };
+  const handleToggleAccountShow = () => {
+    setisAccountShow(!isAccountShow);
   };
   return (
     <div className="side-nav">
@@ -44,9 +52,36 @@ const SideNav = ({ handleToggleSidebar, history, match }) => {
         <Link to="/contact" className="option" onClick={handleToggleSidebar}>
           Contact
         </Link>
-        <Link to="/signin" className="option" onClick={handleToggleSidebar}>
-          Account
-        </Link>
+        {currentUser ? (
+          <div className="drop">
+            <div className="controller" onClick={handleToggleAccountShow}>
+              <h5 className="opton">Account</h5>
+              <span className="tog">
+                {isAccountShow ? <span> &#8722; </span> : <span> &#43; </span>}
+              </span>
+            </div>
+            {isAccountShow ? (
+              <div className="drop-links" onClick={handleToggleSidebar}>
+                <h4
+                  className="drop-link"
+                  onClick={() => history.push(`/current-user`)}
+                >
+                  View Profile
+                </h4>
+                <h4
+                  className="drop-link sign-out"
+                  onClick={() => auth.signOut()}
+                >
+                  Logout
+                </h4>
+              </div>
+            ) : null}
+          </div>
+        ) : (
+          <Link to="/signin" className="option" onClick={handleToggleSidebar}>
+            Account
+          </Link>
+        )}
         <div className="but">
           <Link to="/reseller" className="option" onClick={handleToggleSidebar}>
             <CustomButton inverted>BULK ORDER</CustomButton>
@@ -59,5 +94,7 @@ const SideNav = ({ handleToggleSidebar, history, match }) => {
     </div>
   );
 };
-
-export default withRouter(SideNav);
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
+});
+export default withRouter(connect(mapStateToProps)(SideNav));
