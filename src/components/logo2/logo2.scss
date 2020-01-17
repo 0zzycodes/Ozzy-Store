@@ -1,0 +1,61 @@
+$smartphone: 500px;
+$primaryColor: #000000;
+$secondaryColor: #ffffff;
+
+// Mixin
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+
+#logo {
+  height: 20px;
+}
+
+#logo path {
+  animation: animate-line 0.5s ease-in-out forwards;
+}
+
+#logo path:nth-child(1) {
+  stroke-dasharray: 129.8253936767578px;
+  stroke-dashoffset: 129.8253936767578px;
+}
+
+#logo path:nth-child(2) {
+  stroke-dasharray: 132.38299560546875px;
+  stroke-dashoffset: 132.38299560546875px;
+  animation-delay: 0.3s;
+}
+
+#logo path:nth-child(3) {
+  stroke-dasharray: 149.13946533203125px;
+  stroke-dashoffset: 149.13946533203125px;
+  animation-delay: 0.6s;
+}
+
+#logo path:nth-child(4) {
+  stroke-dasharray: 129.79098510742188px;
+  stroke-dashoffset: 129.79098510742188px;
+  animation-delay: 0.9s;
+}
+
+#logo path:nth-child(5) {
+  stroke-dasharray: 133.48736572265625px;
+  stroke-dashoffset: 133.48736572265625px;
+  animation-delay: 1.2s;
+}
+
+#logo path:nth-child(6) {
+  stroke-dasharray: 48.227996826171875px;
+  stroke-dashoffset: 48.227996826171875px;
+  animation-delay: 1.5s;
+}
+
+@keyframes animate-line {
+  to {
+    stroke-dashoffset: 0;
+    stroke: none;
+    fill: $secondaryColor;
+  }
+}

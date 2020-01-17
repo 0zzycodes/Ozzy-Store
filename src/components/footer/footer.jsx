@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import ozzy from '../../assets/ozzy.svg';
+import remedi from '../../assets/remedi.svg';
 import instagram from '../../assets/instagram.svg';
 import facebook from '../../assets/facebook.svg';
 import twitter from '../../assets/twitter.svg';
@@ -12,7 +12,7 @@ const Footer = ({ history, match }) => {
     <footer className="footer">
       <div className="footer-content">
         <div className="about">
-          <img src={ozzy} alt="LOGO" className="logo" />
+          <img src={remedi} alt="LOGO" className="logo" />
           <br />
           <p>Feel trendy. Feel authentic.</p>
           <br />

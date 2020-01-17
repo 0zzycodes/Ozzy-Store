@@ -10,7 +10,7 @@ import logout from '../../assets/logout.svg';
 import './header.scss';
 import CartIcon from '../cart-icon/cart-icon';
 import CartDropdown from '../cart-dropdown/cart-dropdown';
-import Logo from '../logo/logo';
+import Logo2 from '../logo2/logo2';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import SideNav from '../side-nav/side-nav';
@@ -33,7 +33,7 @@ const Header = ({ currentUser, hidden }) => {
             />
           </div>
           <Link to="/">
-            <Logo />
+            <Logo2 />
           </Link>
           <div className="options">
             {currentUser ? (
