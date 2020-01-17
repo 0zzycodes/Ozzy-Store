@@ -28,9 +28,13 @@ $secondaryColor: #ffffff;
     align-items: center;
 
     .title {
-      font-size: 25px;
+      font-size: 20px;
       font-weight: 500;
       margin: 20px 0px;
+
+      @include smartphone() {
+        font-size: 18px;
+      }
     }
 
     .see-more {
