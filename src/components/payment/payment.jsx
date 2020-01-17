@@ -1,5 +1,9 @@
 import React from 'react';
-import { PostFetch, structureMessage } from './structure-message';
+import {
+  PostFetch,
+  structureMessage,
+  structureOrderMessage
+} from './structure-message';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
@@ -35,7 +39,8 @@ class Payment extends React.Component {
     const order = [];
     const { cartItems, getReference, total, shippingDetails } = this.props;
     const { name, address, city, country, email, phone } = shippingDetails;
-
+    const commonUrl = 'https://ozzystore-backend.herokuapp.com/order';
+    const orderUrl = 'https://ozzystore-backend.herokuapp.com/sendorder';
     const commonMessage = {
       intro: `Dear ${name}`,
       name,
@@ -45,6 +50,10 @@ class Payment extends React.Component {
       phone,
       pacel: order,
       total
+    };
+    const orderMessage = {
+      ...commonMessage,
+      email
     };
     const Cardmessage = {
       thank: `Your order ${getReference} is being shipped and will be out for delivery within the next 48 hours`
@@ -67,13 +76,23 @@ class Payment extends React.Component {
       order.push(info);
     });
     if (this.state.paymentMethod === 'Pay With Paystack') {
-      const messageHtml = structureMessage(commonMessage, Cardmessage);
-      const messageToSend = {
+      const ordermessageHtml = structureOrderMessage(
+        commonMessage,
+        Cardmessage
+      );
+      const messageHtml = structureMessage(orderMessage);
+      const orderMessageToSend = {
         email,
         subject: `Your Order ${getReference} is being shipped`,
+        html: ordermessageHtml
+      };
+      const messageToSend = {
+        email,
+        subject: `Order from ${name} ID: #${getReference} paid with card`,
         html: messageHtml
       };
-      PostFetch(messageToSend);
+      PostFetch(commonUrl, orderMessageToSend);
+      PostFetch(orderUrl, messageToSend);
       resetC([]);
     } else if (this.state.paymentMethod === 'Direct Bank Transfer') {
       const pay = {
@@ -81,13 +100,24 @@ class Payment extends React.Component {
         total: total
       };
       this.props.addMakePayment(pay);
-      const messageHtml = structureMessage(commonMessage, DirectPaymessage);
-      const messageToSend = {
+      const messageHtml = structureMessage(orderMessage);
+      const ordermessageHtml = structureOrderMessage(
+        commonMessage,
+        DirectPaymessage
+      );
+
+      const orderMessageToSend = {
         email,
         subject: `Make payment within 24 hours for your ozzy order #${getReference}`,
+        html: ordermessageHtml
+      };
+      const messageToSend = {
+        email,
+        subject: `Order from ${name} ID: #${getReference} direct bank transfer`,
         html: messageHtml
       };
-      PostFetch(messageToSend);
+      PostFetch(commonUrl, orderMessageToSend);
+      PostFetch(orderUrl, messageToSend);
       resetC([]);
     }
   };

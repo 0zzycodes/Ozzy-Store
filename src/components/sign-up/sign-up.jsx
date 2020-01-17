@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FormInput from '../form-input/form-input';
 import CustomButton from '../custom-button/custom-button';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+import loader from '../../assets/loader.gif';
 
 import './sign-up.scss';
 
@@ -13,7 +14,8 @@ export default class SignUp extends Component {
       email: '',
       password: '',
       confirmPassword: '',
-      errorMessage: ''
+      errorMessage: '',
+      isLoading: false
     };
   }
   handleChange = e => {
@@ -24,10 +26,13 @@ export default class SignUp extends Component {
     e.preventDefault();
     const { displayName, email, password, confirmPassword } = this.state;
     if (password !== confirmPassword) {
-      alert('Password incorrect');
+      this.setState({
+        errorMessage: `Password did not match!`
+      });
       return;
     }
     try {
+      this.setState({ isLoading: true });
       const { user } = await auth.createUserWithEmailAndPassword(
         email,
         password
@@ -37,14 +42,16 @@ export default class SignUp extends Component {
     } catch (error) {
       error.code === 'auth/email-already-in-use'
         ? this.setState({
+            isLoading: false,
             errorMessage:
               'The email address is already in use by another account'
           })
         : error.code === 'auth/weak-password'
         ? this.setState({
+            isLoading: false,
             errorMessage: 'Password should be at least 6 characters'
           })
-        : this.setState({ errorMessage: 'Wierd' });
+        : this.setState({ isLoading: false, errorMessage: 'Wierd' });
     }
     this.setState({
       displayName: '',
@@ -59,7 +66,8 @@ export default class SignUp extends Component {
       email,
       password,
       confirmPassword,
-      errorMessage
+      errorMessage,
+      isLoading
     } = this.state;
     const { handleToggleSidebar } = this.props;
     return (
@@ -98,7 +106,9 @@ export default class SignUp extends Component {
             label="Confirm password"
             onChange={this.handleChange}
           />
-          <CustomButton type="submit">SIGN UP</CustomButton>
+          <CustomButton type="submit">
+            SIGN UP {isLoading ? <img src={loader} alt="Loader" /> : null}
+          </CustomButton>
         </form>
         <p>
           {' '}
