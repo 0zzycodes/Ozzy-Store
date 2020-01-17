@@ -11,6 +11,10 @@ $secondaryColor: #ffffff;
 
 #logo {
   height: 18px;
+
+  @include smartphone() {
+    height: 14px;
+  }
 }
 
 #logo path {
