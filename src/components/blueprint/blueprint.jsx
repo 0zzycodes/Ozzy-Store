@@ -12,6 +12,8 @@ const Blueprint = () => {
           <img src="https://i.ibb.co/j4cR9mN/REMEDII-WHITE.png" alt="Logo" />
         </tr>
       </table>
+      <br />
+      <br />
       <table style={{ padding: '15px' }}>
         <tr>Dear Ibrahim,</tr>
         <br />

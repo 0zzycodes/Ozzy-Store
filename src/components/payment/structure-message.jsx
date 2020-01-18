@@ -34,9 +34,13 @@ export const structureOrderMessage = (common, info) => {
           <img src="https://i.ibb.co/XZnTp2c/REMEDII.png" alt="Logo" />
         </tr>
       </table>
-      <table style={{ padding: '15px' }}>
+      <br />
+      <br />
+      <table style={{ padding: '0px 15px' }}>
         <tr>{intro},</tr>
+      </table>
         <br/>
+      <table style={{ padding: '15px' }}>
         <tr>{thank} <br /> {info.durInfo ? info.durInfo : null}</tr>
       </table>
       <table style={{ padding: '15px' }}>
