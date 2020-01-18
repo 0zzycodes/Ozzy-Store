@@ -59,7 +59,7 @@ class Payment extends React.Component {
       thank: `Your order ${getReference} is being shipped and will be out for delivery within the next 48 hours`
     };
     const DirectPaymessage = {
-      thank: `Thank you for your purchase at Ozzy Store (Order ${getReference})`,
+      thank: `Thank you for your purchase at REMEDI (Order ${getReference})`,
       durInfo: `To complete your order, please make payment before 24 hours then, your order will be out for delivery within the next 48 hours`
     };
 
@@ -108,7 +108,7 @@ class Payment extends React.Component {
 
       const orderMessageToSend = {
         email,
-        subject: `Make payment within 24 hours for your ozzy order #${getReference}`,
+        subject: `Make payment within 24 hours for your REMEDI order #${getReference}`,
         html: ordermessageHtml
       };
       const messageToSend = {
