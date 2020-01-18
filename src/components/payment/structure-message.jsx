@@ -15,48 +15,47 @@ export const PostFetch = (url, message) => {
     });
 };
 const makePay = {
-      background: 'black',
-      padding: '20px',
-      bottom: 0,
-      color: 'white',
-      textAlign: 'left',
-      maxHeight: '300px'
-    },
-    ul = {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'flex-start',
-      alingItems: 'flex-start'
-    },
-    li = {
-      listStyle: 'none',
-      fontSize: '15px',
-      padding: '5px'
-    },
-    strong = {
-      fontSize: '13px',
-      fontWeight: 600
-    },
-    ourBankDetail = {
-      padding: '30px 0px'
-    },
-    h2 = {
-      marginBottom: '20px'
-    },
-    h3 = {
-      fontWeight: 500,
-      color: 'red'
-    },
-    flex = {
-      display: 'flex',
-      justifyContent: 'space-evenly',
-      alingItems: 'center'
-    };
+    background: 'black',
+    padding: '20px',
+    bottom: 0,
+    color: 'white',
+    textAlign: 'left',
+    height: '300px'
+  },
+  ul = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alingItems: 'flex-start'
+  },
+  li = {
+    listStyle: 'none',
+    fontSize: '15px',
+    padding: '5px'
+  },
+  strong = {
+    fontSize: '13px',
+    fontWeight: 600
+  },
+  ourBankDetail = {
+    padding: '30px 0px'
+  },
+  h2 = {
+    marginBottom: '20px'
+  },
+  h3 = {
+    fontWeight: 500,
+    color: 'red'
+  },
+  flex = {
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    alingItems: 'center'
+  };
 export const structureOrderMessage = (common, info) => {
   const { intro, name, address, city, country, phone, pacel, total } = common,
     { thank } = info;
   const date = new Date();
-  
 
   return renderEmail(
     <Email title="Your Order">
@@ -150,7 +149,8 @@ export const structureMessage = message => {
         </Item>
         <h4 style={{ fontSize: '16px' }}>
           <span style={{ color: 'orange' }}>{name} </span> <br />
-          <br /> {address} <br /> {city}, {country} <br /> Phone: {phone} <br/> Email: {email}
+          <br /> {address} <br /> {city}, {country} <br /> Phone: {phone} <br />{' '}
+          Email: {email}
         </h4>
 
         <h3>Package(s)</h3>

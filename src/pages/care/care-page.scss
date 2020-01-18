@@ -15,6 +15,7 @@ $secondaryColor: #ffffff;
   color: #ffffff;
   margin-top: 90px;
   margin-bottom: 60px;
+  min-height: 100vh;
 
   @include smartphone() {
     width: 80%;
@@ -29,7 +30,7 @@ $secondaryColor: #ffffff;
     letter-spacing: 3px;
 
     @include smartphone() {
-      font-size: 20px;
+      font-size: 19px;
     }
   }
 
@@ -37,10 +38,20 @@ $secondaryColor: #ffffff;
     h4 {
       margin: 20px 0px;
       font-weight: 700;
+
+      @include smartphone() {
+        font-size: 16px;
+      }
     }
 
     p {
       font-size: 14px;
+      padding-left: 20px;
+      color: darken($color: $secondaryColor, $amount: 30);
+
+      @include smartphone() {
+        font-size: 12px;
+      }
     }
   }
 }
