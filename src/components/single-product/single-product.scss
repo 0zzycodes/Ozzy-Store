@@ -141,6 +141,7 @@ $secondaryColor: #ffffff;
 
         @include smartphone() {
           margin: 0;
+          margin-bottom: 20px;
           width: 100%;
         }
       }
@@ -186,18 +187,16 @@ $secondaryColor: #ffffff;
           font-size: 25px;
           line-height: 45px;
           color: $primaryColor;
-          // background-color: #1b1b1b;
           pointer-events: none;
           display: flex;
           justify-content: center;
           align-items: center;
-          // transform: rotate(180deg);
         }
 
       }
 
       .note {
-        margin-top: 50px;
+        margin-top: 20px;
 
         @include smartphone() {
           text-align: left;
