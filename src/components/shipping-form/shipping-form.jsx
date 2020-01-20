@@ -12,7 +12,7 @@ import {
   selectCartItems,
   selectCartTotal
 } from '../../redux/cart/cart.selectors';
-import { addShippingDetails } from '../../redux/shipping/shipping.actions';
+import { addShippingDetails, addCity } from '../../redux/shipping/shipping.actions';
 import FormInput from '../form-input/form-input';
 import CustomButton from '../custom-button/custom-button';
 
@@ -72,6 +72,7 @@ class ShippingForm extends Component {
       email
     };
     this.props.addShippingDetails(billing);
+    this.props.addCity(city);
     this.props.history.push(`/payment`);
   };
   componentDidMount() {
@@ -190,7 +191,8 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addShippingDetails: details => dispatch(addShippingDetails(details))
+  addShippingDetails: details => dispatch(addShippingDetails(details)),
+  addCity: details => dispatch(addCity(details))
 });
 
 export default withRouter(

@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   hidden: true,
-  makePaymentDetails: {}
+  makePaymentDetails: {},
+  paymentMethod: 'Direct Bank Transfer'
 };
 
 const MakePaymentReducer = (state = INITIAL_STATE, action) => {
@@ -14,6 +15,11 @@ const MakePaymentReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         makePaymentDetails: action.payload
+      };
+    case 'SWITCH_PAYMENT_METHOD':
+      return {
+        ...state,
+        paymentMethod: action.payload
       };
     default:
       return state;

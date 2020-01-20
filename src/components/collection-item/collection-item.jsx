@@ -9,6 +9,8 @@ import SelectSize from '../select-size/select-size';
 
 const CollectionItem = ({ item, addItem, history, match }) => {
   const { category, name, stock, sale, price, imageUrl } = item;
+  console.log(sale, price);
+
   const [isShow, setisShow] = useState(false);
   const handleSelectSize = () => {
     setisShow(!isShow);
@@ -17,7 +19,7 @@ const CollectionItem = ({ item, addItem, history, match }) => {
     <div className="collection-item">
       <div className="img-container">
         {stock === 0 ? <span className="sold-out">Sold Out</span> : null}
-        {sale === 0 ? null : <span className="sale">Sale</span>}
+        {sale === price ? null : <span className="sale">Sale</span>}
         <div
           className="image"
           style={{ backgroundImage: `url(${imageUrl})` }}
@@ -34,10 +36,19 @@ const CollectionItem = ({ item, addItem, history, match }) => {
         {/* <StarRating smaller numberOfStars="5" currentRating={rating} /> */}
 
         <div className="prices">
-          {sale === 0 ? null : (
-            <span className="sales-price price">₦{price - sale}</span>
+          {sale === price ? null : (
+            <span className="sales-price price">₦{sale}</span>
           )}
-          <span className="normal-price price">₦{price}</span>
+          <span
+            className="normal-price price"
+            style={
+              sale === price
+                ? { textDecoration: 'none' }
+                : { textDecoration: 'line-through' }
+            }
+          >
+            ₦{price}
+          </span>
         </div>
       </div>
 

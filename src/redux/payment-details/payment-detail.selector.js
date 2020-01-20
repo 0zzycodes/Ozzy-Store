@@ -11,6 +11,10 @@ export const selectShippingDetails = createSelector(
   [selectmakePaymentDetails],
   makePaymentDetails => makePaymentDetails
 );
+export const selectPaymentMethod = createSelector(
+  [selectmakePaymentDetails],
+  paymentMethod => paymentMethod.paymentMethod
+);
 export const selectmakePaymentDetail = createSelector(
   [selectmakePaymentDetails],
   details => details.makePaymentDetails

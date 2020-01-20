@@ -9,10 +9,15 @@ import { withRouter } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import {
   selectCartItems,
-  selectCartTotal
+  selectCartTotal,
+  selectCartTotalCost
 } from '../../redux/cart/cart.selectors';
-import { resetCart } from '../../redux/cart/cart.actions';
-import { addMakePayment } from '../../redux/payment-details/payment-detail.action';
+import { resetCart, addCartTotal } from '../../redux/cart/cart.actions';
+import { selectPaymentMethod } from '../../redux/payment-details/payment-detail.selector';
+import {
+  addMakePayment,
+  switchPaymentMethod
+} from '../../redux/payment-details/payment-detail.action';
 import mastercard from '../../assets/img/mastercard.png';
 import visa from '../../assets/img/visa.png';
 import discover from '../../assets/img/discover.png';
@@ -27,17 +32,17 @@ class Payment extends React.Component {
     getRef: ''
   };
   handleDirectBankTransfer = () => {
-    this.setState({ paymentMethod: 'Direct Bank Transfer' });
+    this.props.switchPaymentMethod('Direct Bank Transfer');
   };
   handlePayWithPaystack = () => {
-    this.setState({ paymentMethod: 'Pay With Paystack' });
+    this.props.switchPaymentMethod('Pay With Paystack');
   };
   handlePayWithStripe = () => {
-    this.setState({ paymentMethod: 'Pay With Stripe' });
+    this.props.switchPaymentMethod('Pay With Stripe');
   };
   handleSendMail = resetC => {
     const order = [];
-    const { cartItems, getReference, total, shippingDetails } = this.props;
+    const { cartItems, getReference, totalCost, shippingDetails } = this.props;
     const { name, address, city, country, email, phone } = shippingDetails;
     const commonUrl = 'https://ozzystore-backend.herokuapp.com/order';
     const orderUrl = 'https://ozzystore-backend.herokuapp.com/sendorder';
@@ -49,7 +54,7 @@ class Payment extends React.Component {
       country,
       phone,
       pacel: order,
-      total
+      totalCost
     };
     const orderMessage = {
       ...commonMessage,
@@ -64,18 +69,18 @@ class Payment extends React.Component {
     };
 
     cartItems.forEach(item => {
-      const { imageUrl, quantity, size, name, price } = item;
+      const { imageUrl, quantity, size, name, sale } = item;
       const info = {
         imageUrl,
         size,
         name,
         quantity,
-        price,
-        cost: quantity * price
+        sale,
+        cost: quantity * sale
       };
       order.push(info);
     });
-    if (this.state.paymentMethod === 'Pay With Paystack') {
+    if (this.props.paymentMethod === 'Pay With Paystack') {
       const ordermessageHtml = structureOrderMessage(
         commonMessage,
         Cardmessage
@@ -94,10 +99,11 @@ class Payment extends React.Component {
       PostFetch(commonUrl, orderMessageToSend);
       PostFetch(orderUrl, messageToSend);
       resetC([]);
-    } else if (this.state.paymentMethod === 'Direct Bank Transfer') {
+      this.props.addCartTotal(0);
+    } else if (this.props.paymentMethod === 'Direct Bank Transfer') {
       const pay = {
         orderId: getReference,
-        total: total
+        total: totalCost
       };
       this.props.addMakePayment(pay);
       const messageHtml = structureMessage(orderMessage);
@@ -119,11 +125,14 @@ class Payment extends React.Component {
       PostFetch(commonUrl, orderMessageToSend);
       PostFetch(orderUrl, messageToSend);
       resetC([]);
+      this.props.addCartTotal(0);
     }
   };
   render() {
-    const { paymentMethod } = this.state;
-    const { getReference, resetCart } = this.props;
+    // const { paymentMethod } = this.state;
+    const { getReference, resetCart, paymentMethod, totalCost } = this.props;
+    console.log(totalCost);
+
     return (
       <div className="payment">
         <h3 className="title">Payment Methods</h3>
@@ -195,7 +204,7 @@ class Payment extends React.Component {
         </div>
         {paymentMethod === 'Pay With Paystack' ? (
           <PaystackCheckoutkButton
-            price={this.props.total}
+            price={this.props.totalCost}
             getReference={getReference}
             sendMail={this.handleSendMail.bind(this, resetCart)}
           />
@@ -217,11 +226,15 @@ class Payment extends React.Component {
 }
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
+  totalCost: selectCartTotalCost,
+  paymentMethod: selectPaymentMethod,
   total: selectCartTotal
 });
 const mapDispatchToProps = dispatch => ({
   resetCart: item => dispatch(resetCart(item)),
-  addMakePayment: details => dispatch(addMakePayment(details))
+  addMakePayment: details => dispatch(addMakePayment(details)),
+  switchPaymentMethod: details => dispatch(switchPaymentMethod(details)),
+  addCartTotal: total => dispatch(addCartTotal(total))
 });
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(Payment)

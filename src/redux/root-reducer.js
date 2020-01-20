@@ -18,7 +18,7 @@ import makePaymentDetailsReducer from './payment-details/payment-detail.reducer'
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cart']
+  whitelist: ['cart', 'shipping']
 };
 
 const rootReducer = combineReducers({

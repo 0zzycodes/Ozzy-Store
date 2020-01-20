@@ -1,7 +1,8 @@
 import ShippingActionTypes from './shipping.types';
 
 const INITIAL_STATE = {
-  shippingDetails: {}
+  shippingDetails: {},
+  city: ''
 };
 
 const shippingDetailsReducer = (state = INITIAL_STATE, action) => {
@@ -10,6 +11,11 @@ const shippingDetailsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         shippingDetails: action.payload
+      };
+    case ShippingActionTypes.CITY:
+      return {
+        ...state,
+        city: action.payload
       };
     default:
       return state;

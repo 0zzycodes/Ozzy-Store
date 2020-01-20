@@ -3,15 +3,24 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { selectCartTotal } from '../../redux/cart/cart.selectors';
 import PaystackButton from 'react-paystack';
 
 import './paystack-button.scss';
 
-const PaystackCheckoutkButton = ({ price, user, getReference, sendMail }) => {
+const PaystackCheckoutkButton = ({
+  price,
+  user,
+  getReference,
+  sendMail,
+  cartTotal
+}) => {
+  console.log('cartT', cartTotal);
+
   const obj = {
     key: 'pk_test_3211d1f3f7d23a949f1971a99ca99a083d4fc0c5',
     email: user ? user.email : user, // customer email
-    amount: price * 100 //equals NGN100,
+    amount: cartTotal * 100 //equals NGN100,
   };
   const callback = response => {
     console.log(response); // card charged successfully, get reference here
@@ -47,7 +56,8 @@ const PaystackCheckoutkButton = ({ price, user, getReference, sendMail }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  user: selectCurrentUser
+  user: selectCurrentUser,
+  cartTotal: selectCartTotal
 });
 
 export default connect(mapStateToProps)(PaystackCheckoutkButton);
