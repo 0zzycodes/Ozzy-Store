@@ -195,6 +195,62 @@ $secondaryColor: #ffffff;
         }
 
       }
+
+      .note {
+        margin-top: 50px;
+
+        ol {
+          padding-left: 25px;
+
+          li {
+            font-size: 14px;
+            padding-top: 10px;
+            color: darken($color: $secondaryColor, $amount: 30);
+
+            @include smartphone() {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+
+      .desc {
+        ul {
+          padding-left: 25px;
+
+          li {
+            font-size: 14px;
+            padding-top: 10px;
+            padding-left: 10px;
+            color: darken($color: $secondaryColor, $amount: 30);
+          }
+        }
+      }
+
+      .disclaimer {
+        .head {
+          margin-top: 20px;
+          width: 100%;
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 40px;
+          border: 1px solid $secondaryColor;
+          padding: 4px 10px;
+        }
+
+        p {
+          font-size: 14px;
+          padding-top: 10px;
+          padding-left: 10px;
+          color: darken($color: $secondaryColor, $amount: 30);
+
+          @include smartphone() {
+            font-size: 12px;
+          }
+        }
+      }
     }
   }
 }

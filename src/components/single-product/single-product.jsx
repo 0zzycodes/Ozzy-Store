@@ -8,11 +8,15 @@ import CustomButton from '../custom-button/custom-button';
 import './single-product.scss';
 class SingleProduct extends React.Component {
   state = {
-    selectSize: ''
+    selectSize: '',
+    isShow: false
   };
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
+  };
+  handleToggleShow = () => {
+    this.setState({ isShow: !this.state.isShow });
   };
   render() {
     const { item, addItem } = this.props;
@@ -25,7 +29,8 @@ class SingleProduct extends React.Component {
       sizes,
       sideImage,
       backImage,
-      measurementImage
+      measurementImage,
+      category
     } = item;
     item.size = this.state.selectSize;
     item.id =
@@ -102,6 +107,61 @@ class SingleProduct extends React.Component {
                 Cart &#43;
               </CustomButton>
             ) : null}
+            <div className="desc">
+              <h5>DESCRIPTION</h5>
+              {category === 'hoodies'? <ul>
+                <li>Pullover hoodie</li>
+                <li>50% Polyester 46% Cotton 4% Rayon</li>
+                <li>Unisex</li>
+                <li>Front pouch pocket</li>
+                <li> High quality very comfortable style Hoodie.</li>
+              </ul>: category === 'tees'?  <ul>
+                <li>Super soft tubular t-shirt</li>
+                <li>52% Cotton / 48% Polyester</li>
+                <li>Unisex</li>
+                <li> High quality.</li>
+              </ul>: null}
+            </div>
+            <div className="note">
+              <h5>NOTE:</h5>
+              <ol>
+                <li>
+                  Please according your own measurements to choose your suitable
+                  size.
+                </li>
+                <li>
+                  This sizes listed is based on international sizing
+                  system,Please see the Size chart Guide to find the correct
+                  size.
+                </li>
+              </ol>
+            </div>
+
+            <div className="disclaimer">
+              <div className="head" onClick={this.handleToggleShow}>
+                <h5 className="option">DISCLAIMER</h5>
+                <span className="sign">
+                  {this.state.isShow ? (
+                    <span> &#8722; </span>
+                  ) : (
+                    <span> &#43; </span>
+                  )}
+                </span>
+              </div>
+              {this.state.isShow ? (
+                <p>
+                  Size may be 2cm/1 inch inaccuracy due to hand measure. These
+                  measurements are meant as a guide to help you select the
+                  correct size. Please take your own measurements and choose
+                  your size accordingly.
+                  <br />
+                  The precise color of the items may vary depending on the
+                  specific monitor, the settings and the lighting conditions.
+                  The items colors depicted should only be used as an
+                  approximate guide.
+                </p>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>

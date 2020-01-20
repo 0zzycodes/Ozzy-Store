@@ -32,10 +32,13 @@ const ResellerPage = () => {
       <div className="block">
         <h4>How Do I Place A Bulk Order?</h4>
         <p>
-          you may send an email to order@Remedi.store, or contact us via phone
-          call or any of our social messaging platforms.
+          you may send an email to officialremediorder@gmail.com, or contact us
+          via any of our social messaging platforms.
         </p>
       </div>
+      <br />
+      <br />
+      <h3>ONLINE BULK ORDER IS COMMING SOON</h3>
     </div>
   );
 };

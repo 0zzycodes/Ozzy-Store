@@ -41,7 +41,15 @@ class Payment extends React.Component {
   };
   handleSendMail = resetC => {
     const order = [];
-    const { cartItems, getReference, totalCost, shippingDetails } = this.props;
+    const {
+      cartItems,
+      getReference,
+      total,
+      totalCost,
+      shippingDetails,
+      promo,
+      shippingFee
+    } = this.props;
     const { name, address, city, country, email, phone } = shippingDetails;
     const commonUrl = 'https://ozzystore-backend.herokuapp.com/order';
     const orderUrl = 'https://ozzystore-backend.herokuapp.com/sendorder';
@@ -53,6 +61,9 @@ class Payment extends React.Component {
       country,
       phone,
       pacel: order,
+      promo,
+      shippingFee,
+      total,
       totalCost
     };
     const orderMessage = {

@@ -27,6 +27,7 @@ class PaymentPage extends React.Component {
   state = {
     orderId: `${GenerateId()}`,
     discount: 0,
+    shippingFee: this.props.enterdCity.toLowerCase() !== 'ibadan' ? 200 : 0,
     promoCode: '',
     price:
       this.props.enterdCity.toLowerCase() !== 'ibadan'
@@ -82,6 +83,8 @@ class PaymentPage extends React.Component {
           </span>
           <Payment
             total={price}
+            promo={this.state.discount}
+            shippingFee={this.state.shippingFee}
             getReference={this.state.orderId}
             shippingDetails={detail}
             currentUser={currentUser}

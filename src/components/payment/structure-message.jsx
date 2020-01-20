@@ -27,6 +27,9 @@ export const structureOrderMessage = (common, info) => {
       country,
       phone,
       pacel,
+      promo,
+      shippingFee,
+      total,
       totalCost
     } = common,
     { thank } = info;
@@ -178,12 +181,32 @@ export const structureOrderMessage = (common, info) => {
               </tr>
             );
           })}
+        </table>
+        <table style={{ marginTop: '30px' }}>
           <tr>
-            <td style={{ padding: '15px' }} colSpan="2">
-              <b>Subtotal:</b>
-            </td>
-            <td>₦{totalCost}</td>
-          </tr>
+              <td style={{ padding: '2px 15px' }}>
+                <b>Subtotal:</b>
+              </td>
+              <td>₦{total}</td>
+            </tr>
+          <tr>
+              <td style={{ padding: '2px 15px' }}>
+                <b>Promo:</b>
+              </td>
+              <td>₦{promo}</td>
+            </tr>
+          <tr>
+              <td style={{ padding: '2px 15px' }}>
+                <b>Shipping:</b>
+              </td>
+              <td>₦{shippingFee}</td>
+            </tr>
+          <tr>
+              <td style={{ padding: '2px 15px' }}>
+                <b>Total: </b>
+              </td>
+              <td>₦{totalCost}</td>
+            </tr>
         </table>
       </div>
     </Email>
@@ -198,6 +221,9 @@ export const structureMessage = message => {
     country,
     phone,
     pacel,
+    promo,
+    shippingFee,
+    total,
     totalCost
   } = message;
   return renderEmail(
@@ -265,12 +291,32 @@ export const structureMessage = message => {
               </tr>
             );
           })}
+        </table>
+        <table style={{ marginTop: '30px' }}>
           <tr>
-            <td style={{ padding: '15px' }} colSpan="2">
-              <b>Subtotal:</b>
-            </td>
-            <td>₦{totalCost}</td>
-          </tr>
+              <td style={{ padding: '2px 15px' }}>
+                <b>Subtotal:</b>
+              </td>
+              <td>₦{total}</td>
+            </tr>
+          <tr>
+              <td style={{ padding: '2px 15px' }}>
+                <b>Promo:</b>
+              </td>
+              <td>₦{promo}</td>
+            </tr>
+          <tr>
+              <td style={{ padding: '2px 15px' }}>
+                <b>Shipping:</b>
+              </td>
+              <td>₦{shippingFee}</td>
+            </tr>
+          <tr>
+              <td style={{ padding: '2px 15px' }}>
+                <b>Total:</b>
+              </td>
+              <td>₦{totalCost}</td>
+            </tr>
         </table>
       </div>
     </Email>

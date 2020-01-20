@@ -16,21 +16,23 @@ const Footer = ({ history, match }) => {
           <br />
           <p>Feel trendy. Feel authentic.</p>
           <br />
-          <a href="https://web.facebook.com/profile.php?id=100013327810283">
-            <div className="logo-border">
-              <img src={facebook} alt="Facebook Logo" />
-            </div>
-          </a>
-          <a href="https://twitter.com/ozzycodes">
-            <div className="logo-border">
-              <img src={twitter} alt="Twitter Logo" />
-            </div>
-          </a>
-          <a href="https://www.instagram.com/ozzycodes/">
-            <div className="logo-border">
-              <img src={instagram} alt="Instagram Logo" />
-            </div>
-          </a>
+          <div className="socials">
+            <a href="https://web.facebook.com/profile.php?id=100013327810283">
+              <div className="logo-border">
+                <img src={facebook} alt="Facebook Logo" />
+              </div>
+            </a>
+            <a href="https://twitter.com/ozzycodes">
+              <div className="logo-border">
+                <img src={twitter} alt="Twitter Logo" />
+              </div>
+            </a>
+            <a href="https://www.instagram.com/ozzycodes/">
+              <div className="logo-border">
+                <img src={instagram} alt="Instagram Logo" />
+              </div>
+            </a>
+          </div>
         </div>
         <div className="menu">
           <h2 className="heading">MENU</h2>

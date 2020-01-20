@@ -29,6 +29,13 @@ $secondaryColor: #ffffff;
             color: darken($color: $secondaryColor, $amount: 20);
         }
 
+        .socials {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
         .heading {
             font-size: 20px;
             font-weight: 500;
