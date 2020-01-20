@@ -109,18 +109,22 @@ class SingleProduct extends React.Component {
             ) : null}
             <div className="desc">
               <h5>DESCRIPTION</h5>
-              {category === 'hoodies'? <ul>
-                <li>Pullover hoodie</li>
-                <li>50% Polyester 46% Cotton 4% Rayon</li>
-                <li>Unisex</li>
-                <li>Front pouch pocket</li>
-                <li> High quality very comfortable style Hoodie.</li>
-              </ul>: category === 'tees'?  <ul>
-                <li>Super soft tubular t-shirt</li>
-                <li>52% Cotton / 48% Polyester</li>
-                <li>Unisex</li>
-                <li> High quality.</li>
-              </ul>: null}
+              {category === 'hoodies' ? (
+                <ul>
+                  <li>Pullover hoodie</li>
+                  <li>50% Polyester 46% Cotton 4% Rayon</li>
+                  <li>Unisex</li>
+                  <li>Front pouch pocket</li>
+                  <li> High quality very comfortable style Hoodie.</li>
+                </ul>
+              ) : category === 'tees' ? (
+                <ul>
+                  <li>Super soft tubular t-shirt</li>
+                  <li>52% Cotton / 48% Polyester</li>
+                  <li>Unisex</li>
+                  <li> High quality.</li>
+                </ul>
+              ) : null}
             </div>
             <div className="note">
               <h5>NOTE:</h5>
@@ -154,6 +158,7 @@ class SingleProduct extends React.Component {
                   measurements are meant as a guide to help you select the
                   correct size. Please take your own measurements and choose
                   your size accordingly.
+                  <br />
                   <br />
                   The precise color of the items may vary depending on the
                   specific monitor, the settings and the lighting conditions.

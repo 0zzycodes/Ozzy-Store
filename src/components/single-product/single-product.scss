@@ -199,6 +199,10 @@ $secondaryColor: #ffffff;
       .note {
         margin-top: 50px;
 
+        @include smartphone() {
+          text-align: left;
+        }
+
         ol {
           padding-left: 25px;
 
@@ -215,6 +219,10 @@ $secondaryColor: #ffffff;
       }
 
       .desc {
+        @include smartphone() {
+          text-align: left;
+        }
+
         ul {
           padding-left: 25px;
 
@@ -228,6 +236,10 @@ $secondaryColor: #ffffff;
       }
 
       .disclaimer {
+        @include smartphone() {
+          text-align: left;
+        }
+
         .head {
           margin-top: 20px;
           width: 100%;
