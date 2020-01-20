@@ -66,9 +66,18 @@ class SingleProduct extends React.Component {
               {stock === 0 ? 'Sold Out' : 'In Stock'}{' '}
             </span>
             <div className="prices">
-              <span className="sales-price price">₦{price - sale}</span>
-              {sale === 0 ? null : <span>SALE</span>}
-              <span className="normal-price price">₦{price}</span>
+              <span className="sales-price price">₦{sale}</span>
+              {sale === price ? null : <span>SALE</span>}
+              <span
+                className="normal-price price"
+                style={
+                  sale === price
+                    ? { textDecoration: 'none' }
+                    : { textDecoration: 'line-through' }
+                }
+              >
+                ₦{price}
+              </span>
             </div>
             <br />
             <div className="box">
