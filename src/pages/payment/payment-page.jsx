@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 import {
   selectShippingDetail,
   selectCity
@@ -52,7 +52,10 @@ class PaymentPage extends React.Component {
           price: afterPromo,
           isPromoAplied: true
         },
-        () => this.props.addCartTotal(this.state.price)
+        () => {
+          this.props.addCartTotal(this.state.price);
+          this.props.addPromo(calc);
+        }
       );
     }
   };
@@ -69,7 +72,7 @@ class PaymentPage extends React.Component {
       phone
     };
     console.log(match.path);
-    
+
     const { price } = this.state;
     return (
       <div className="payment-page container">
@@ -137,4 +140,6 @@ const mapDispatchToProps = dispatch => ({
   addDiscount: total => dispatch(addDiscount(total)),
   addPromo: total => dispatch(addPromo(total))
 });
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PaymentPage));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(PaymentPage)
+);

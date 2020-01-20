@@ -218,7 +218,6 @@ export const structureMessage = message => {
             <br /> Email: {email}
           </tr>
         </table>
-        <h3>Product Details</h3>
         <table style={{ marginTop: '30px', textAlign: 'center' }}>
           <tr style={{ padding: '15px' }}>
             <th
@@ -250,7 +249,7 @@ export const structureMessage = message => {
           {pacel.map(eachPacel => {
             const { size, name, quantity, sale, imageUrl } = eachPacel;
             return (
-              <tr style={{ padding: '15px' }}>
+              <tr key={`${size}${name}`} style={{ padding: '15px' }}>
                 <td style={{ padding: '15px' }}>
                   <img
                     src={imageUrl}

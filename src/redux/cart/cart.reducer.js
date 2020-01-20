@@ -26,12 +26,12 @@ const cartReducer = (state = INITIAL_STATE, action) => {
     case CartActionTypes.ADD_DISCOUNT:
       return {
         ...state,
-        cartTotal: action.payload
+        discount: action.payload
       };
     case CartActionTypes.ADD_PROMO:
       return {
         ...state,
-        cartTotal: action.payload
+        promo: action.payload
       };
     case CartActionTypes.ADD_CART_TOTAL:
       return {

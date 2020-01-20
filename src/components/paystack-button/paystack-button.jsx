@@ -2,8 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { selectCity } from '../../redux/shipping/shipping.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
-import { selectCartTotal } from '../../redux/cart/cart.selectors';
+import {
+  selectCartTotal,
+  selectCartItemsCount,
+  selectPromo
+} from '../../redux/cart/cart.selectors';
 import PaystackButton from 'react-paystack';
 
 import './paystack-button.scss';
@@ -13,14 +18,18 @@ const PaystackCheckoutkButton = ({
   user,
   getReference,
   sendMail,
+  promo,
+  enterdCity,
   cartTotal
 }) => {
-  console.log('cartT', cartTotal);
-
+  const newCartTotal =
+    enterdCity.toLowerCase() !== 'ibadan'
+      ? cartTotal - promo + 200
+      : cartTotal - promo;
   const obj = {
     key: 'pk_test_3211d1f3f7d23a949f1971a99ca99a083d4fc0c5',
     email: user ? user.email : user, // customer email
-    amount: cartTotal * 100 //equals NGN100,
+    amount: newCartTotal * 100 //equals NGN100,
   };
   const callback = response => {
     console.log(response); // card charged successfully, get reference here
@@ -57,7 +66,10 @@ const PaystackCheckoutkButton = ({
 
 const mapStateToProps = createStructuredSelector({
   user: selectCurrentUser,
-  cartTotal: selectCartTotal
+  cartTotal: selectCartTotal,
+  promo: selectPromo,
+  itemCount: selectCartItemsCount,
+  enterdCity: selectCity
 });
 
 export default connect(mapStateToProps)(PaystackCheckoutkButton);

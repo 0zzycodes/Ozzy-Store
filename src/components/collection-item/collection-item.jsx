@@ -9,8 +9,6 @@ import SelectSize from '../select-size/select-size';
 
 const CollectionItem = ({ item, addItem, history, match }) => {
   const { category, name, stock, sale, price, imageUrl } = item;
-  console.log(sale, price);
-
   const [isShow, setisShow] = useState(false);
   const handleSelectSize = () => {
     setisShow(!isShow);

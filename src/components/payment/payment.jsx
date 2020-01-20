@@ -28,7 +28,6 @@ import './payment.scss';
 
 class Payment extends React.Component {
   state = {
-    paymentMethod: 'Direct Bank Transfer',
     getRef: ''
   };
   handleDirectBankTransfer = () => {
