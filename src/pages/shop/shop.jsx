@@ -75,15 +75,7 @@ class ShopPage extends React.Component {
   }
   render() {
     const { isLoading } = this.state;
-    const {
-      match,
-      makePaymentDetail
-      // toggleAddMakePayment,
-      // isHidden
-    } = this.props;
-    // if (makePaymentDetail.orderId) {
-    //   toggleAddMakePayment();
-    // }
+    const { match, makePaymentDetail } = this.props;
     return (
       <div className="shop-page">
         {makePaymentDetail.orderId ? <MakePayment /> : null}

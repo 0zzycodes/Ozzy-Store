@@ -6,6 +6,8 @@ import {
 const INITIAL_STATE = {
   hidden: true,
   cartItems: [],
+  discount: 0,
+  promo: 0,
   cartTotal: 0
 };
 
@@ -20,6 +22,16 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         cartItems: addItemToCart(state.cartItems, action.payload)
+      };
+    case CartActionTypes.ADD_DISCOUNT:
+      return {
+        ...state,
+        cartTotal: action.payload
+      };
+    case CartActionTypes.ADD_PROMO:
+      return {
+        ...state,
+        cartTotal: action.payload
       };
     case CartActionTypes.ADD_CART_TOTAL:
       return {

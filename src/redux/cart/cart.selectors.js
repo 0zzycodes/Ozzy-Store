@@ -12,6 +12,14 @@ export const selectCartTotalCost = createSelector(
   [selectCart],
   cartTotal => cartTotal.cartTotal
 );
+export const selectDiscount = createSelector(
+  [selectCart],
+  discount => discount.discount
+);
+export const selectPromo = createSelector(
+  [selectCart],
+  promo => promo.promo
+);
 
 export const selectCartHidden = createSelector(
   [selectCart],

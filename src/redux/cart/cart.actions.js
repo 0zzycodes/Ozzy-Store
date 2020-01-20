@@ -7,6 +7,14 @@ export const addItem = item => ({
   type: CartActionTypes.ADD_ITEM,
   payload: item
 });
+export const addDiscount = item => ({
+  type: CartActionTypes.ADD_DISCOUNT,
+  payload: item
+});
+export const addPromo = item => ({
+  type: CartActionTypes.ADD_PROMO,
+  payload: item
+});
 export const addCartTotal = item => ({
   type: CartActionTypes.ADD_CART_TOTAL,
   payload: item

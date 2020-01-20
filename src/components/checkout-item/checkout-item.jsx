@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import remove from '../../assets/remove.svg';
 import {
   clearItemFromCart,
@@ -7,7 +8,7 @@ import {
   removeItem
 } from '../../redux/cart/cart.actions';
 import './checkout-item.scss';
-const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
+const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem, match }) => {
   const { name, imageUrl, size, quantity, sale } = cartItem;
   return (
     <div className="checkout-item">
@@ -17,23 +18,29 @@ const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
         </div>
         <p className="name">{name}</p>
         <p className="quantity">
-          <span className="ctrl add" onClick={() => addItem(cartItem)}>
-            +
-          </span>{' '}
-          {quantity}{' '}
-          <span className="ctrl reduce" onClick={() => removeItem(cartItem)}>
-            -
-          </span>
+          {match.path === '/payment' ? null : (
+            <span className="ctrl add" onClick={() => addItem(cartItem)}>
+              +
+            </span>
+          )}
+          {quantity}
+          {match.path === '/payment' ? null : (
+            <span className="ctrl reduce" onClick={() => removeItem(cartItem)}>
+              -
+            </span>
+          )}
         </p>
       </div>
       <p>{size}</p>
       <p className="price">₦{sale * quantity}</p>
-      <img
-        src={remove}
-        alt="Remove Button"
-        onClick={() => clearItem(cartItem)}
-        className="remove-btn"
-      />
+      {match.path === '/payment' ? null : (
+        <img
+          src={remove}
+          alt="Remove Button"
+          onClick={() => clearItem(cartItem)}
+          className="remove-btn"
+        />
+      )}
     </div>
   );
 };
@@ -44,4 +51,4 @@ const mapDispatchToProps = dispatch => ({
   removeItem: item => dispatch(removeItem(item))
 });
 
-export default connect(null, mapDispatchToProps)(CheckoutItem);
+export default withRouter(connect(null, mapDispatchToProps)(CheckoutItem));

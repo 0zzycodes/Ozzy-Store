@@ -1,16 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom'
 import {
   selectShippingDetail,
   selectCity
 } from '../../redux/shipping/shipping.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
-import { addCartTotal } from '../../redux/cart/cart.actions';
+import {
+  addCartTotal,
+  addDiscount,
+  addPromo
+} from '../../redux/cart/cart.actions';
 import { createStructuredSelector } from 'reselect';
 import { GenerateId } from '../../utils/id-generator';
 import {
   selectCartItems,
   selectCartItemsCount,
+  selectDiscount,
+  selectPromo,
   selectCartTotal
 } from '../../redux/cart/cart.selectors';
 import './payment-page.scss';
@@ -20,31 +27,38 @@ class PaymentPage extends React.Component {
   state = {
     orderId: `${GenerateId()}`,
     discount: 0,
-    promo: '',
+    promoCode: '',
     price:
       this.props.enterdCity.toLowerCase() !== 'ibadan'
         ? this.props.total + 200
-        : this.props.total
+        : this.props.total,
+    isPromoAplied: false
   };
 
   handleChange = e => {
     const { name, value } = e.target;
-    this.setState({ [name]: value, isSuccess: false });
+    this.setState({ [name]: value });
   };
   handleSubmit = e => {
     e.preventDefault();
     let qty = this.props.itemCount;
-    if (this.state.promo.toLowerCase() === 'rmd200') {
+    if (this.state.promoCode.toLowerCase() === 'rmd200') {
       const calc = 200 * qty;
       const afterPromo = this.state.price - calc;
-      this.setState({ discount: calc, promo: '', price: afterPromo }, () =>
-        this.props.addCartTotal(this.state.price)
+      this.setState(
+        {
+          discount: calc,
+          promoCode: '',
+          price: afterPromo,
+          isPromoAplied: true
+        },
+        () => this.props.addCartTotal(this.state.price)
       );
     }
   };
 
   render() {
-    const { cartItems, currentUser, shippingDetails } = this.props;
+    const { cartItems, currentUser, shippingDetails, match } = this.props;
     const { firstName, address, city, country, phone, email } = shippingDetails;
     const detail = {
       name: firstName,
@@ -54,7 +68,8 @@ class PaymentPage extends React.Component {
       email,
       phone
     };
-
+    console.log(match.path);
+    
     const { price } = this.state;
     return (
       <div className="payment-page container">
@@ -70,17 +85,19 @@ class PaymentPage extends React.Component {
             handleShowPaid={this.handleShowPaid}
           />
         </div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            name="promo"
-            value={this.state.promo}
-            placeholder="Enter Promo Code"
-            className="form-input"
-            onChange={this.handleChange}
-          />
-          <button className="btn">Apply</button>
-        </form>
+        {this.state.isPromoAplied ? null : (
+          <form onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              name="promoCode"
+              value={this.state.promoCode}
+              placeholder="Enter Promo Code"
+              className="form-input"
+              onChange={this.handleChange}
+            />
+            <button className="btn">Apply</button>
+          </form>
+        )}
         <div className="product-summary">
           {cartItems.map(cartItem => (
             <CheckoutItem key={cartItem.id} cartItem={cartItem} />
@@ -88,13 +105,13 @@ class PaymentPage extends React.Component {
           <div className="subtotal">
             <h6>Subtotal</h6> <p>₦{this.props.total}</p>
           </div>
+          <div className="subtotal">
+            <h6>Promo</h6>
+            <p>-₦{this.state.discount}</p>
+          </div>
           <div className="shipping">
             <h6>Shipping</h6>
             <p>{city.toLowerCase() !== 'ibadan' ? `+₦${200}` : 'Free'}</p>
-          </div>
-          <div className="shipping">
-            <h6>Promo</h6>
-            <p>-₦{this.state.discount}</p>
           </div>
           <div className="total">
             <h3>Total</h3> <span>₦{price}</span>
@@ -109,12 +126,15 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
   cartItems: selectCartItems,
   itemCount: selectCartItemsCount,
+  discount: selectDiscount,
+  promo: selectPromo,
   total: selectCartTotal,
   shippingDetails: selectShippingDetail,
   enterdCity: selectCity
 });
 const mapDispatchToProps = dispatch => ({
-  addCartTotal: total => dispatch(addCartTotal(total))
+  addCartTotal: total => dispatch(addCartTotal(total)),
+  addDiscount: total => dispatch(addDiscount(total)),
+  addPromo: total => dispatch(addPromo(total))
 });
-
-export default connect(mapStateToProps, mapDispatchToProps)(PaymentPage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PaymentPage));
