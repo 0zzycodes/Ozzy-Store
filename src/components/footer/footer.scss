@@ -22,7 +22,6 @@ $secondaryColor: #ffffff;
         grid-gap: auto;
         grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
         padding: 20px 5%;
-        // align-items: baseline;
         border-bottom: 1px solid darken($color: $secondaryColor, $amount: 95);
 
         p {

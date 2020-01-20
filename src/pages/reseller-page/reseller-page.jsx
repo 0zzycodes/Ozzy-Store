@@ -38,7 +38,7 @@ const ResellerPage = () => {
       </div>
       <br />
       <br />
-      <h3>ONLINE BULK ORDER IS COMMING SOON</h3>
+      <h3>ONLINE BULK ORDER IS COMING SOON</h3>
     </div>
   );
 };
