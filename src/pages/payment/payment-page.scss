@@ -83,11 +83,18 @@ $secondaryColor: #ffffff;
       cursor: pointer;
       display: flex;
       justify-content: center;
+      align-items: center;
 
       &:hover {
         background-color: transparent;
         color: $primaryColor;
         border: 1px solid $primaryColor;
+      }
+
+      img {
+        height: 20px;
+        width: 20px;
+        margin-left: 10px;
       }
     }
   }

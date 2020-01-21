@@ -20,9 +20,10 @@ import {
   selectPromo,
   selectCartTotal
 } from '../../redux/cart/cart.selectors';
-import './payment-page.scss';
 import CheckoutItem from '../../components/checkout-item/checkout-item';
 import Payment from '../../components/payment/payment';
+import loader from '../../assets/loader.gif';
+import './payment-page.scss';
 class PaymentPage extends React.Component {
   state = {
     orderId: `${GenerateId()}`,
@@ -33,7 +34,8 @@ class PaymentPage extends React.Component {
       this.props.enterdCity.toLowerCase() !== 'ibadan'
         ? this.props.total + 200
         : this.props.total,
-    isPromoAplied: false
+    isPromoAplied: false,
+    isLoading: false
   };
 
   handleChange = e => {
@@ -42,23 +44,36 @@ class PaymentPage extends React.Component {
   };
   handleSubmit = e => {
     e.preventDefault();
+    const promoCode = {
+      code: this.state.promoCode
+    };
     let qty = this.props.itemCount;
-    if (this.state.promoCode.toLowerCase() === 'rmd200') {
-      const calc = 200 * qty;
-      const afterPromo = this.state.price - calc;
-      this.setState(
-        {
-          discount: calc,
-          promoCode: '',
-          price: afterPromo,
-          isPromoAplied: true
-        },
-        () => {
-          this.props.addCartTotal(this.state.price);
-          this.props.addPromo(calc);
-        }
-      );
-    }
+    this.setState({ isLoading: true });
+    fetch('https://ozzystore-backend.herokuapp.com/usepromo', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(promoCode)
+    })
+      .then(response => response.json())
+      .then(response => {
+        const calc = 200 * qty;
+        const afterPromo = this.state.price - calc;
+        this.setState(
+          {
+            discount: calc,
+            promoCode: '',
+            price: afterPromo,
+            isPromoAplied: true,
+            isLoading: false
+          },
+          () => {
+            this.props.addCartTotal(this.state.price);
+            this.props.addPromo(calc);
+          }
+        );
+      });
   };
 
   render() {
@@ -101,7 +116,10 @@ class PaymentPage extends React.Component {
               className="form-input"
               onChange={this.handleChange}
             />
-            <button className="btn">Apply</button>
+            <button className="btn">
+              <span>Apply</span>
+              {this.state.isLoading? <img src={loader} alt="loader" />: null}
+            </button>
           </form>
         )}
         <div className="product-summary">

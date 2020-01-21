@@ -112,7 +112,7 @@ class SingleProduct extends React.Component {
               {category === 'hoodies' ? (
                 <ul>
                   <li>Pullover hoodie</li>
-                  <li>50% Polyester 46% Cotton 4% Rayon</li>
+                  <li>92% Polyester, 8% Spandex Blend ( Elastane)</li>
                   <li>Unisex</li>
                   <li>Front pouch pocket</li>
                   <li> High quality very comfortable style Hoodie.</li>
@@ -160,10 +160,9 @@ class SingleProduct extends React.Component {
                   your size accordingly.
                   <br />
                   <br />
-                  The precise color of the items may vary depending on the
-                  specific monitor, the settings and the lighting conditions.
-                  The items colors depicted should only be used as an
-                  approximate guide.
+                  every device displays colours differently and we cannot
+                  guarantee that the colours you see on your screen match the
+                  colour of actual item.
                 </p>
               ) : null}
             </div>
