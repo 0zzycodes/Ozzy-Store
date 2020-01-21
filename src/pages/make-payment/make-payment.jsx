@@ -7,7 +7,7 @@ import { addMakePayment } from '../../redux/payment-details/payment-detail.actio
 import remove from '../../assets/remove.svg';
 import './make-payment.scss';
 const MakePayment = ({ makePaymentDetail, addMakePayment }) => {
-  const { orderId, total } = makePaymentDetail;
+  const { orderId, total, paymentMethod } = makePaymentDetail;
   const handleAddMakePayment = () => {
     const pay = {
       orderId: '',
@@ -22,6 +22,7 @@ const MakePayment = ({ makePaymentDetail, addMakePayment }) => {
         <img src={remove} alt="Close Button" onClick={handleAddMakePayment} />
         <h6>Thank you. Your order has been received.</h6>
         <br />
+
         <ul>
           <li>
             <h6>ORDER ID:</h6>
@@ -37,23 +38,25 @@ const MakePayment = ({ makePaymentDetail, addMakePayment }) => {
           </li>
           <li>
             <h6>PAYMENT METHOD:</h6>
-            <strong>Direct Transfer</strong>
+            <strong>{paymentMethod}</strong>
           </li>
         </ul>
-        <div className="our-bank-detail">
-          <h2>BANK DETAIL</h2>
-          <h3>REMEDI CLOTHING</h3>
-          <ul>
-            <li>
-              <h6>BANK:</h6>
-              <strong>Guaranty Trust Bank</strong>
-            </li>
-            <li>
-              <h6>ACCOUNT NUMBER:</h6>
-              <strong>1620207873</strong>
-            </li>
-          </ul>
-        </div>
+        {paymentMethod === 'Direct Bank Transfer' ? (
+          <div className="our-bank-detail">
+            <h2>BANK DETAIL</h2>
+            <h3>REMEDI CLOTHING</h3>
+            <ul>
+              <li>
+                <h6>BANK:</h6>
+                <strong>Guaranty Trust Bank</strong>
+              </li>
+              <li>
+                <h6>ACCOUNT NUMBER:</h6>
+                <strong>1620207873</strong>
+              </li>
+            </ul>
+          </div>
+        ) : null}
       </div>
     </div>
   );

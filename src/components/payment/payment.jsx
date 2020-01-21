@@ -108,14 +108,16 @@ class Payment extends React.Component {
       };
       PostFetch(commonUrl, orderMessageToSend);
       PostFetch(orderUrl, messageToSend);
-      resetC([]);
-      this.props.addCartTotal(0);
-    } else if (this.props.paymentMethod === 'Direct Bank Transfer') {
       const pay = {
         orderId: getReference,
-        total: totalCost
+        total: totalCost,
+        paymentMethod: 'Card'
       };
       this.props.addMakePayment(pay);
+      this.props.addCartTotal(0);
+      resetC([]);
+    } else if (this.props.paymentMethod === 'Direct Bank Transfer') {
+      
       const messageHtml = structureMessage(orderMessage);
       const ordermessageHtml = structureOrderMessage(
         commonMessage,
@@ -134,15 +136,18 @@ class Payment extends React.Component {
       };
       PostFetch(commonUrl, orderMessageToSend);
       PostFetch(orderUrl, messageToSend);
+      const pay = {
+        orderId: getReference,
+        total: totalCost,
+        paymentMethod: 'Direct Bank Transfer'
+      };
+      this.props.addMakePayment(pay);
       resetC([]);
       this.props.addCartTotal(0);
     }
   };
   render() {
-    // const { paymentMethod } = this.state;
     const { getReference, resetCart, paymentMethod, totalCost } = this.props;
-    console.log(totalCost);
-
     return (
       <div className="payment">
         <h3 className="title">Payment Methods</h3>
