@@ -106,7 +106,7 @@ export const structureOrderMessage = (common, info) => {
             </table>
             <table style={{ padding: '15px 30px' }}>
               <tr style={{ fontSize: '18px', color: 'red' }}>
-                REMEDI CLOTHING
+              Salami Monsurat Ayojimi
               </tr>
               <br />
               <tr>
@@ -118,7 +118,7 @@ export const structureOrderMessage = (common, info) => {
                   }}
                 >
                   BANK: <br /> <br />{' '}
-                  <strong style={strong}>Guaranty Trust Bank</strong>
+                  <strong style={strong}>First Bank</strong>
                 </td>
                 <td
                   style={{
@@ -128,7 +128,7 @@ export const structureOrderMessage = (common, info) => {
                   }}
                 >
                   ACCOUNT NUMBER: <br /> <br />{' '}
-                  <strong style={strong}>12345678</strong>
+                  <strong style={strong}>3126607454</strong>
                 </td>
               </tr>
             </table>

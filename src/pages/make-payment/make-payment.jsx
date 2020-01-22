@@ -44,15 +44,15 @@ const MakePayment = ({ makePaymentDetail, addMakePayment }) => {
         {paymentMethod === 'Direct Bank Transfer' ? (
           <div className="our-bank-detail">
             <h2>BANK DETAIL</h2>
-            <h3>REMEDI CLOTHING</h3>
+            <h3>Salami Monsurat Ayojimi</h3>
             <ul>
               <li>
                 <h6>BANK:</h6>
-                <strong>Guaranty Trust Bank</strong>
+                <strong>First Bank</strong>
               </li>
               <li>
                 <h6>ACCOUNT NUMBER:</h6>
-                <strong>1620207873</strong>
+                <strong>3126607454</strong>
               </li>
             </ul>
           </div>

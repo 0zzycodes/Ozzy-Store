@@ -106,11 +106,20 @@ $secondaryColor: #000000;
               @include shrinkLabel();
             }
           }
+
+          button {
+            img {
+              height: 20px;
+              width: 20px;
+              margin-left: 10px;
+            }
+          }
         }
       }
     }
 
     .contact-info {
+      margin-top: 20px;
       padding: 20px;
       flex: 4;
 

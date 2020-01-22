@@ -24,6 +24,7 @@ $secondaryColor: #ffffff;
   .product-details {
     display: flex;
     // max-width: 80%;
+    min-height: 100vh;
     margin: auto;
 
     @include tablet() {
@@ -40,7 +41,7 @@ $secondaryColor: #ffffff;
     }
 
     .right {
-      padding: 30px;
+      padding: 0 30px;
 
       @include tablet() {
         padding: 30px 0px;

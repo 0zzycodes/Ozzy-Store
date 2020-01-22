@@ -1,7 +1,8 @@
 import React from 'react';
+import { Email, renderEmail } from 'react-html-email';
 import FormInput from '../../components/form-input/form-input';
 import CustomButton from '../../components/custom-button/custom-button';
-// import emailLogo from '../../assets/emailLogo.svg';
+import loader from '../../assets/loader.gif';
 import './contact.scss';
 
 export default class Contact extends React.Component {
@@ -12,7 +13,8 @@ export default class Contact extends React.Component {
       lastName: '',
       email: '',
       comment: '',
-      isSuccess: false
+      isSuccess: false,
+      isLoading: false
     };
   }
   handleChange = e => {
@@ -22,12 +24,36 @@ export default class Contact extends React.Component {
   handleSubmit = async e => {
     e.preventDefault();
     const { firstName, lastName, email, comment } = this.state;
+    this.setState({ isLoading: true });
+    const textStyled = renderEmail(
+      <Email title="Contact From Remedi Clothing Online">
+        <div style={{ padding: '15px' }}>
+          <table style={{ width: '100%', textAlign: 'center' }}>
+            <tr>
+              <img src="https://i.ibb.co/XZnTp2c/REMEDII.png" alt="Logo" />
+            </tr>
+          </table>
+          <br />
+          <br />
+          <table style={{ padding: '0px 15px' }}>
+            <tr>from: {firstName}</tr>
+          </table>
+          <br />
+          <table style={{ padding: '15px' }}>
+            <tr>
+              {comment} <br /> <br />
+              Email: {email}
+            </tr>
+          </table>
+        </div>
+      </Email>
+    );
     const message = {
       firstName: firstName,
       lastName: lastName,
       email: email,
-      subject: 'Contact From Ozzy Store',
-      text: comment
+      subject: 'Contact From Remedi Clothing Online',
+      html: textStyled
     };
     fetch('https://ozzystore-backend.herokuapp.com/sendmail', {
       method: 'post',
@@ -38,14 +64,15 @@ export default class Contact extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
-        this.setState({ isSuccess: true });
+        this.setState({ isLoading: false, isSuccess: true }, () =>
+          this.setState({
+            firstName: '',
+            lastName: '',
+            email: '',
+            comment: ''
+          })
+        );
       });
-    this.setState({
-      firstName: '',
-      lastName: '',
-      email: '',
-      comment: ''
-    });
   };
   render() {
     const { firstName, lastName, email, comment, isSuccess } = this.state;
@@ -107,7 +134,12 @@ export default class Contact extends React.Component {
                     Write your message.
                   </label>
                 </div>
-                <CustomButton>SEND MESSAGE</CustomButton>
+                <CustomButton>
+                  SEND MESSAGE{' '}
+                  {this.state.isLoading ? (
+                    <img src={loader} alt="loader" />
+                  ) : null}
+                </CustomButton>
               </form>
             </div>
             <div className="contact-info">
@@ -133,7 +165,9 @@ export default class Contact extends React.Component {
                     <span className="key-title">Email:</span>
                     <br />
                     <br />
-                    <span className="val">ozzystore@gmail.com</span>
+                    <span className="val">
+                      officialremediclothing@gmail.com
+                    </span>
                   </li>
                 </ul>
               </div>

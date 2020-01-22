@@ -117,7 +117,6 @@ class Payment extends React.Component {
       this.props.addCartTotal(0);
       resetC([]);
     } else if (this.props.paymentMethod === 'Direct Bank Transfer') {
-      
       const messageHtml = structureMessage(orderMessage);
       const ordermessageHtml = structureOrderMessage(
         commonMessage,
@@ -147,7 +146,7 @@ class Payment extends React.Component {
     }
   };
   render() {
-    const { getReference, resetCart, paymentMethod, totalCost } = this.props;
+    const { getReference, resetCart, paymentMethod } = this.props;
     return (
       <div className="payment">
         <h3 className="title">Payment Methods</h3>
@@ -178,7 +177,7 @@ class Payment extends React.Component {
           id="pay-with-card"
           className={`${
             paymentMethod === 'Pay With Paystack' ? 'selected' : 'not-selected'
-          } box`}
+          } box disable`}
           onClick={this.handlePayWithPaystack}
         >
           <span className="radio">

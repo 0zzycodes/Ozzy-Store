@@ -5,6 +5,9 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import { addItem } from '../../redux/cart/cart.actions';
 import CustomButton from '../custom-button/custom-button';
+import Related from '../related/related';
+import { createStructuredSelector } from 'reselect';
+import { selectCollectionsForPreview } from '../../redux/shop/shop.selector';
 import './single-product.scss';
 class SingleProduct extends React.Component {
   state = {
@@ -112,15 +115,22 @@ class SingleProduct extends React.Component {
               {category === 'hoodies' ? (
                 <ul>
                   <li>Pullover hoodie</li>
-                  <li>92% Polyester, 8% Spandex Blend ( Elastane)</li>
+                  {name.includes('Black Hoodie') ? (
+                    <li>
+                      87% Polyester, 8% Spandex Blend ( Elastane), 5% Cotton
+                    </li>
+                  ) : (
+                    <li>92% Polyester, 8% Spandex Blend ( Elastane)</li>
+                  )}
+
                   <li>Unisex</li>
                   <li>Front pouch pocket</li>
-                  <li> High quality very comfortable style Hoodie.</li>
+                  <li>High quality very comfortable style Hoodie.</li>
                 </ul>
               ) : category === 'tees' ? (
                 <ul>
                   <li>Super soft tubular t-shirt</li>
-                  <li>52% Cotton / 48% Polyester</li>
+                  <li>95% Polyester, 8% Spandex Blend ( Elastane)</li>
                   <li>Unisex</li>
                   <li> High quality.</li>
                 </ul>
@@ -168,12 +178,22 @@ class SingleProduct extends React.Component {
             </div>
           </div>
         </div>
+        {this.props.collections.map((item, index) =>
+          item.title === category ? (
+            <Related key={item.id} product={name} products={item.items} />
+          ) : null
+        )}
       </div>
     );
   }
 }
+const mapStateToProps = createStructuredSelector({
+  collections: selectCollectionsForPreview
+});
 const mapDispatchToProps = dispatch => ({
   addItem: item => dispatch(addItem(item))
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(SingleProduct));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(SingleProduct)
+);

@@ -2,15 +2,15 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-
 const firebaseConfig = {
-  apiKey: 'AIzaSyAdsqcr6cmf2rTwfwGj7Iqp9fitexhew-0',
-  authDomain: 'crwn-clothing-e7753.firebaseapp.com',
-  databaseURL: 'https://crwn-clothing-e7753.firebaseio.com',
-  projectId: 'crwn-clothing-e7753',
-  storageBucket: '',
-  messagingSenderId: '437956065968',
-  appId: '1:437956065968:web:8caf9b1046642af6'
+  apiKey: 'AIzaSyBfDAO2wKANNUfLRU-e-sP8XKCrXBgyJdw',
+  authDomain: 'remedi-clothing.firebaseapp.com',
+  databaseURL: 'https://remedi-clothing.firebaseio.com',
+  projectId: 'remedi-clothing',
+  storageBucket: 'remedi-clothing.appspot.com',
+  messagingSenderId: '873842050532',
+  appId: '1:873842050532:web:2449a71520a76c302233f1',
+  measurementId: 'G-9ZVJLLP1N7'
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -23,10 +23,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   const snapShot = await userRef.get();
 
   if (!snapShot.exists) {
-    const {
-      displayName,
-      email
-    } = userAuth;
+    const { displayName, email } = userAuth;
     const createdAt = new Date();
     try {
       await userRef.set({
@@ -60,11 +57,7 @@ export const addCollectionAndDocuments = async (
 
 export const convertCollectionsSnapshotToMap = collections => {
   const transformedCollection = collections.map(doc => {
-    const {
-      title,
-      items,
-      id
-    } = doc
+    const { title, items, id } = doc;
     const objToReturn = {
       routeName: encodeURI(title.toLowerCase()),
       id,
@@ -72,7 +65,7 @@ export const convertCollectionsSnapshotToMap = collections => {
       items
     };
 
-    return objToReturn
+    return objToReturn;
   });
 
   return transformedCollection.reduce((accumulator, collection) => {

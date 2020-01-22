@@ -48,8 +48,11 @@ class ShopPage extends React.Component {
         tees = [],
         accessories = [];
       snapshot.docs.forEach(doc => {
-        doc.data().id = doc.id;
-        switch (doc.data().category) {
+        const { category } = doc.data();
+        const { id } = doc;
+
+        doc.data().id = id;
+        switch (category) {
           case 'hoodies':
             hoodies.push(doc.data());
             hoodiesColl.items = hoodies;

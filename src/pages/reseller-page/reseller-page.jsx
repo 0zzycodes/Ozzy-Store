@@ -3,15 +3,15 @@ import './reseller-page.scss';
 const ResellerPage = () => {
   return (
     <div className="reseller-page">
-      <h3>Remedi Reseller Plan</h3>
+      <h3>Remedi Wholesale Program</h3>
       <div className="block">
-        <h4>What Is The Remedi Reseller Plan?</h4>
+        <h4>What Is The Remedi Wholesale Program?</h4>
         <p>
           It is with profound pleasure that we welcome your decision to become a
           registered Reseller for Remedi products. Ours is a fashion brand a lot
           of people are eager to be associated with, both in terms of usage and
           the rewarding entrepreneurial benefits that come with being a
-          reseller. Our Reseller Plan is such that encourages people at all
+          reseller. Our Wholesale Program is such that encourages people at all
           levels of business to transact with us, so whether or not you have an
           established physical or online fashion store, you can purchase our
           products at wholesale prices. Arguably one of Africa’s up-comming
@@ -22,7 +22,7 @@ const ResellerPage = () => {
         </p>
       </div>
       <div className="block">
-        <h4>What Are the Benefits Of Joining The Remedi Reseller Plan?</h4>
+        <h4>What Are the Benefits Of Joining The Remedi Wholesale Program?</h4>
         <ul>
           <li>Inexpensive wholesale pricing</li>
           <li>Convenient online wholesale order placement</li>
