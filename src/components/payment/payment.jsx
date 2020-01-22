@@ -140,8 +140,8 @@ class Payment extends React.Component {
         total: totalCost,
         paymentMethod: 'Direct Bank Transfer'
       };
-      this.props.addMakePayment(pay);
       resetC([]);
+      this.props.addMakePayment(pay);
       this.props.addCartTotal(0);
     }
   };
@@ -178,7 +178,7 @@ class Payment extends React.Component {
           className={`${
             paymentMethod === 'Pay With Paystack' ? 'selected' : 'not-selected'
           } box disable`}
-          onClick={this.handlePayWithPaystack}
+          // onClick={this.handlePayWithPaystack}
         >
           <span className="radio">
             <span></span>
