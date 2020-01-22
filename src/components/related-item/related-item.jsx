@@ -1,18 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { addItem } from '../../redux/cart/cart.actions';
-import SelectSize from '../select-size/select-size';
-import addCart from '../../assets/addCart.svg';
 
 import './related-item.scss';
 
-const RelatedItem = ({ item, addItem, history, match }) => {
+const RelatedItem = ({ item, history }) => {
   const { category, name, stock, sale, price, imageUrl } = item;
-  const [isShow, setisShow] = useState(false);
-  const handleSelectSize = () => {
-    setisShow(!isShow);
-  };
   return (
     <div className="related-item">
       <div className="img-container">
@@ -31,8 +25,6 @@ const RelatedItem = ({ item, addItem, history, match }) => {
         >
           {name.toUpperCase()}
         </h5>
-        {/* <StarRating smaller numberOfStars="5" currentRating={rating} /> */}
-
         <div className="prices">
           {sale === price ? null : (
             <span className="sales-price price">₦{sale}</span>
@@ -49,18 +41,6 @@ const RelatedItem = ({ item, addItem, history, match }) => {
           </span>
         </div>
       </div>
-
-      {/* {isShow ? (
-        <SelectSize
-          className="small"
-          handleSelectSize={handleSelectSize}
-          item={item}
-        />
-      ) : stock === 0 ? null : (
-        <button onClick={handleSelectSize} className="add-btn">
-          <img src={addCart} alt="Cart Icon" /> +
-        </button>
-      )} */}
     </div>
   );
 };

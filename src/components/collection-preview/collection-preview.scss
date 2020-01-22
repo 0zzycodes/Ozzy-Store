@@ -1,4 +1,4 @@
-$tablet: 850px;
+$tablet: 750px;
 $smartphone: 600px;
 $primaryColor: #000000;
 $secondaryColor: #ffffff;
@@ -54,8 +54,8 @@ $secondaryColor: #ffffff;
     grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
     justify-items: center;
 
-    // @include smartphone() {
-    //   grid-template-columns: repeat(2, 1fr);
-    // }
+    @include tablet() {
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    }
   }
 }

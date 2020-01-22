@@ -29,6 +29,11 @@ $secondaryColor: #ffffff;
   margin-bottom: 30px;
   overflow: hidden;
 
+  @include tablet() {
+    width: 200px;
+    min-height: 300px;
+  }
+
   &:hover {
     cursor: pointer;
 
@@ -43,6 +48,10 @@ $secondaryColor: #ffffff;
     overflow: hidden;
     position: relative;
     cursor: pointer;
+
+    @include tablet() {
+      height: 250px;
+    }
 
     .sold-out {
       position: absolute;
@@ -73,6 +82,11 @@ $secondaryColor: #ffffff;
       background-size: cover;
       background-position: center;
       margin-bottom: 5px;
+
+      @include tablet() {
+        width: 200px;
+        height: 250px;
+      }
     }
   }
 
