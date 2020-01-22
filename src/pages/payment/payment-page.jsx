@@ -28,11 +28,11 @@ class PaymentPage extends React.Component {
   state = {
     orderId: `${GenerateId()}`,
     discount: 0,
-    shippingFee: this.props.enterdCity.toLowerCase() !== 'ibadan' ? 200 : 0,
+    shippingFee: this.props.enterdCity.toLowerCase() !== 'ibadan' ? 300 : 0,
     promoCode: '',
     price:
       this.props.enterdCity.toLowerCase() !== 'ibadan'
-        ? this.props.total + 200
+        ? this.props.total + 300
         : this.props.total,
     isPromoAplied: false,
     isLoading: false
@@ -58,7 +58,7 @@ class PaymentPage extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
-        const calc = 200 * qty;
+        const calc = 300 * qty;
         const afterPromo = this.state.price - calc;
         this.setState(
           {
@@ -135,7 +135,7 @@ class PaymentPage extends React.Component {
           </div>
           <div className="shipping">
             <h6>Shipping</h6>
-            <p>{city.toLowerCase() !== 'ibadan' ? `+₦${200}` : 'Free'}</p>
+            <p>{city.toLowerCase() !== 'ibadan' ? `+₦${300}` : 'Free'}</p>
           </div>
           <div className="total">
             <h3>Total</h3> <span>₦{price}</span>

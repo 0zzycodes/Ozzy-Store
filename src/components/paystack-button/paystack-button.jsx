@@ -24,7 +24,7 @@ const PaystackCheckoutkButton = ({
 }) => {
   const newCartTotal =
     enterdCity.toLowerCase() !== 'ibadan'
-      ? cartTotal - promo + 200
+      ? cartTotal - promo + 300
       : cartTotal - promo;
   const obj = {
     key: 'pk_test_3211d1f3f7d23a949f1971a99ca99a083d4fc0c5',
