@@ -23,17 +23,47 @@ $secondaryColor: #ffffff;
     .prev-address {
         width: 50vw;
         padding: 40px;
+        margin: auto;
         margin-top: 60px;
         border: 1px solid $primaryColor;
 
         @include tablet() {
-            width: 100%;
-            padding: 0px 40px;
+            width: 90%;
+            padding: 30px 40px;
             margin-top: 60px
+        }
+
+        h5 {
+            font-weight: 500;
         }
 
         .add {
             padding: 10px;
+
+            .btn {
+                // max-width: 165px;
+                width: auto;
+                height: 40px;
+                letter-spacing: 0.5px;
+                line-height: 40px;
+                padding: 0 20px;
+                font-size: 13px;
+                background-color: $primaryColor;
+                color: $secondaryColor;
+                text-transform: uppercase;
+                font-weight: bolder;
+                border: 1px solid $primaryColor;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                float: left;
+
+                &:hover {
+                    background-color: transparent;
+                    color: $primaryColor;
+                    border: 1px solid $primaryColor;
+                }
+            }
         }
 
     }

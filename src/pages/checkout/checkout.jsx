@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import {
   selectCartItems,
@@ -29,6 +30,10 @@ const Checkout = ({ cartItems, total, shippingDetails }) => {
               <p>
                 <span>Email:</span> {shippingDetails.email}
               </p>
+              <br />
+              <Link to="/payment">
+                <button className="btn">Place Order</button>
+              </Link>
             </div>
           </div>
         ) : null}
