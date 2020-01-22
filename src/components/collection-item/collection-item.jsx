@@ -7,7 +7,7 @@ import { addItem } from '../../redux/cart/cart.actions';
 import './collection-item.scss';
 import SelectSize from '../select-size/select-size';
 
-const CollectionItem = ({ item, addItem, history, match }) => {
+const CollectionItem = ({ item, history }) => {
   const { category, name, stock, sale, price, imageUrl } = item;
   const [isShow, setisShow] = useState(false);
   const handleSelectSize = () => {
@@ -31,7 +31,7 @@ const CollectionItem = ({ item, addItem, history, match }) => {
         >
           {name.toUpperCase()}
         </h5>
-        {/* <StarRating smaller numberOfStars="5" currentRating={rating} /> */}
+        {/* <StarRating smaller numberOfStars="5" currentRating={rating} /> */} 
 
         <div className="prices">
           {sale === price ? null : (
