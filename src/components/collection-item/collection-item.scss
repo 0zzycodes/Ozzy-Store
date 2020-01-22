@@ -117,10 +117,10 @@ $secondaryColor: #ffffff;
       height: 16px;
     }
 
-    @include smartphone() {
-      visibility: visible;
-      opacity: 1;
-    }
+    // @include smartphone() {
+    //   visibility: visible;
+    //   opacity: 1;
+    // }
   }
 
   &:hover {
