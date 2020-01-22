@@ -58,7 +58,7 @@ class PaymentPage extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
-        const calc = 300 * qty;
+        const calc = 200 * qty;
         const afterPromo = this.state.price - calc;
         this.setState(
           {
@@ -118,7 +118,7 @@ class PaymentPage extends React.Component {
             />
             <button className="btn">
               <span>Apply</span>
-              {this.state.isLoading? <img src={loader} alt="loader" />: null}
+              {this.state.isLoading ? <img src={loader} alt="loader" /> : null}
             </button>
           </form>
         )}
