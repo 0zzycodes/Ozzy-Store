@@ -10,36 +10,28 @@ import CheckoutItem from '../../components/checkout-item/checkout-item';
 import { selectShippingDetail } from '../../redux/shipping/shipping.selectors';
 import ShippingForm from '../../components/shipping-form/shipping-form';
 const Checkout = ({ cartItems, total, shippingDetails }) => {
-  console.log(shippingDetails);
-  const {
-    firstName,
-    address,
-    phone,
-    email,
-    city,
-    region,
-    country
-  } = shippingDetails;
-
   return (
     <div className="checkout-page container">
       <div className="checkout-header">
-        <div className="prev-address">
-          <h5>{firstName}</h5>
-          <div className="add">
-            <p>
-              {address} <br />
-              {city}, {region}, {country}
-            </p>
-            <br />
-            <p>
-              <span>Phone:</span> {phone}
-            </p>
-            <p>
-              <span>Email:</span> {email}
-            </p>
+        {shippingDetails.firstName ? (
+          <div className="prev-address">
+            <h5>{shippingDetails.firstName}</h5>
+            <div className="add">
+              <p>
+                {shippingDetails.address} <br />
+                {shippingDetails.city}, {shippingDetails.region},{' '}
+                {shippingDetails.country}
+              </p>
+              <br />
+              <p>
+                <span>Phone:</span> {shippingDetails.phone}
+              </p>
+              <p>
+                <span>Email:</span> {shippingDetails.email}
+              </p>
+            </div>
           </div>
-        </div>
+        ) : null}
         <ShippingForm />
       </div>
       <div className="product-summary">
