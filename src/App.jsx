@@ -59,7 +59,7 @@ class App extends React.Component {
             .then(res => res.json())
             .then(res => {
               console.log();
-              if (res.country === 'Nigeria' || res.country === 'Malaysia') {
+              if (res.country === 'Nigeria' || res.country === 'Malaysia' || res.country === 'United State') {
                 this.setState({
                   isAvailableInYourCountry: !this.state
                     .isAvailableInYourCountry,
