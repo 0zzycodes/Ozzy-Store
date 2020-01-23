@@ -77,7 +77,7 @@ class PaymentPage extends React.Component {
   };
 
   render() {
-    const { cartItems, currentUser, shippingDetails, match } = this.props;
+    const { cartItems, currentUser, shippingDetails } = this.props;
     const { firstName, address, city, country, phone, email } = shippingDetails;
     const detail = {
       name: firstName,
@@ -87,8 +87,6 @@ class PaymentPage extends React.Component {
       email,
       phone
     };
-    console.log(match.path);
-
     const { price } = this.state;
     return (
       <div className="payment-page container">

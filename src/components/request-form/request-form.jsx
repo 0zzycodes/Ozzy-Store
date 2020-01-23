@@ -97,43 +97,47 @@ export default class RequestForm extends React.Component {
                   </span>
                 </span>
               ) : null}
-              <form onSubmit={this.handleSubmit}>
-                <h3>Tell Us Where Your're From</h3>
-                <FormInput
-                  required
-                  type="text"
-                  name="fullName"
-                  value={fullName}
-                  label="Full Name"
-                  onChange={this.handleChange}
-                />
-                <FormInput
-                  required
-                  type="email"
-                  name="email"
-                  value={email}
-                  label="Email"
-                  onChange={this.handleChange}
-                />
-                <CountryDropdown
-                  className="country-drop"
-                  value={country}
-                  onChange={val => this.selectCountry(val)}
-                />
-                <RegionDropdown
-                  className="region-drop"
-                  country={country}
-                  value={region}
-                  onChange={val => this.selectRegion(val)}
-                />
+              {isSuccess ? (
+                <h1>Thank You!</h1>
+              ) : (
+                <form onSubmit={this.handleSubmit}>
+                  <h3>Tell Us Where Your're From</h3>
+                  <FormInput
+                    required
+                    type="text"
+                    name="fullName"
+                    value={fullName}
+                    label="Full Name"
+                    onChange={this.handleChange}
+                  />
+                  <FormInput
+                    required
+                    type="email"
+                    name="email"
+                    value={email}
+                    label="Email"
+                    onChange={this.handleChange}
+                  />
+                  <CountryDropdown
+                    className="country-drop"
+                    value={country}
+                    onChange={val => this.selectCountry(val)}
+                  />
+                  <RegionDropdown
+                    className="region-drop"
+                    country={country}
+                    value={region}
+                    onChange={val => this.selectRegion(val)}
+                  />
 
-                <CustomButton>
-                  SEND
-                  {this.state.isLoading ? (
-                    <img src={loader} alt="loader" />
-                  ) : null}
-                </CustomButton>
-              </form>
+                  <CustomButton>
+                    SEND
+                    {this.state.isLoading ? (
+                      <img src={loader} alt="loader" />
+                    ) : null}
+                  </CustomButton>
+                </form>
+              )}
             </div>
           </div>
         </div>

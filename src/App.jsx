@@ -30,7 +30,7 @@ import loader from './assets/loader.gif';
 
 class App extends React.Component {
   state = {
-    isAvailableInYourCountry: false,
+    isAvailableInYourCountry: true,
     isLoading: true
   };
   unSubscribeFromAuth = null;

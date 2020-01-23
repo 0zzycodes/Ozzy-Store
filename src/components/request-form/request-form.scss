@@ -11,7 +11,7 @@ $secondaryColor: #000000;
 }
 
 .contain {
-  width: 440px;
+  max-width: 440px;
   display: flex;
   padding: 0 40px;
   margin: auto;
@@ -33,6 +33,10 @@ $secondaryColor: #000000;
       display: flex;
       padding: 20px;
       position: relative;
+
+      h1 {
+        margin: auto;
+      }
 
       .success {
         position: fixed;
