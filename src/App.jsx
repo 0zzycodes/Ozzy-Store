@@ -30,7 +30,7 @@ import loader from './assets/loader.gif';
 
 class App extends React.Component {
   state = {
-    isAvailableInYourCountry: true,
+    isAvailableInYourCountry: false,
     isLoading: true
   };
   unSubscribeFromAuth = null;
@@ -60,7 +60,7 @@ class App extends React.Component {
             .then(res => {
               console.log();
               if (res.country === 'Nigeria' || res.country === 'Malaysia') {
-                return this.setState({
+                this.setState({
                   isAvailableInYourCountry: !this.state
                     .isAvailableInYourCountry,
                   isLoading: !this.state.isLoading
