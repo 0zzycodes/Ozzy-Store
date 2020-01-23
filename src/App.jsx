@@ -60,7 +60,7 @@ class App extends React.Component {
             .then(res => {
               console.log();
               if (res.country === 'Nigeria' || res.country === 'Malaysia') {
-                this.setState({
+                return this.setState({
                   isAvailableInYourCountry: !this.state
                     .isAvailableInYourCountry,
                   isLoading: !this.state.isLoading
