@@ -28,7 +28,7 @@ class PaymentPage extends React.Component {
   state = {
     orderId: `${GenerateId()}`,
     discount: 0,
-    shippingFee: this.props.enterdCity.toLowerCase() !== 'ibadan' ? 1500 : 0,
+    shippingFee: this.props.enterdCity.toLowerCase() !== 'ibadan' ? 1500 : 500,
     promoCode: '',
     price:
       this.props.enterdCity.toLowerCase() !== 'ibadan'
