@@ -61,6 +61,12 @@ const Footer = ({ history, match }) => {
             <Link to="/contact" className="menu-link">
               Contact
             </Link>
+            <Link to="/reseller" className="menu-link">
+              Bulk Order
+            </Link>
+            <Link to="/referral" className="menu-link">
+              Referral Program
+            </Link>
           </div>
         </div>
         <CustomForm />

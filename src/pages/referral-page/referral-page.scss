@@ -1,0 +1,71 @@
+$smartphone-width: 600px;
+$primaryColor: #000000;
+$secondaryColor: #ffffff;
+
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone-width}) {
+    @content;
+  }
+}
+
+.referral-page {
+  width: 70%;
+  margin: auto;
+  color: #ffffff;
+  margin-top: 90px;
+  margin-bottom: 60px;
+  min-height: 100vh;
+
+  @include smartphone() {
+    width: 80%;
+  }
+
+  h3 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    letter-spacing: 3px;
+
+    @include smartphone() {
+      font-size: 19px;
+    }
+  }
+
+  .block {
+    h4 {
+      margin: 20px 0px;
+      font-weight: 700;
+
+      @include smartphone() {
+        font-size: 16px;
+      }
+    }
+
+    p {
+      font-size: 14px;
+      padding-left: 20px;
+      color: darken($color: $secondaryColor, $amount: 30);
+
+      @include smartphone() {
+        font-size: 12px;
+      }
+    }
+
+    ul {
+      padding-left: 30px;
+
+      li {
+        font-size: 14px;
+        color: darken($color: $secondaryColor, $amount: 30);
+        padding: 5px 0px;
+
+        @include smartphone() {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

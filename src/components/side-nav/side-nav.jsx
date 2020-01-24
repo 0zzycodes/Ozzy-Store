@@ -86,8 +86,8 @@ const SideNav = ({ currentUser, handleToggleSidebar, history, match }) => {
           <Link to="/reseller" className="option" onClick={handleToggleSidebar}>
             <CustomButton inverted>BULK ORDER</CustomButton>
           </Link>
-          <Link to="/checkout" className="option" onClick={handleToggleSidebar}>
-            <CustomButton inverted>Go To Checkout</CustomButton>
+          <Link to="/referral" className="option" onClick={handleToggleSidebar}>
+            <CustomButton inverted>Referral Program</CustomButton>
           </Link>
         </div>
       </div>

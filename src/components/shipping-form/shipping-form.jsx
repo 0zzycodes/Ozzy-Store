@@ -12,7 +12,10 @@ import {
   selectCartItems,
   selectCartTotal
 } from '../../redux/cart/cart.selectors';
-import { addShippingDetails, addCity } from '../../redux/shipping/shipping.actions';
+import {
+  addShippingDetails,
+  addCity
+} from '../../redux/shipping/shipping.actions';
 import FormInput from '../form-input/form-input';
 import CustomButton from '../custom-button/custom-button';
 
@@ -76,7 +79,10 @@ class ShippingForm extends Component {
     this.props.history.push(`/payment`);
   };
   componentDidMount() {
-    window.innerWidth <= 500
+    console.log(this.props);
+    this.props.collapse === 'collapse'
+      ? this.setState({ isShow: false })
+      : window.innerWidth <= 500
       ? this.setState({ isShow: !this.state.isShow })
       : this.setState({ isShow: !this.state.isShow });
   }

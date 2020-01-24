@@ -22,6 +22,7 @@ import { selectShippingDetail } from './redux/shipping/shipping.selectors';
 import Footer from './components/footer/footer';
 import CarePage from './pages/care/care-page';
 import ResellerPage from './pages/reseller-page/reseller-page';
+import ReferralPage from './pages/referral-page/referral-page';
 import PaymentPage from './pages/payment/payment-page';
 import UserPage from './pages/user/user-page';
 // import RequestForm from './components/request-form/request-form';
@@ -117,6 +118,7 @@ class App extends React.Component {
             <Route exact path="/current-user" component={UserPage} />
             <Route exact path="/care" component={CarePage} />
             <Route exact path="/reseller" component={ResellerPage} />
+            <Route exact path="/referral" component={ReferralPage} />
             <Route
               exact
               path="/signin"

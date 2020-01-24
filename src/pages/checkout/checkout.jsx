@@ -37,7 +37,7 @@ const Checkout = ({ cartItems, total, shippingDetails }) => {
             </div>
           </div>
         ) : null}
-        <ShippingForm />
+        <ShippingForm collapse={shippingDetails.firstName ? 'collapse': '!collapse'}/>
       </div>
       <div className="product-summary">
         {cartItems.map(cartItem => (
