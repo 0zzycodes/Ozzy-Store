@@ -24,7 +24,7 @@ import CarePage from './pages/care/care-page';
 import ResellerPage from './pages/reseller-page/reseller-page';
 import PaymentPage from './pages/payment/payment-page';
 import UserPage from './pages/user/user-page';
-import RequestForm from './components/request-form/request-form';
+// import RequestForm from './components/request-form/request-form';
 import loader from './assets/loader.gif';
 // import { selectCollectionsForPreview } from './redux/shop/shop.selector';
 
@@ -35,7 +35,7 @@ class App extends React.Component {
   };
   unSubscribeFromAuth = null;
   componentDidMount() {
-    const proxy = 'https://cors-anywhere.herokuapp.com/';
+    // const proxy = 'https://cors-anywhere.herokuapp.com/';
     const {
       setCurrentUser
       // collectionsArray
@@ -51,24 +51,27 @@ class App extends React.Component {
         });
       }
       setCurrentUser(userAuth);
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-          const lat = position.coords.latitude;
-          const long = position.coords.longitude;
-          fetch(`${proxy}https://geocode.xyz/${lat},${long}?json=1 `)
-            .then(res => res.json())
-            .then(res => {
-              console.log();
-              if (res.country === 'Nigeria' || res.country === 'Malaysia' || res.country === 'United State') {
-                this.setState({
-                  isAvailableInYourCountry: !this.state
-                    .isAvailableInYourCountry,
-                  isLoading: !this.state.isLoading
-                });
-              }
-            });
-        });
-      }
+      this.setState({
+        isLoading: false
+      });
+      // if (navigator.geolocation) {
+      //   navigator.geolocation.getCurrentPosition(position => {
+      //     const lat = position.coords.latitude;
+      //     const long = position.coords.longitude;
+      //     fetch(`${proxy}https://geocode.xyz/${lat},${long}?json=1 `)
+      //       .then(res => res.json())
+      //       .then(res => {
+      //         console.log();
+      //         if (res.country === 'Nigeria' || res.country === 'Malaysia' || res.country === 'United State') {
+      //           this.setState({
+      //             isAvailableInYourCountry: !this.state
+      //               .isAvailableInYourCountry,
+      //             isLoading: !this.state.isLoading
+      //           });
+      //         }
+      //       });
+      //   });
+      // }
       // addCollectionAndDocuments('collections', collectionsArray);
     });
   }
@@ -81,7 +84,7 @@ class App extends React.Component {
       <div className="loading">
         <img src={loader} alt="Loader" />
       </div>
-    ) : this.state.isAvailableInYourCountry ? (
+    ) : (
       <div>
         <Header />
         <div className="wrapper">
@@ -125,16 +128,16 @@ class App extends React.Component {
         </div>
         <Footer />
       </div>
-    ) : (
-      <div className="not-avail">
-        <div>
-          <h1 className="info">
-            Sorry this website is not available in your country, yet
-          </h1>
-          <RequestForm />
-        </div>
-      </div>
     );
+
+    // <div className="not-avail">
+    //   <div>
+    //     <h1 className="info">
+    //       Sorry this website is not available in your country, yet
+    //     </h1>
+    //     <RequestForm />
+    //   </div>
+    // </div>
   }
 }
 const mapStateToProps = createStructuredSelector({
