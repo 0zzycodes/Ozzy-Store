@@ -83,7 +83,7 @@ class ShopPage extends React.Component {
     return (
       <div className="shop-page">
         <Helmet>
-          <title>Shop - REMEDI</title>
+          <title>Shop | REMEDI</title>
           <meta name="description" content="Remedi Shop" />
         </Helmet>
         {makePaymentDetail.orderId ? <MakePayment /> : null}

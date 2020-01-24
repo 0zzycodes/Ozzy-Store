@@ -34,6 +34,11 @@ $secondaryColor: #ffffff;
     min-height: 300px;
   }
 
+  @include smartphone() {
+    width: 150px;
+    min-height: 250px;
+  }
+
   &:hover {
     cursor: pointer;
 
@@ -53,6 +58,10 @@ $secondaryColor: #ffffff;
       height: 250px;
     }
 
+    @include smartphone() {
+      height: 200px;
+    }
+
     .sold-out {
       position: absolute;
       background: $primaryColor;
@@ -62,6 +71,11 @@ $secondaryColor: #ffffff;
       left: 4px;
       border-radius: 3px;
       font-weight: 500;
+
+      @include tablet() {
+        font-size: 12px;
+        padding: 5px;
+      }
     }
 
     .sale {
@@ -74,6 +88,11 @@ $secondaryColor: #ffffff;
       border-top-left-radius: 3px;
       border-bottom-left-radius: 3px;
       font-weight: 500;
+
+      @include tablet() {
+        font-size: 12px;
+        padding: 5px;
+      }
     }
 
     .image {
@@ -86,6 +105,11 @@ $secondaryColor: #ffffff;
       @include tablet() {
         width: 200px;
         height: 250px;
+      }
+
+      @include smartphone() {
+        width: 150px;
+        height: 200px;
       }
     }
   }
@@ -118,6 +142,8 @@ $secondaryColor: #ffffff;
     }
 
     @include smartphone() {
+      margin-top: 5px;
+      position: static;
       visibility: visible;
       opacity: 1;
     }
@@ -157,6 +183,10 @@ $secondaryColor: #ffffff;
       margin: 10px auto;
       font-size: 15px;
       font-weight: 500;
+
+      @include smartphone() {
+        font-size: 12px;
+      }
     }
 
 
@@ -168,12 +198,20 @@ $secondaryColor: #ffffff;
       .sales-price {
         color: red;
         margin-right: 15px;
+
+        @include smartphone() {
+          font-size: 14px;
+        }
       }
 
       .normal-price {
         margin-left: 15px;
         text-decoration: line-through;
         color: darken($color: $secondaryColor, $amount: 30);
+
+        @include smartphone() {
+          font-size: 14px;
+        }
       }
     }
 

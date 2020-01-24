@@ -10,7 +10,7 @@ const CollectionPage = ({ collection: { title, items } }) => {
   return (
     <div className="collection-page container">
       <Helmet>
-        <title>{title} - REMEDI</title>
+        <title>{title} | REMEDI</title>
         <meta name="keywords" content={`${title}`} />
         <meta name="description" content={`Remedi ${title} collection `} />
       </Helmet>

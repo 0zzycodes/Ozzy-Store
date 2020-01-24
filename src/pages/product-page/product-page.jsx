@@ -9,7 +9,7 @@ const ProductPage = ({ product }) => {
   return (
     <div className="product-page container">
       <Helmet>
-        <title>{product[0].name} - REMEDI</title>
+        <title>{product[0].name} | REMEDI</title>
         <meta
           name="keywords"
           content={`${product[0].category}, ${product[0].name}`}

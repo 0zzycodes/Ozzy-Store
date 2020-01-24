@@ -53,6 +53,7 @@ $secondaryColor: #ffffff;
 
       @include smartphone() {
         width: 90px;
+        padding: 5px;
       }
 
       option {
