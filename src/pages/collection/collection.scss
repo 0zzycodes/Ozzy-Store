@@ -1,3 +1,21 @@
+$tablet: 750px;
+$smartphone: 600px;
+$primaryColor: #000000;
+$secondaryColor: #ffffff;
+
+// Mixin
+@mixin tablet {
+    @media (max-width: #{$tablet}) {
+        @content;
+    }
+}
+
+@mixin smartphone {
+    @media (max-width: #{$smartphone}) {
+        @content;
+    }
+}
+
 .collection-page {
     display: flex;
     flex-direction: column;
@@ -14,6 +32,14 @@
         grid-gap: auto;
         grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
         justify-items: center;
+
+        @include tablet() {
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        }
+
+        @include smartphone() {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
 
         & .collection-item {
             margin-bottom: 30px;
