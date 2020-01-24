@@ -28,12 +28,12 @@ class PaymentPage extends React.Component {
   state = {
     orderId: `${GenerateId()}`,
     discount: 0,
-    shippingFee: this.props.enterdCity.toLowerCase() !== 'ibadan' ? 300 : 0,
+    shippingFee: this.props.enterdCity.toLowerCase() !== 'ibadan' ? 1500 : 0,
     promoCode: '',
     price:
       this.props.enterdCity.toLowerCase() !== 'ibadan'
-        ? this.props.total + 300
-        : this.props.total,
+        ? this.props.total + 1500
+        : this.props.total + 500,
     isPromoAplied: false,
     isLoading: false
   };
@@ -133,7 +133,7 @@ class PaymentPage extends React.Component {
           </div>
           <div className="shipping">
             <h6>Shipping</h6>
-            <p>{city.toLowerCase() !== 'ibadan' ? `+₦${300}` : 'Free'}</p>
+            <p>{city.toLowerCase() !== 'ibadan' ? `+₦${1500}` : 500}</p>
           </div>
           <div className="total">
             <h3>Total</h3> <span>₦{price}</span>
