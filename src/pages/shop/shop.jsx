@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import {
   selectmakePaymentDetail,
@@ -81,6 +82,10 @@ class ShopPage extends React.Component {
     const { match, makePaymentDetail } = this.props;
     return (
       <div className="shop-page">
+        <Helmet>
+          <title>Shop - REMEDI</title>
+          <meta name="description" content="Remedi Shop" />
+        </Helmet>
         {makePaymentDetail.orderId ? <MakePayment /> : null}
         <Route
           exact
