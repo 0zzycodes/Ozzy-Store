@@ -17,17 +17,17 @@ const Footer = ({ history, match }) => {
           <p>Feel trendy. Feel authentic.</p>
           <br />
           <div className="socials">
-            <a href="https://web.facebook.com/profile.php?id=100013327810283">
+            <a href="https://web.facebook.com/">
               <div className="logo-border">
                 <img src={facebook} alt="Facebook Logo" />
               </div>
             </a>
-            <a href="https://twitter.com/ozzycodes">
+            <a href="https://twitter.com/">
               <div className="logo-border">
                 <img src={twitter} alt="Twitter Logo" />
               </div>
             </a>
-            <a href="https://www.instagram.com/ozzycodes/">
+            <a href="https://www.instagram.com/__remedi/">
               <div className="logo-border">
                 <img src={instagram} alt="Instagram Logo" />
               </div>

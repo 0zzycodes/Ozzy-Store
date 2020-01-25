@@ -18,6 +18,7 @@ import {
   addMakePayment,
   switchPaymentMethod
 } from '../../redux/payment-details/payment-detail.action';
+import { addUserOrderHistory } from '../../redux/user-info/user-info.actions';
 import mastercard from '../../assets/img/mastercard.png';
 import visa from '../../assets/img/visa.png';
 import discover from '../../assets/img/discover.png';
@@ -53,6 +54,7 @@ class Payment extends React.Component {
     const { name, address, city, country, email, phone } = shippingDetails;
     const commonUrl = 'https://ozzystore-backend.herokuapp.com/order';
     const orderUrl = 'https://ozzystore-backend.herokuapp.com/sendorder';
+    const date = new Date();
     const commonMessage = {
       intro: `Dear ${name}`,
       name,
@@ -108,6 +110,13 @@ class Payment extends React.Component {
       };
       PostFetch(commonUrl, orderMessageToSend);
       PostFetch(orderUrl, messageToSend);
+      const orderHistory = {
+        orderId: getReference,
+        date: date.toLocaleDateString(),
+        items: cartItems
+      };
+      this.props.addUserOrderHistory(orderHistory);
+
       const pay = {
         orderId: getReference,
         total: totalCost,
@@ -135,6 +144,13 @@ class Payment extends React.Component {
       };
       PostFetch(commonUrl, orderMessageToSend);
       PostFetch(orderUrl, messageToSend);
+      const orderHistory = {
+        orderId: getReference,
+        date: date.toLocaleDateString(),
+        items: cartItems
+      };
+      this.props.addUserOrderHistory(orderHistory);
+
       const pay = {
         orderId: getReference,
         total: totalCost,
@@ -247,6 +263,7 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = dispatch => ({
   resetCart: item => dispatch(resetCart(item)),
   addMakePayment: details => dispatch(addMakePayment(details)),
+  addUserOrderHistory: details => dispatch(addUserOrderHistory(details)),
   switchPaymentMethod: details => dispatch(switchPaymentMethod(details)),
   addCartTotal: total => dispatch(addCartTotal(total))
 });

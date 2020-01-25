@@ -8,6 +8,7 @@ import {
 } from 'react-country-region-selector';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { setUserAddress } from '../../redux/user-info/user-info.actions';
 import {
   selectCartItems,
   selectCartTotal
@@ -75,11 +76,11 @@ class ShippingForm extends Component {
       email
     };
     this.props.addShippingDetails(billing);
+    this.props.setUserAddress(billing);
     this.props.addCity(city);
     this.props.history.push(`/payment`);
   };
   componentDidMount() {
-    console.log(this.props);
     this.props.collapse === 'collapse'
       ? this.setState({ isShow: false })
       : window.innerWidth <= 500
@@ -198,6 +199,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = dispatch => ({
   addShippingDetails: details => dispatch(addShippingDetails(details)),
+  setUserAddress: details => dispatch(setUserAddress(details)),
   addCity: details => dispatch(addCity(details))
 });
 

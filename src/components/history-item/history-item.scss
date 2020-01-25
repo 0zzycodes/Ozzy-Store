@@ -1,0 +1,67 @@
+$tablet: 850px;
+$smartphone: 500px;
+$primaryColor: #000000;
+$secondaryColor: #ffffff;
+
+// Mixin
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+.history-item {
+  width: 100%;
+  display: flex;
+  min-height: 100px;
+  padding: 0;
+  font-size: 20px;
+  position: relative;
+
+  @include tablet() {
+    width: 100%;
+  }
+
+  .img-name {
+    display: flex;
+
+    .image-container {
+      padding: 20px;
+      width: 100px;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .text {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .name,
+  .size,
+  .price {
+    margin: 10px;
+  }
+
+  .quantity {
+    position: absolute;
+    border-radius: 50%;
+    background: $secondaryColor;
+    color: $primaryColor;
+    height: 25px;
+    width: 25px;
+    padding: 8px;
+    display: flex;
+    left: -10px;
+    top: 25px;
+    justify-content: center;
+    align-items: center;
+  }
+}

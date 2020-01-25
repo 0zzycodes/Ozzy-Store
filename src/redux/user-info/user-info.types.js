@@ -1,0 +1,4 @@
+export const UserActionTypes = {
+  SET_USER_ADDRESS: 'SET_USER_ADDRESS',
+  ADD_USER_ORDER_HISTORY: 'ADD_USER_ORDER_HISTORY'
+};

@@ -86,7 +86,7 @@ export const structureOrderMessage = (common, info) => {
                     fontWeight: 600
                   }}
                 >
-                  TOTAL: <br /> <br /> <strong style={strong}>₦14340</strong>
+                  TOTAL: <br /> <br /> <strong style={strong}>₦{totalCost}</strong>
                 </td>
                 <td
                   style={{

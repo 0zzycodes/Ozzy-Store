@@ -1,10 +1,160 @@
+$tablet: 850px;
+$smartphone: 500px;
+$primaryColor: #000000;
+$secondaryColor: #ffffff;
+$acentBlue: #006eff;
+
+// Mixin
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+
 .user-page {
   margin-top: 70px;
   position: relative;
-  color: white;
-  text-align: center;
+  color: darken($color: $secondaryColor, $amount: 40);
 
-  h2 {
-    margin-top: 60px;
+  // text-align: center;
+  .head {
+    height: 120px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    h3 {
+      font-weight: 700;
+      letter-spacing: 3px;
+      font-size: 30px;
+      color: darken($color: $secondaryColor, $amount: 20);
+    }
+  }
+
+  .body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 10%;
+
+    @include tablet() {
+      flex-direction: column;
+    }
+
+    .user-activity,
+    .address {
+      width: 50vw;
+      margin: auto;
+      border: 1px solid darken($color: $secondaryColor, $amount: 20);
+      height: 40vh;
+      padding: 20px;
+      overflow: hidden;
+
+
+      @include tablet() {
+        width: 100% !important;
+      }
+
+      h3 {
+        font-weight: 500;
+        margin: 20px;
+      }
+
+      h4 {
+        font-size: 19px;
+        font-weight: 500;
+        padding-left: 10px;
+      }
+
+      .info {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        padding-left: 10px;
+        text-transform: capitalize;
+      }
+    }
+
+    .user-activity {
+      margin-right: 10px;
+
+      &:hover {
+        overflow-y: scroll;
+      }
+
+      @include tablet() {
+        margin: 10px 0px;
+      }
+
+      .info {
+        flex-direction: column;
+      }
+
+    }
+
+    .address {
+      margin-left: 10px;
+      position: relative;
+
+      @include tablet() {
+        margin: 10px 0px;
+      }
+
+      h5 {
+        font-weight: 500;
+      }
+
+
+      .btn {
+        width: auto;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        letter-spacing: 1px;
+        line-height: 45px;
+        padding: 0 25px;
+        font-size: 15px;
+        background-color: transparent;
+        color: darken($color: $secondaryColor, $amount: 20);
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 600;
+        border: 1px solid darken($color: $secondaryColor, $amount: 20);
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+
+        &:hover {
+          background-color: transparent;
+          color: $secondaryColor;
+          font-weight: 700;
+          border: 1px solid $secondaryColor;
+        }
+      }
+
+    }
+
+    .overlay {
+      position: fixed;
+      min-height: 100vh;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      top: 0px;
+      background-color: #000000fb;
+
+      &:hover {
+        overflow-y: scroll;
+      }
+    }
   }
 }
