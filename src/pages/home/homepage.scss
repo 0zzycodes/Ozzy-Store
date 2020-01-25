@@ -33,9 +33,26 @@ $secondaryColor: #ffffff;
     color: $secondaryColor;
     text-align: center;
     margin: 40px 0;
-
+    background-position: center;
+    background-size: cover;
+    color: darken($color: $secondaryColor, $amount: 20);
+    h2 {
+      font-weight: 600;
+    }
+    h3 {
+      margin: 10px 0;
+    }
     @include smartphone() {
       width: 90%;
+      h2 {
+        font-size: 24px;
+      }
+      h3 {
+        font-size: 16px;
+      }
+      h4 {
+        font-size: 14px;
+      }
     }
 
     .count {
