@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+// import * as serviceWorker from './serviceWorker';
 import {
   HashRouter as Router
 } from 'react-router-dom';
@@ -35,10 +35,10 @@ ReactDOM.render( <
   <
   App / >
   <
-  /PersistGate> <
-  /div> <
-  /Router> <
-  /Provider>,
+  /PersistGate> < /
+  div > <
+  /Router> < /
+  Provider > ,
   document.getElementById('root')
 );
 

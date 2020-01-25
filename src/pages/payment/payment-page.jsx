@@ -12,6 +12,7 @@ import {
   addPromo
 } from '../../redux/cart/cart.actions';
 import { addTotal } from '../../redux/total/total.action';
+import { addPath } from '../../redux/path/path.action';
 import { createStructuredSelector } from 'reselect';
 import { GenerateId } from '../../utils/id-generator';
 import {
@@ -91,6 +92,7 @@ class PaymentPage extends React.Component {
         ? this.props.total + 1500
         : this.props.total + 500
     );
+    this.props.addPath(this.props.match.path)
   }
 
   render() {
@@ -177,6 +179,7 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = dispatch => ({
   addCartTotal: total => dispatch(addCartTotal(total)),
   addTotal: total => dispatch(addTotal(total)),
+  addPath: path => dispatch(addPath(path)),
   addDiscount: total => dispatch(addDiscount(total)),
   addPromo: total => dispatch(addPromo(total))
 });

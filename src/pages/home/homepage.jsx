@@ -13,7 +13,7 @@ const Homepage = () => {
       {/* <NewArrival /> */}
       <div className="follow-on-insta">
         <h3>Join Us On Instagram</h3>
-        <a href="https://www.instagram.com/__remedi/">
+        <a target="blank" href="https://www.instagram.com/__remedi/">
           <button className="btn">Follow Us</button>
         </a>
       </div>

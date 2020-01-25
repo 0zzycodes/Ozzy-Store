@@ -18,6 +18,7 @@ import {
   addMakePayment,
   switchPaymentMethod
 } from '../../redux/payment-details/payment-detail.action';
+import { addPath } from '../../redux/path/path.action';
 import { addUserOrderHistory } from '../../redux/user-info/user-info.actions';
 import mastercard from '../../assets/img/mastercard.png';
 import visa from '../../assets/img/visa.png';
@@ -116,7 +117,7 @@ class Payment extends React.Component {
         items: cartItems
       };
       this.props.addUserOrderHistory(orderHistory);
-
+      this.props.addPath(null);
       const pay = {
         orderId: getReference,
         total: totalCost,
@@ -150,7 +151,7 @@ class Payment extends React.Component {
         items: cartItems
       };
       this.props.addUserOrderHistory(orderHistory);
-
+      this.props.addPath(null);
       const pay = {
         orderId: getReference,
         total: totalCost,
@@ -263,6 +264,7 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = dispatch => ({
   resetCart: item => dispatch(resetCart(item)),
   addMakePayment: details => dispatch(addMakePayment(details)),
+  addPath: details => dispatch(addPath(details)),
   addUserOrderHistory: details => dispatch(addUserOrderHistory(details)),
   switchPaymentMethod: details => dispatch(switchPaymentMethod(details)),
   addCartTotal: total => dispatch(addCartTotal(total))

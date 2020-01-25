@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectPathPath } from '../../redux/path/path.selector';
 import remove from '../../assets/remove.svg';
 import {
   clearItemFromCart,
@@ -7,7 +9,7 @@ import {
   removeItem
 } from '../../redux/cart/cart.actions';
 import './cart-item.scss';
-const CartItem = ({ item, clearItem, addItem, removeItem }) => {
+const CartItem = ({ item, clearItem, addItem, removeItem, path }) => {
   const { imageUrl, sale, name, size, quantity } = item;
 
   return (
@@ -20,31 +22,38 @@ const CartItem = ({ item, clearItem, addItem, removeItem }) => {
           </span>
           <span className="price">{size}</span>
           <span className="quantity">
-            {quantity === 1 ? null : (
+            {path === '/payment' ? null : quantity === 1 ? null : (
               <div className="arrow" onClick={() => removeItem(item)}>
                 &#8722;
               </div>
             )}
             <span className="value">{quantity}</span>
-            <div className="arrow" onClick={() => addItem(item)}>
-              &#43;
-            </div>
+            {path === '/payment' ? null : (
+              <div className="arrow" onClick={() => addItem(item)}>
+                &#43;
+              </div>
+            )}
           </span>
         </div>
-        <img
-          src={remove}
-          alt="Delete Item"
-          style={{ width: '15px', top: '10px', right: '10px' }}
-          className="clear"
-          onClick={() => clearItem(item)}
-        />
+        {path === '/payment' ? null : (
+          <img
+            src={remove}
+            alt="Delete Item"
+            style={{ width: '15px', top: '10px', right: '10px' }}
+            className="clear"
+            onClick={() => clearItem(item)}
+          />
+        )}
       </div>
     </div>
   );
 };
+const mapStateToProps = createStructuredSelector({
+  path: selectPathPath
+});
 const mapDispatchToProps = dispatch => ({
   clearItem: item => dispatch(clearItemFromCart(item)),
   addItem: item => dispatch(addItem(item)),
   removeItem: item => dispatch(removeItem(item))
 });
-export default connect(null, mapDispatchToProps)(CartItem);
+export default connect(mapStateToProps, mapDispatchToProps)(CartItem);

@@ -23,12 +23,6 @@ const PaystackCheckoutkButton = ({
   enterdCity,
   cartTotal
 }) => {
-  console.log(total);
-
-  const newCartTotal =
-    enterdCity.toLowerCase() !== 'ibadan'
-      ? cartTotal - promo + 1500
-      : cartTotal - promo + 500;
   const obj = {
     key: 'pk_live_1b12029750bd8354a13f33f082c8f796e6c60035',
     email: user ? user.email : user, // customer email

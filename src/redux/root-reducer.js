@@ -14,7 +14,7 @@ import shopReducer from './shop/shop.reducer';
 import shippingDetailsReducer from './shipping/shipping.reducer'
 import makePaymentDetailsReducer from './payment-details/payment-detail.reducer'
 import totalReducer from './total/total.reducer';
-
+import pathReducer from './path/path.reducer';
 
 
 const persistConfig = {
@@ -30,6 +30,7 @@ const rootReducer = combineReducers({
   directory: directoryReducer,
   total: totalReducer,
   shop: shopReducer,
+  path: pathReducer,
   shipping: shippingDetailsReducer,
   makePaymentDetails: makePaymentDetailsReducer
 });
