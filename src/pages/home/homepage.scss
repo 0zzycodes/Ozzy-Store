@@ -28,6 +28,18 @@ $secondaryColor: #ffffff;
     justify-content: space-between;
   }
 
+  .promo {
+    width: 80%;
+
+    @include smartphone() {
+      width: 90%;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
   .follow-on-insta {
     color: $secondaryColor;
     height: 200px;
@@ -44,6 +56,10 @@ $secondaryColor: #ffffff;
       font-size: 28px;
       color: darken($color: $secondaryColor, $amount: 20);
       margin: 20px 0px;
+
+      @include smartphone() {
+        font-size: 22px;
+      }
     }
 
     .btn {
