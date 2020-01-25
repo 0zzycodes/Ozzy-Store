@@ -30,9 +30,18 @@ $secondaryColor: #ffffff;
 
   .promo {
     width: 80%;
+    color: $secondaryColor;
+    text-align: center;
+    margin: 40px 0;
 
     @include smartphone() {
       width: 90%;
+    }
+
+    .count {
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
 
     img {
@@ -87,5 +96,4 @@ $secondaryColor: #ffffff;
       }
     }
   }
-
 }
