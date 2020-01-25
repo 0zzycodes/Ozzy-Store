@@ -193,8 +193,8 @@ class Payment extends React.Component {
           id="pay-with-card"
           className={`${
             paymentMethod === 'Pay With Paystack' ? 'selected' : 'not-selected'
-          } box disable`}
-          // onClick={this.handlePayWithPaystack}
+          } box`}
+          onClick={this.handlePayWithPaystack}
         >
           <span className="radio">
             <span></span>

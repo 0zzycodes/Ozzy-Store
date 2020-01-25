@@ -13,6 +13,7 @@ import directoryReducer from './directory/directory.reducer';
 import shopReducer from './shop/shop.reducer';
 import shippingDetailsReducer from './shipping/shipping.reducer'
 import makePaymentDetailsReducer from './payment-details/payment-detail.reducer'
+import totalReducer from './total/total.reducer';
 
 
 
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   userInfo: userInfoReducer,
   cart: cartReducer,
   directory: directoryReducer,
+  total: totalReducer,
   shop: shopReducer,
   shipping: shippingDetailsReducer,
   makePaymentDetails: makePaymentDetailsReducer

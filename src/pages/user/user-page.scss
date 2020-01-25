@@ -18,7 +18,7 @@ $acentBlue: #006eff;
 }
 
 .user-page {
-  margin-top: 70px;
+  margin: 70px 0px;
   position: relative;
   color: darken($color: $secondaryColor, $amount: 40);
 
@@ -58,6 +58,9 @@ $acentBlue: #006eff;
       padding: 20px;
       overflow: hidden;
 
+      &:hover {
+        overflow-y: scroll;
+      }
 
       @include tablet() {
         width: 100% !important;
@@ -86,9 +89,6 @@ $acentBlue: #006eff;
     .user-activity {
       margin-right: 10px;
 
-      &:hover {
-        overflow-y: scroll;
-      }
 
       @include tablet() {
         margin: 10px 0px;
@@ -112,6 +112,9 @@ $acentBlue: #006eff;
         font-weight: 500;
       }
 
+      p {
+        font-size: 13px;
+      }
 
       .btn {
         width: auto;

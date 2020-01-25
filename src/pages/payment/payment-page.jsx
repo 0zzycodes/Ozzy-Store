@@ -11,6 +11,7 @@ import {
   addDiscount,
   addPromo
 } from '../../redux/cart/cart.actions';
+import { addTotal } from '../../redux/total/total.action';
 import { createStructuredSelector } from 'reselect';
 import { GenerateId } from '../../utils/id-generator';
 import {
@@ -58,23 +59,39 @@ class PaymentPage extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
-        const calc = 200 * qty;
-        const afterPromo = this.state.price - calc;
-        this.setState(
-          {
-            discount: calc,
-            promoCode: '',
-            price: afterPromo,
-            isPromoAplied: true,
-            isLoading: false
-          },
-          () => {
-            this.props.addCartTotal(this.state.price);
-            this.props.addPromo(calc);
-          }
-        );
-      });
+        console.log(response);
+        if (response === 200) {
+          const calc = 200 * qty;
+          const afterPromo = this.state.price - calc;
+          this.setState(
+            {
+              discount: calc,
+              promoCode: '',
+              price: afterPromo,
+              isPromoAplied: true,
+              isLoading: false
+            },
+            () => {
+              this.props.addCartTotal(this.state.price);
+              this.props.addPromo(calc);
+            }
+          );
+          this.props.addTotal(
+            this.props.enterdCity.toLowerCase() !== 'ibadan'
+              ? this.props.total + 1500 - calc
+              : this.props.total + 500 - calc
+          );
+        }
+      })
+      .catch(error => console.log(error));
   };
+  componentDidMount() {
+    this.props.addTotal(
+      this.props.enterdCity.toLowerCase() !== 'ibadan'
+        ? this.props.total + 1500
+        : this.props.total + 500
+    );
+  }
 
   render() {
     const { cartItems, currentUser, shippingDetails } = this.props;
@@ -91,6 +108,24 @@ class PaymentPage extends React.Component {
     return (
       <div className="payment-page container">
         <div className="payment-page-header">
+          {this.state.isPromoAplied ? null : (
+            <form onSubmit={this.handleSubmit}>
+              <input
+                type="text"
+                name="promoCode"
+                value={this.state.promoCode}
+                placeholder="Enter Promo Code"
+                className="form-input"
+                onChange={this.handleChange}
+              />
+              <button className="btn">
+                <span>Apply</span>
+                {this.state.isLoading ? (
+                  <img src={loader} alt="loader" />
+                ) : null}
+              </button>
+            </form>
+          )}
           <span className="order-id">
             ORDER ID: <span className="id">{this.state.orderId}</span>
           </span>
@@ -104,22 +139,7 @@ class PaymentPage extends React.Component {
             handleShowPaid={this.handleShowPaid}
           />
         </div>
-        {this.state.isPromoAplied ? null : (
-          <form onSubmit={this.handleSubmit}>
-            <input
-              type="text"
-              name="promoCode"
-              value={this.state.promoCode}
-              placeholder="Enter Promo Code"
-              className="form-input"
-              onChange={this.handleChange}
-            />
-            <button className="btn">
-              <span>Apply</span>
-              {this.state.isLoading ? <img src={loader} alt="loader" /> : null}
-            </button>
-          </form>
-        )}
+
         <div className="product-summary">
           {cartItems.map(cartItem => (
             <CheckoutItem key={cartItem.id} cartItem={cartItem} />
@@ -156,6 +176,7 @@ const mapStateToProps = createStructuredSelector({
 });
 const mapDispatchToProps = dispatch => ({
   addCartTotal: total => dispatch(addCartTotal(total)),
+  addTotal: total => dispatch(addTotal(total)),
   addDiscount: total => dispatch(addDiscount(total)),
   addPromo: total => dispatch(addPromo(total))
 });
