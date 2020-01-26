@@ -1,9 +1,10 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import Hero from '../../components/hero/hero';
 import './homepage.scss';
 import Directory from '../../components/directory/directory';
 import Countdown from '../../components/countdown/countdown';
-const Homepage = () => {
+const Homepage = ({ match }) => {
   return (
     <div className="homepage">
       <Hero />
@@ -14,9 +15,7 @@ const Homepage = () => {
         <h2>USE PROMO CODE: RMD200</h2>
         <h3>To get ₦200 off every item you purchase</h3>
         <h4>Code Valid Until Febuary 8</h4>
-        <div className="count">
-          <Countdown />
-        </div>
+        <div className="count">{match.path === '/' ? <Countdown /> : null}</div>
       </div>
       <div className="follow-on-insta">
         <h3>Join Us On Instagram</h3>
@@ -28,4 +27,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default withRouter(Homepage);
