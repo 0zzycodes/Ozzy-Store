@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {
@@ -92,7 +93,7 @@ class PaymentPage extends React.Component {
         ? this.props.total + 1500
         : this.props.total + 500
     );
-    this.props.addPath(this.props.match.path)
+    this.props.addPath(this.props.match.path);
   }
 
   render() {
@@ -109,6 +110,17 @@ class PaymentPage extends React.Component {
     const { price } = this.state;
     return (
       <div className="payment-page container">
+        <Helmet>
+          <title>Payment | REMEDI</title>
+          <meta property="og:title" content="Payment | Remedi" />
+          <meta property="og:type" content="website" />
+          <meta
+            name="description"
+            content="Cleaning When your clothes need a wash, don’t simply stick them in the washer as you might do usually; follow these guidelines. Use a gentle cleaning cycle, and opt for an eco-friendly detergent; not only is that better for the environment, it is more gentle for the bamboo fabric too and keeps everything as fresh and neat"
+          />
+          <meta property="og:site_name" content="REMEDI" />
+          <meta property="og:url" content="https://www.remedi.store/payment" />
+        </Helmet>
         <div className="payment-page-header">
           {this.state.isPromoAplied ? null : (
             <form onSubmit={this.handleSubmit}>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Email, renderEmail } from 'react-html-email';
 import FormInput from '../../components/form-input/form-input';
 import CustomButton from '../../components/custom-button/custom-button';
@@ -78,6 +79,17 @@ export default class Contact extends React.Component {
     const { firstName, lastName, email, comment, isSuccess } = this.state;
     return (
       <div className="contain" id="contact">
+        <Helmet>
+          <title>Contact | REMEDI</title>
+          <meta property="og:title" content="Contact | REMEDI" />
+          <meta property="og:type" content="website" />
+          <meta
+            name="description"
+            content="Cleaning When your clothes need a wash, don’t simply stick them in the washer as you might do usually; follow these guidelines. Use a gentle cleaning cycle, and opt for an eco-friendly detergent; not only is that better for the environment, it is more gentle for the bamboo fabric too and keeps everything as fresh and neat"
+          />
+          <meta property="og:site_name" content="REMEDI" />
+          <meta property="og:url" content="https://www.remedi.store/contact" />
+        </Helmet>
         <div className="contact-section">
           <div className="contact">
             <div className="form">

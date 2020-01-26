@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { withRouter } from 'react-router-dom';
 import Hero from '../../components/hero/hero';
 import './homepage.scss';
@@ -7,6 +8,17 @@ import Countdown from '../../components/countdown/countdown';
 const Homepage = ({ match }) => {
   return (
     <div className="homepage">
+      <Helmet>
+        <title>REMEDI</title>
+        <meta property="og:title" content="REMEDI" />
+        <meta property="og:type" content="website" />
+        <meta
+          name="description"
+          content="Cleaning When your clothes need a wash, don’t simply stick them in the washer as you might do usually; follow these guidelines. Use a gentle cleaning cycle, and opt for an eco-friendly detergent; not only is that better for the environment, it is more gentle for the bamboo fabric too and keeps everything as fresh and neat"
+        />
+        <meta property="og:site_name" content="REMEDI" />
+        <meta property="og:url" content="https://www.remedi.store" />
+      </Helmet>
       <Hero />
       <div className="directory-menu">
         <Directory />

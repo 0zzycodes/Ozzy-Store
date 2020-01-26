@@ -115,7 +115,7 @@ class App extends React.Component {
               }
             />
 
-            <Route exact path="/current-user" component={UserPage} />
+            <Route exact path="/my-account" component={UserPage} />
             <Route exact path="/care" component={CarePage} />
             <Route exact path="/reseller" component={ResellerPage} />
             <Route exact path="/referral" component={ReferralPage} />

@@ -64,7 +64,7 @@ const SideNav = ({ currentUser, handleToggleSidebar, history, match }) => {
               <div className="drop-links" onClick={handleToggleSidebar}>
                 <h4
                   className="drop-link"
-                  onClick={() => history.push(`/current-user`)}
+                  onClick={() => history.push(`/my-account`)}
                 >
                   View Profile
                 </h4>

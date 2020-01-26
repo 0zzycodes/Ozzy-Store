@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
@@ -17,6 +18,17 @@ const UserPage = ({ currentUser, userAddress, userOrderHistory }) => {
   };
   return currentUser ? (
     <div className="user-page">
+      <Helmet>
+        <title>My Account | REMEDI</title>
+        <meta property="og:title" content="My Account | REMEDI" />
+        <meta property="og:type" content="website" />
+        <meta
+          name="description"
+          content="Cleaning When your clothes need a wash, don’t simply stick them in the washer as you might do usually; follow these guidelines. Use a gentle cleaning cycle, and opt for an eco-friendly detergent; not only is that better for the environment, it is more gentle for the bamboo fabric too and keeps everything as fresh and neat"
+        />
+        <meta property="og:site_name" content="REMEDI" />
+        <meta property="og:url" content="https://www.remedi.store/my-account" />
+      </Helmet>
       <div className="head">
         <h3>My Account</h3>
       </div>
@@ -35,7 +47,7 @@ const UserPage = ({ currentUser, userAddress, userOrderHistory }) => {
         </div>
         <div className="address">
           <h3>Address</h3>
-          <h4>{userAddress ? userAddress.firstName: null}</h4>
+          <h4>{userAddress ? userAddress.firstName : null}</h4>
           <div className="info">
             {userAddress ? (
               <div className="add">
@@ -65,7 +77,7 @@ const UserPage = ({ currentUser, userAddress, userOrderHistory }) => {
         </div>
         {isShow ? (
           <div className="overlay">
-            <AddAddressForm  handleToggleShow={handleToggleShow}/>
+            <AddAddressForm handleToggleShow={handleToggleShow} />
           </div>
         ) : null}
       </div>

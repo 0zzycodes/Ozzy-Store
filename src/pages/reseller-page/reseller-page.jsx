@@ -1,8 +1,20 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import './reseller-page.scss';
 const ResellerPage = () => {
   return (
     <div className="reseller-page">
+      <Helmet>
+        <title>Wholesale Program | REMEDI</title>
+        <meta property="og:title" content="Wholesale Program | Remedi" />
+        <meta property="og:type" content="website" />
+        <meta
+          name="description"
+          content="Cleaning When your clothes need a wash, don’t simply stick them in the washer as you might do usually; follow these guidelines. Use a gentle cleaning cycle, and opt for an eco-friendly detergent; not only is that better for the environment, it is more gentle for the bamboo fabric too and keeps everything as fresh and neat"
+        />
+        <meta property="og:site_name" content="REMEDI" />
+        <meta property="og:url" content="https://www.remedi.store/reseller" />
+      </Helmet>
       <h3>Remedi Wholesale Program</h3>
       <div className="block">
         <h4>What Is The Remedi Wholesale Program?</h4>
