@@ -1,7 +1,9 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import './countdown.scss';
-const Countdown = () => {
+const Countdown = ({ match }) => {
   let end = new Date('02/08/2020 12:00 AM');
+  console.log(match.path);
 
   let _second = 1000;
   let _minute = _second * 60;
@@ -22,14 +24,14 @@ const Countdown = () => {
     let hours = Math.floor((distance % _day) / _hour);
     let minutes = Math.floor((distance % _hour) / _minute);
     let seconds = Math.floor((distance % _minute) / _second);
-
-    document.getElementById('days').innerHTML = days;
-    document.getElementById('hours').innerHTML = hours;
-    document.getElementById('minutes').innerHTML = minutes;
-    document.getElementById('seconds').innerHTML = seconds;
+    if (match.path === '/') {
+      document.getElementById('days').innerHTML = days;
+      document.getElementById('hours').innerHTML = hours;
+      document.getElementById('minutes').innerHTML = minutes;
+      document.getElementById('seconds').innerHTML = seconds;
+    }
   }
-
-  timer = setInterval(showRemaining, 1000);
+  timer = match.path === '/' ? setInterval(showRemaining, 1000) : null;
   return (
     <div className="countdown">
       <div className="days">
@@ -52,4 +54,4 @@ const Countdown = () => {
   );
 };
 
-export default Countdown;
+export default withRouter(Countdown);

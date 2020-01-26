@@ -1,15 +1,6 @@
-import {
-  createStore,
-
-} from 'redux';
-import {
-  persistStore
-} from 'redux-persist';
-
-
+import { createStore } from 'redux';
+import { persistStore } from 'redux-persist';
 import rootReducer from './root-reducer';
-
-
 
 export const store = createStore(rootReducer);
 
