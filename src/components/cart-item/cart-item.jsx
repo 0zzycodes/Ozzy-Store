@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectPathPath } from '../../redux/path/path.selector';
+import { selectLocationLocation } from '../../redux/location/location.selectors';
 import remove from '../../assets/remove.svg';
 import {
   clearItemFromCart,
@@ -9,8 +10,9 @@ import {
   removeItem
 } from '../../redux/cart/cart.actions';
 import './cart-item.scss';
-const CartItem = ({ item, clearItem, addItem, removeItem, path }) => {
-  const { imageUrl, sale, name, size, quantity } = item;
+const CartItem = ({ item, clearItem, addItem, removeItem, path, location }) => {
+  const { imageUrl, sale, name, usdSale, size, quantity } = item;
+  const price = location !== 'Nigeria' ? `$${usdSale}` : `₦${sale}`;
 
   return (
     <div className="cart-item" style={{ backgroundImage: `url(${imageUrl})` }}>
@@ -18,7 +20,7 @@ const CartItem = ({ item, clearItem, addItem, removeItem, path }) => {
         <div className="item-details">
           <span className="name">{name}</span>
           <span className="price">
-            {quantity} x ₦{sale}
+            {quantity} x {price}
           </span>
           <span className="price">{size}</span>
           <span className="quantity">
@@ -49,6 +51,7 @@ const CartItem = ({ item, clearItem, addItem, removeItem, path }) => {
   );
 };
 const mapStateToProps = createStructuredSelector({
+  location: selectLocationLocation,
   path: selectPathPath
 });
 const mapDispatchToProps = dispatch => ({

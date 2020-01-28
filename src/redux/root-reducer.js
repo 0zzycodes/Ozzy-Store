@@ -15,12 +15,14 @@ import shippingDetailsReducer from './shipping/shipping.reducer'
 import makePaymentDetailsReducer from './payment-details/payment-detail.reducer'
 import totalReducer from './total/total.reducer';
 import pathReducer from './path/path.reducer';
+import locationReducer from './location/location.reducers';
+
 
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cart', 'userInfo', 'shipping']
+  whitelist: ['cart', 'location', 'userInfo', 'shipping']
 };
 
 const rootReducer = combineReducers({
@@ -31,6 +33,7 @@ const rootReducer = combineReducers({
   total: totalReducer,
   shop: shopReducer,
   path: pathReducer,
+  location: locationReducer,
   shipping: shippingDetailsReducer,
   makePaymentDetails: makePaymentDetailsReducer
 });

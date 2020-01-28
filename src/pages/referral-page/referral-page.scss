@@ -54,6 +54,16 @@ $secondaryColor: #ffffff;
       }
     }
 
+    .flx {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      a {
+        margin-left: 10px;
+      }
+    }
+
     ul {
       padding-left: 30px;
 

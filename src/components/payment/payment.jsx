@@ -163,7 +163,12 @@ class Payment extends React.Component {
     }
   };
   render() {
-    const { getReference, resetCart, paymentMethod } = this.props;
+    const {
+      getReference,
+      resetCart,
+      paymentMethod,
+      shippingDetails
+    } = this.props;
     return (
       <div className="payment">
         <h3 className="title">Payment Methods</h3>
@@ -233,23 +238,29 @@ class Payment extends React.Component {
             ) : null}
           </div>
         </div>
-        {paymentMethod === 'Pay With Paystack' ? (
-          <PaystackCheckoutkButton
-            price={this.props.totalCost}
-            getReference={getReference}
-            sendMail={this.handleSendMail.bind(this, resetCart)}
-          />
-        ) : paymentMethod === 'Pay With Stripe' ? (
-          <StripeCheckoutButton price={this.props.total} />
-        ) : (
-          <div className="direct">
-            <button
-              className="pay-now"
-              onClick={this.handleSendMail.bind(this, resetCart)}
-            >
-              Pay Now
-            </button>
+        {shippingDetails.country === 'Nigeria' ? (
+          <div>
+            {paymentMethod === 'Pay With Paystack' ? (
+              <PaystackCheckoutkButton
+                price={this.props.totalCost}
+                getReference={getReference}
+                sendMail={this.handleSendMail.bind(this, resetCart)}
+              />
+            ) : paymentMethod === 'Pay With Stripe' ? (
+              <StripeCheckoutButton price={this.props.total} />
+            ) : (
+              <div className="direct">
+                <button
+                  className="pay-now"
+                  onClick={this.handleSendMail.bind(this, resetCart)}
+                >
+                  Pay Now
+                </button>
+              </div>
+            )}
           </div>
+        ) : (
+          <h3>Currently Not Available In Your Country</h3>
         )}
       </div>
     );

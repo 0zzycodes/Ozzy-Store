@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import whatsapp from '../../assets/whatsapp.svg';
 import './referral-page.scss';
 const ReferralPage = () => {
   return (
@@ -27,7 +28,22 @@ const ReferralPage = () => {
         </ul>
       </div>
       <div className="block">
-        <h4>How Do I Become A Referral</h4>
+        <h4>How Do I Become A Referral?</h4>
+        <p className="flx">
+          It's simple, simply tap the whatsapp icon to join the group{' '}
+          <a
+            href="https://chat.whatsapp.com/HKdFiwulXJtGFUVe30ltnW"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={whatsapp}
+              width="20px"
+              height="20px"
+              alt="Whatsapp icon"
+            />
+          </a>
+        </p>
         <h3>Coming Soon</h3>
       </div>
     </div>

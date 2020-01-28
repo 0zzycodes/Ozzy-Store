@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { createStructuredSelector } from 'reselect';
+import { selectLocationLocation } from '../../redux/location/location.selectors';
 import remove from '../../assets/remove.svg';
 import {
   clearItemFromCart,
@@ -8,8 +10,16 @@ import {
   removeItem
 } from '../../redux/cart/cart.actions';
 import './checkout-item.scss';
-const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem, match }) => {
-  const { name, imageUrl, size, quantity, sale } = cartItem;
+const CheckoutItem = ({
+  cartItem,
+  clearItem,
+  addItem,
+  removeItem,
+  match,
+  loca
+}) => {
+  const { name, imageUrl, size, quantity, sale, usdSale } = cartItem;
+  const price = loca !== 'Nigeria' ? `${usdSale}` : `${sale}`;
   return (
     <div className="checkout-item">
       <div className="img-name">
@@ -32,7 +42,10 @@ const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem, match }) => {
         </p>
       </div>
       <p>{size}</p>
-      <p className="price">₦{sale * quantity}</p>
+      <p className="price">
+        {loca !== 'Nigeria' ? `$` : `₦`}
+        {price * quantity}
+      </p>
       {match.path === '/payment' ? null : (
         <img
           src={remove}
@@ -44,11 +57,15 @@ const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem, match }) => {
     </div>
   );
 };
-
+const mapStateToProps = createStructuredSelector({
+  loca: selectLocationLocation
+});
 const mapDispatchToProps = dispatch => ({
   clearItem: item => dispatch(clearItemFromCart(item)),
   addItem: item => dispatch(addItem(item)),
   removeItem: item => dispatch(removeItem(item))
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(CheckoutItem));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(CheckoutItem)
+);

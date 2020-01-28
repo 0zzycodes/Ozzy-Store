@@ -14,7 +14,7 @@ import {
   createUserProfileDocument
   // addCollectionAndDocuments
 } from './firebase/firebase.utils';
-
+import { addLocation } from './redux/location/location.actions';
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { selectCartTotal } from './redux/cart/cart.selectors';
@@ -36,7 +36,7 @@ class App extends React.Component {
   };
   unSubscribeFromAuth = null;
   componentDidMount() {
-    // const proxy = 'https://cors-anywhere.herokuapp.com/';
+    const proxy = 'https://cors-anywhere.herokuapp.com/';
     const {
       setCurrentUser
       // collectionsArray
@@ -55,24 +55,17 @@ class App extends React.Component {
       this.setState({
         isLoading: false
       });
-      // if (navigator.geolocation) {
-      //   navigator.geolocation.getCurrentPosition(position => {
-      //     const lat = position.coords.latitude;
-      //     const long = position.coords.longitude;
-      //     fetch(`${proxy}https://geocode.xyz/${lat},${long}?json=1 `)
-      //       .then(res => res.json())
-      //       .then(res => {
-      //         console.log();
-      //         if (res.country === 'Nigeria' || res.country === 'Malaysia' || res.country === 'United State') {
-      //           this.setState({
-      //             isAvailableInYourCountry: !this.state
-      //               .isAvailableInYourCountry,
-      //             isLoading: !this.state.isLoading
-      //           });
-      //         }
-      //       });
-      //   });
-      // }
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          const lat = position.coords.latitude;
+          const long = position.coords.longitude;
+          fetch(`${proxy}https://geocode.xyz/${lat},${long}?json=1 `)
+            .then(res => res.json())
+            .then(res => {
+              this.props.addLocation(res.country);
+            });
+        });
+      }
       // addCollectionAndDocuments('collections', collectionsArray);
     });
   }
@@ -149,6 +142,7 @@ const mapStateToProps = createStructuredSelector({
   // collectionsArray: selectCollectionsForPreview
 });
 const mapDispatchToProps = dispatch => ({
+  addLocation: location => dispatch(addLocation(location)),
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
 

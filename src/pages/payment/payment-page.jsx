@@ -21,8 +21,10 @@ import {
   selectCartItemsCount,
   selectDiscount,
   selectPromo,
-  selectCartTotal
+  selectCartTotal,
+  selectCartTotalUsd
 } from '../../redux/cart/cart.selectors';
+import { selectLocationLocation } from '../../redux/location/location.selectors';
 import CheckoutItem from '../../components/checkout-item/checkout-item';
 import Payment from '../../components/payment/payment';
 import loader from '../../assets/loader.gif';
@@ -37,6 +39,7 @@ class PaymentPage extends React.Component {
       this.props.enterdCity.toLowerCase() !== 'ibadan'
         ? this.props.total + 1500
         : this.props.total + 500,
+    usdPrice: this.props.usdTotal,
     isPromoAplied: false,
     isLoading: false
   };
@@ -97,7 +100,7 @@ class PaymentPage extends React.Component {
   }
 
   render() {
-    const { cartItems, currentUser, shippingDetails } = this.props;
+    const { cartItems, currentUser, shippingDetails, loca } = this.props;
     const { firstName, address, city, country, phone, email } = shippingDetails;
     const detail = {
       name: firstName,
@@ -107,7 +110,7 @@ class PaymentPage extends React.Component {
       email,
       phone
     };
-    const { price } = this.state;
+    const { price, usdPrice } = this.state;
     return (
       <div className="payment-page container">
         <Helmet>
@@ -159,18 +162,33 @@ class PaymentPage extends React.Component {
             <CheckoutItem key={cartItem.id} cartItem={cartItem} />
           ))}
           <div className="subtotal">
-            <h6>Subtotal</h6> <p>₦{this.props.total}</p>
+            <h6>Subtotal</h6>{' '}
+            <p>
+              {loca !== 'Nigeria' ? `$` : `₦`}
+              {loca !== 'Nigeria' ? usdPrice : this.props.total}
+            </p>
           </div>
           <div className="subtotal">
             <h6>Promo</h6>
-            <p>-₦{this.state.discount}</p>
+            <p>
+              -{loca !== 'Nigeria' ? `$` : `₦`}
+              {this.state.discount}
+            </p>
           </div>
           <div className="shipping">
             <h6>Shipping</h6>
-            <p>{city.toLowerCase() !== 'ibadan' ? `+₦${1500}` : 500}</p>
+            {loca !== 'Nigeria' ? (
+              <p>Not Found</p>
+            ) : (
+              <p>{city.toLowerCase() !== 'ibadan' ? `+₦${1500}` : 500}</p>
+            )}
           </div>
           <div className="total">
-            <h3>Total</h3> <span>₦{price}</span>
+            <h3>Total</h3>{' '}
+            <span>
+              {loca !== 'Nigeria' ? `$` : `₦`}
+              {loca !== 'Nigeria' ? usdPrice : price}
+            </span>
           </div>
         </div>
       </div>
@@ -181,10 +199,12 @@ class PaymentPage extends React.Component {
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
   cartItems: selectCartItems,
+  loca: selectLocationLocation,
   itemCount: selectCartItemsCount,
   discount: selectDiscount,
   promo: selectPromo,
   total: selectCartTotal,
+  usdTotal: selectCartTotalUsd,
   shippingDetails: selectShippingDetail,
   enterdCity: selectCity
 });

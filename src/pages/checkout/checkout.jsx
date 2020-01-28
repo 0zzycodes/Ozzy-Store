@@ -3,15 +3,18 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
+import { selectLocationLocation } from '../../redux/location/location.selectors';
 import {
   selectCartItems,
-  selectCartTotal
+  selectCartTotal,
+  selectCartTotalUsd
 } from '../../redux/cart/cart.selectors';
 import './checkout.scss';
 import CheckoutItem from '../../components/checkout-item/checkout-item';
 import { selectShippingDetail } from '../../redux/shipping/shipping.selectors';
 import ShippingForm from '../../components/shipping-form/shipping-form';
-const Checkout = ({ cartItems, total, shippingDetails }) => {
+const Checkout = ({ cartItems, total, usdtotal, shippingDetails, loca }) => {
+  const tot = loca !== 'Nigeria' ? `${usdtotal}` : `${total}`;
   return (
     <div className="checkout-page container">
       <div className="checkout-header">
@@ -61,13 +64,21 @@ const Checkout = ({ cartItems, total, shippingDetails }) => {
           <CheckoutItem key={cartItem.id} cartItem={cartItem} />
         ))}
         <div className="subtotal">
-          <h6>Subtotal</h6> <p>₦{total}</p>
+          <h6>Subtotal</h6>{' '}
+          <p>
+            {loca !== 'Nigeria' ? `$` : `₦`}
+            {tot}
+          </p>
         </div>
         <div className="shipping">
           <h6>Shipping</h6> <p>Free</p>
         </div>
         <div className="total">
-          <h3>Total</h3> <span>₦{total}</span>
+          <h3>Total</h3>{' '}
+          <span>
+            {loca !== 'Nigeria' ? `$` : `₦`}
+            {tot}
+          </span>
         </div>
       </div>
     </div>
@@ -77,7 +88,9 @@ const Checkout = ({ cartItems, total, shippingDetails }) => {
 const mapStateToProps = createStructuredSelector({
   shippingDetails: selectShippingDetail,
   cartItems: selectCartItems,
-  total: selectCartTotal
+  loca: selectLocationLocation,
+  total: selectCartTotal,
+  usdTotal: selectCartTotalUsd
 });
 
 export default connect(mapStateToProps)(Checkout);
