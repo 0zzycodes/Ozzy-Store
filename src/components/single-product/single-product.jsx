@@ -7,6 +7,7 @@ import { addItem } from '../../redux/cart/cart.actions';
 import CustomButton from '../custom-button/custom-button';
 import Related from '../related/related';
 import { createStructuredSelector } from 'reselect';
+import { selectLocationLocation } from '../../redux/location/location.selectors';
 import { selectCollectionsForPreview } from '../../redux/shop/shop.selector';
 import './single-product.scss';
 class SingleProduct extends React.Component {
@@ -22,12 +23,13 @@ class SingleProduct extends React.Component {
     this.setState({ isShow: !this.state.isShow });
   };
   render() {
-    const { item, addItem } = this.props;
+    const { item, addItem, location } = this.props;
     const {
       name,
       price,
       stock,
       sale,
+      usd, usdSale,
       imageUrl,
       sizes,
       sideImage,
@@ -35,6 +37,8 @@ class SingleProduct extends React.Component {
       measurementImage,
       category
     } = item;
+    const newpriceSale = location !== 'Nigeria' ? `$${usdSale}` : `₦${sale}`;
+    const newprice = location !== 'Nigeria' ? `$${usd}` : `₦${price}`;
     item.size = this.state.selectSize;
     item.id =
       item.id === `${item.id}${item.size}`
@@ -74,17 +78,17 @@ class SingleProduct extends React.Component {
               {stock === 0 ? 'Sold Out' : 'In Stock'}{' '}
             </span>
             <div className="prices">
-              <span className="sales-price price">₦{sale}</span>
-              {sale === price ? null : <span>SALE</span>}
+              <span className="sales-price price">{newpriceSale}</span>
+              {newpriceSale === newprice ? null : <span>SALE</span>}
               <span
                 className="normal-price price"
                 style={
-                  sale === price
+                  newpriceSale === newprice
                     ? { textDecoration: 'none' }
                     : { textDecoration: 'line-through' }
                 }
               >
-                ₦{price}
+                {newprice}
               </span>
             </div>
             <br />
@@ -188,6 +192,7 @@ class SingleProduct extends React.Component {
   }
 }
 const mapStateToProps = createStructuredSelector({
+  location: selectLocationLocation,
   collections: selectCollectionsForPreview
 });
 const mapDispatchToProps = dispatch => ({
