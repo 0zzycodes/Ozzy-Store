@@ -13,8 +13,10 @@ import './checkout.scss';
 import CheckoutItem from '../../components/checkout-item/checkout-item';
 import { selectShippingDetail } from '../../redux/shipping/shipping.selectors';
 import ShippingForm from '../../components/shipping-form/shipping-form';
-const Checkout = ({ cartItems, total, usdtotal, shippingDetails, loca }) => {
-  const tot = loca !== 'Nigeria' ? `${usdtotal}` : `${total}`;
+const Checkout = ({ cartItems, total, usdTotal, shippingDetails, loca }) => {
+  const tot = loca !== 'Nigeria' ? `${usdTotal}` : `${total}`;
+  console.log(total, usdTotal);
+
   return (
     <div className="checkout-page container">
       <div className="checkout-header">

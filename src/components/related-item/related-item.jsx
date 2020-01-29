@@ -1,12 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { createStructuredSelector } from 'reselect';
+import { selectLocationLocation } from '../../redux/location/location.selectors';
 import { addItem } from '../../redux/cart/cart.actions';
 
 import './related-item.scss';
 
-const RelatedItem = ({ item, history }) => {
-  const { category, name, stock, sale, price, imageUrl } = item;
+const RelatedItem = ({ item, history, loca }) => {
+  const { category, name, stock, sale, price, usd, usdSale, imageUrl } = item;
+  const newpriceSale = loca !== 'Nigeria' ? `$${usdSale}` : `₦${sale}`;
+  const newprice = loca !== 'Nigeria' ? `$${usd}` : `₦${price}`;
   return (
     <div className="related-item">
       <div className="img-container">
@@ -26,27 +30,31 @@ const RelatedItem = ({ item, history }) => {
           {name.toUpperCase()}
         </h5>
         <div className="prices">
-          {sale === price ? null : (
-            <span className="sales-price price">₦{sale}</span>
+          {newpriceSale === newprice ? null : (
+            <span className="sales-price price">{newpriceSale}</span>
           )}
           <span
             className="normal-price price"
             style={
-              sale === price
+              newpriceSale === newprice
                 ? { textDecoration: 'none' }
                 : { textDecoration: 'line-through' }
             }
           >
-            ₦{price}
+            {newprice}
           </span>
         </div>
       </div>
     </div>
   );
 };
-
+const mapStateToProps = createStructuredSelector({
+  loca: selectLocationLocation
+});
 const mapDispatchToProps = dispatch => ({
   addItem: item => dispatch(addItem(item))
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(RelatedItem));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(RelatedItem)
+);
