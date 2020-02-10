@@ -64,9 +64,8 @@ class PaymentPage extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
-        console.log(response);
-        if (response === 200) {
-          const calc = 200 * qty;
+        if (response) {
+          const calc = response * qty;
           const afterPromo = this.state.price - calc;
           this.setState(
             {
