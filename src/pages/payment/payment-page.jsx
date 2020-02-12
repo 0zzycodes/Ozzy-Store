@@ -41,7 +41,8 @@ class PaymentPage extends React.Component {
         : this.props.total + 500,
     usdPrice: this.props.usdTotal,
     isPromoAplied: false,
-    isLoading: false
+    isLoading: false,
+    errorMessage: null
   };
 
   handleChange = e => {
@@ -64,8 +65,10 @@ class PaymentPage extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
-        if (response) {
-          const calc = response * qty;
+        if (response.status === 'success') {
+          console.log(response);
+
+          const calc = response.message * qty;
           const afterPromo = this.state.price - calc;
           this.setState(
             {
@@ -85,6 +88,8 @@ class PaymentPage extends React.Component {
               ? this.props.total + 1500 - calc
               : this.props.total + 500 - calc
           );
+        } else {
+          this.setState({ errorMessage: response.message });
         }
       })
       .catch(error => console.log(error));
@@ -109,7 +114,7 @@ class PaymentPage extends React.Component {
       email,
       phone
     };
-    const { price, usdPrice } = this.state;
+    const { price, usdPrice, errorMessage } = this.state;
     return (
       <div className="payment-page container">
         <Helmet>
@@ -155,7 +160,9 @@ class PaymentPage extends React.Component {
             handleShowPaid={this.handleShowPaid}
           />
         </div>
-
+        {errorMessage ? (
+          <span className="error">{errorMessage}</span>
+        ) : null}
         <div className="product-summary">
           {cartItems.map(cartItem => (
             <CheckoutItem key={cartItem.id} cartItem={cartItem} />

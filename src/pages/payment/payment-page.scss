@@ -135,4 +135,17 @@ $secondaryColor: #ffffff;
       margin-bottom: 20px;
     }
   }
+  .error {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    left: 0;
+    text-align: center;
+    background-color: #ff00008a;
+    color: #ff0000;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-weight: 600;
+    z-index: 99;
+  }
 }

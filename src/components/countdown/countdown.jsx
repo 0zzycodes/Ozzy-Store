@@ -14,7 +14,7 @@ const Countdown = ({ match }) => {
     let distance = end - now;
     if (distance < 0) {
       clearInterval(timer);
-      document.getElementById('countdown').innerHTML = 'EXPIRED!';
+      document.getElementById('countdown').innerHTML = `<h3>EXPIRED!</h3>`;
       return;
     }
     let days = Math.floor(distance / _day);
@@ -30,7 +30,7 @@ const Countdown = ({ match }) => {
   }
   timer = setInterval(match.path === '/' ? showRemaining : null, 1000);
   return (
-    <div className="countdown">
+    <div className="countdown" id="countdown">
       <div className="days">
         <span id="days"></span>
         <span className="text">D</span>
