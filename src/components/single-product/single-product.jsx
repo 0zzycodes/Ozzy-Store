@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import { addItem } from '../../redux/cart/cart.actions';
-import CustomButton from '../custom-button/custom-button';
 import Related from '../related/related';
 import { createStructuredSelector } from 'reselect';
 import { selectLocationLocation } from '../../redux/location/location.selectors';
@@ -29,7 +28,8 @@ class SingleProduct extends React.Component {
       price,
       stock,
       sale,
-      usd, usdSale,
+      usd,
+      usdSale,
       imageUrl,
       sizes,
       sideImage,
@@ -92,28 +92,31 @@ class SingleProduct extends React.Component {
               </span>
             </div>
             <br />
-            <div className="box">
-              <select
-                name="selectSize"
-                value={this.state.selectSize}
-                onChange={this.handleChange}
-              >
-                <option value="Size">Size</option>
-                {sizes.map(eachSize => (
-                  <option key={eachSize}>{eachSize}</option>
-                ))}
-              </select>
-              <span className="indc">&#9662;</span>
+            <div className="buttons">
+
+              {stock === 0 ? null : (<div className="box">
+                <select
+                  name="selectSize"
+                  value={this.state.selectSize}
+                  onChange={this.handleChange}
+                >
+                  <option value="Size">Size</option>
+                  {sizes.map(eachSize => (
+                    <option key={eachSize}>{eachSize}</option>
+                  ))}
+                </select>
+                <span className="indc">&#9662;</span>
+              </div>)}
+              {stock === 0 ? (
+                <button disabled className="btn disable inverted">
+                  Sold Out
+                </button>
+              ) : this.state.selectSize !== '' ? (
+                <button onClick={() => addItem(item)} className="btn inverted">
+                  Cart &#43;
+                </button>
+              ) : null}
             </div>
-            {stock === 0 ? (
-              <CustomButton disabled inverted>
-                Sold Out
-              </CustomButton>
-            ) : this.state.selectSize !== '' ? (
-              <CustomButton onClick={() => addItem(item)} inverted>
-                Cart &#43;
-              </CustomButton>
-            ) : null}
             <div className="desc">
               <h5>DESCRIPTION</h5>
               {category === 'hoodies' ? (
